@@ -1,14 +1,14 @@
-define(["angular-route","../public/headerCtrl"],function(){
-	
-	var app=angular.module('myApp',['headerModule']);
-debugger;	
+define(["angular-route", "headerM"], function() {
 
-	app.config(['$routeProvider',function($routeProvider){
-		$routeProvider.when('/',{
-			templateUrl:"public/header.html",
-			controller:"headerCtrl"
-		});
-	}]);
+    var app = angular.module('myApp', ['ngRoute', 'headerModule']);
+    debugger;
 
-	return app;	
+    app.config(['$routeProvider', function($routeProvider) {
+        $routeProvider.when('/', {
+            templateUrl: "public/header.html",
+            controller: "headerCtrl"
+        });
+    }]);
+
+    return app;
 });
