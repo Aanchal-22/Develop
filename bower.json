@@ -1,21 +1,21 @@
 {
-  "name": "angular3",
-  "description": "",
-  "main": "index.js",
-  "authors": [
-    "aanchal25 <aanchal.rai1@genpact.com>"
-  ],
-  "license": "ISC",
-  "moduleType": [],
-  "homepage": "",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "angular-route": "~1.4.9"
-  }
+    "name": "angular3",
+    "description": "",
+    "main": "index.js",
+    "authors": [
+        "amit"
+    ],
+    "license": "ISC",
+    "moduleType": [],
+    "homepage": "",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "angular-route": "~1.4.9"
+    }
 }
