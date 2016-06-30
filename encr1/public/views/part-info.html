@@ -1,0 +1,65 @@
+<px-card header-text="Engine Information">
+    <style>
+    .table-strips {
+        border: 1px solid #ccc;
+    }
+    
+    .table-strips th {
+        text-align: center;
+        background-color: #343434;
+        color: white;
+    }
+    
+    .table-strips tr:nth-child(even) {
+        background: #fff;
+    }
+    
+    .table-strips tr:nth-child(odd) {
+        background: #d9d9d9
+    }
+    
+    table {
+        table-layout: fixed;
+        width: 100%;
+        border: 1px solid black;
+    }
+    
+    table tr {
+        height: 30px;
+    }
+    </style>
+    <div id="module_loadData">
+        <div class="layout">
+            <div class="layout__item">
+                <table class="table table-strips">
+                    <thead>
+                        <tr>
+                            <th>ESN</th>
+                            <th>Hour</th>
+                            <th>Contract StartDate</th>
+                            <th>Prev Fail</th>
+                            <th>Simulation Start Date</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:center">
+                        <tr ng-repeat="partInformation in partInfo">
+                            <td>{{partInformation.deliveryDateryID}}</td>
+                            <td>{{partInformation.annlUtilizationHrs}}</td>
+                            <td>{{partInformation.contractDueDate}}</td>
+                            <td>
+                                <input type="number" style="width:100%" ng-model="partInformation.previousFail" value="{{partInformation.previousFail}}">
+                            </td>
+                            <td>{{partInformation.deliveryDate}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="layout">
+            <div class="layout__item">
+                <a type="button" href="#/contractDetails/{{quoteID}}" class="btn btn--small btn--tertiary pull-left" style="font-size:12px">Back</a>
+                <a href="#/failureInfo/{{quoteID}}" style="font-size:12px" class="btn btn--small btn--tertiary pull-right" ng-click="sendPartInfo()">Next</a>
+            </div>
+        </div>
+    </div>
+</px-card>

@@ -1,0 +1,46 @@
+<style>
+table {
+    width: 100%;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.table-strips {
+    border: 1px solid #ccc;
+}
+
+.table-strips th {
+    text-align: center;
+    background-color: #343434;
+    color: white;
+}
+
+.table-strips tr:nth-child(even) {
+    background: #fff;
+}
+
+.table-strips tr:nth-child(odd) {
+    background: #d9d9d9;
+}
+
+table {
+    margin: 0px !important;
+}
+</style>
+<px-card header-text="GE Engine Services">
+    <div class="layout">
+        <div class="layout__item">
+            <engine-tab id="a"></engine-tab>
+        </div>
+    </div>
+    <div class="layout" style="height:10px"> </div>
+    <div class="layout">
+        <div class="layout__item">
+            <a type="button" href="#/costInfo/{{quoteID}}/{{costTypeSelected}}" style="font-size:12px" class="btn btn--small btn--tertiary">Back</a>
+            <!--<
+a href="#/output" style="font-size:12px" class="btn btn--small btn--tertiary pull-right">Next</a> -->
+            <input type="button" style="font-size:12px" class="btn btn--small btn--tertiary pull-right" ng-click="submitEngineServiceData()" value="Next">
+        </div>
+    </div>
+</px-card>

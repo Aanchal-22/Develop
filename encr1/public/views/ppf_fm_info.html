@@ -1,0 +1,125 @@
+<px-card header-text="Cost Bucket">
+    <style>
+    .table-strips {
+        border: 1px solid #ccc;
+    }
+    
+    .table-strips th {
+        text-align: center;
+        background-color: #343434;
+        color: white;
+    }
+    
+    .table-strips tr:nth-child(even) {
+        background: #fff;
+    }
+    
+    .table-strips tr:nth-child(odd) {
+        background: #d9d9d9;
+    }
+    
+    .table-strips tr:nth-child(even)>td>table tr {
+        background: #fff;
+    }
+    
+    .table_cell {
+        display: table-cell;
+        width: 150px;
+        text-align: center;
+    }
+    </style>
+    <div id="module_loadData">
+        <!-- Table 1 -->
+        <div class="layout" id="body_data" style="overflow-x:scroll">
+            <div class="layout__item">
+                <input id="box1" type="checkbox" ng-model="costType.pprTYpe" ng-change="checkCostType()">
+                <label for="box1" style="font-weight: bold">PPR/FM Data</label>
+            </div>
+            <div class="layout__item">
+                <table class="table table-strips " style="margin:0px">
+                    <thead>
+                        <tr>
+                            <th class="table_cell"></th>
+                            <th colspan="3" ng-repeat="data in pprData[0]" nowrap>{{data.costParameter}}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th class="table_cell" nowrap>Trigger Value</th>
+                            <th ng-repeat="(key, val) in ppfInfo[0]" colspan="3" class="pad-0">
+                                <table class="table fontReduce" border="0" style="margin:0px">
+                                    <tr>
+                                        <th class="table_cell" nowrap>Mean</th>
+                                        <th class="table_cell" nowrap>Std Deviation</th>
+                                    </tr>
+                                </table>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:center">
+                        <tr ng-repeat="(key, val) in pprData">
+                            <td class="table_cell">{{val[key].triggerValue}}</td>
+                            <td ng-repeat="(k, v) in val" colspan="3">
+                                <table class="table " style="margin:0px">
+                                    <tr>
+                                        <td class="table_cell" nowrap>{{v.meanValue}}</td>
+                                        <td class="table_cell" nowrap>{{v.stdDeviation}}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Table 2 -->
+        <div class="layout" style="height:10px"> </div>
+        <div class="layout" style="overflow-x:scroll">
+            <div class="layout__item">
+                <input id="box2" type="checkbox" ng-model="costType.actualType" ng-change="checkCostType()">
+                <label for="box1" style="font-weight: bold">ACTUAL/RECENT Data </label>
+            </div>
+            <div class="layout__item">
+                <table class="table table-strips" style="margin:0px">
+                    <thead>
+                        <tr>
+                            <th class="table_cell"></th>
+                            <th colspan="3" ng-repeat="data in actualData[0]" nowrap>{{data.costParameter}}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th nowrap>Trigger Value</th>
+                            <th ng-repeat="(key, val) in actualData[0]" colspan="3" class="pad-0">
+                                <table class="table " style="margin:0px">
+                                    <tr>
+                                        <th class="table_cell" nowrap>Mean</th>
+                                        <th class="table_cell" nowrap>Std Deviation</th>
+                                    </tr>
+                                </table>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:center">
+                        <tr ng-repeat="(key, val) in actualData">
+                            <td>{{val[key].triggerValue}}</td>
+                            <td ng-repeat="(k, v) in val" colspan="3">
+                                <table class="table  " style="margin:0px">
+                                    <tr>
+                                        <td class="table_cell" nowrap>{{v.meanValue}}</td>
+                                        <td class="table_cell" nowrap>{{v.stdDeviation}}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="layout" style="height:10px"> </div>
+        <div class="layout">
+            <div class="layout__item">
+                <a type="button" href="#/failureInfo/{{quoteID}}" style="font-size:12px" class="btn btn--small btn--tertiary pull-left">Back</a>
+                <a style="font-size:12px" href="#/costInfo/{{quoteID}}/{{costTypeSelected}}" class="btn btn--small btn--tertiary pull-right" ng-show="displaySubmitButton">Next</a>
+            </div>
+        </div>
+    </div>
+</px-card>

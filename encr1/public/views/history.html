@@ -1,0 +1,186 @@
+<px-card>
+    <style>
+    h4 {
+        margin: 0px;
+    }
+    
+    td {
+        font-size: 0.9em;
+    }
+    </style>
+    <div class="layout">
+        <div class="layout__item" style="padding:20px"></div>
+    </div>
+    <px-twoup id="widgetsx2">
+        <div class=widget-1>
+            <h4>NCR History</h4>
+            <div class="layout">
+                <div class="layout__item u-3/6">
+                    Initiated Date:
+                    <input type="date">
+                </div>
+                <div class="layout__item u-2/6">
+                    To:
+                    <input type="date">
+                </div>
+                <div>
+                    <button>Build List</button>
+                </div>
+            </div>
+            <div class="layout" style="padding:5px;"></div>
+            <div class="layout">
+                <div class="layout__item u-3/6">
+                    Select NCR:
+                    <select name="" id="">
+                        <option value="">124252</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layout">
+                <div class="layout__item">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show Notes</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for=""> Show Disp. Engineer Signoffs</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show Email History</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show Status History</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show Disp. Quality Signoffs</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show VBB SQE Signoffs</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show Queue History</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show Resp. Supervisor Signoffs</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show VBB Buyer Signoffs</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show Cleared History</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show Resp. Quality Signoffs</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show Drafting Signoffs</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show NCE Signoffs</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show NCD Signoffs</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show CAR Approval Signoffs</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show Notify Signoffs</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show Not Notify Signoffs</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show Special Job Signoffs</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show Customer Decision Signoffs</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show Sanatoria Signoffs</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show PM Signoffs</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" checked>
+                                    <label for="">Show Attachment History</label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr>
+            <div class="layout">
+                <div class="layout__item">
+                    <div class="float--right">
+                        <button>Execute</button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class=widget-2>
+            <h4>Add NCR Note</h4>
+            <p>Maximum 2500 characters allowed</p>
+            <div class="layout">
+                <div class="layout__item">
+                    <div style="width:500px;height:250px;border:1px solid black;overflow-y:scroll;"></div>
+                </div>
+            </div>
+            <div class="layout" style="padding:5px;"></div>
+            <div class="layout">
+                <div class="layout__item">
+                    <button>Add Note</button>
+                </div>
+            </div>
+        </div>
+    </px-twoup>
+    <hr>
+</px-card>
+<px-card>
+    <div class="layout">
+        <div class="layout__item">
+            <h4>History results</h4>
+            <div style="width:1000px;height:300px;border:1px solid black;">No data to display</div>
+        </div>
+    </div>
+</px-card>

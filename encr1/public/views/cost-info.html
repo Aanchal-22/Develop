@@ -1,0 +1,81 @@
+<px-card header-text="Event Profile">
+    <style>
+    .table-strips {
+        border: 1px solid #ccc;
+    }
+    
+    .table-strips th {
+        text-align: center;
+        background-color: #343434;
+        color: white;
+    }
+    
+    .table-strips tr:nth-child(even) {
+        background: #fff;
+    }
+    
+    .table-strips tr:nth-child(odd) {
+        background: #d9d9d9;
+    }
+    
+    table {
+        margin: 0px !important;
+    }
+    /*  td {
+       width: 300px !important;
+   } */
+    </style>
+    <div id="module_loadData">
+        <div class="layout">
+            <div class="layout__item" style="width:930px">
+                <div style="overflow-x:scroll">
+                    <table class="table table-strips">
+                        <tr>
+                            <th>Contract Year</th>
+                            <th ng-repeat="data in yearData track by $index">{{data}}</th>
+                        </tr>
+                        <tr>
+                            <td>AvgOfMaterial_Costs</td>
+                            <td ng-repeat="data in avgMtlCostsData track by $index">{{data}}</td>
+                        </tr>
+                        <tr>
+                            <td>AvgOfNewMaterial_Costs</td>
+                            <td ng-repeat="data in avgNewMtlCosts track by $index">{{data}}</td>
+                        </tr>
+                        <tr>
+                            <td>AvgOfUsedMaterial_Costs</td>
+                            <td ng-repeat="data in avgUsdMtlCosts track by $index">{{data}}</td>
+                        </tr>
+                        <tr>
+                            <td>AvgOfLocalPurchaseMaterial_Costs</td>
+                            <td ng-repeat="data in lclPurMtlCosts track by $index">{{data}}</td>
+                        </tr>
+                        <tr>
+                            <td>AvgOfLabor_Hours</td>
+                            <td ng-repeat="data in avgLbrHours track by $index">{{data}}</td>
+                        </tr>
+                        <tr>
+                            <td>AvgOfLabor_Cost</td>
+                            <td ng-repeat="data in avgLbrCosts track by $index">{{data}}</td>
+                        </tr>
+                        <tr>
+                            <td>AvgOfComponent_Repair_Cost</td>
+                            <td ng-repeat="data in avgcompRepairCosts track by $index">{{data}}</td>
+                        </tr>
+                        <tr>
+                            <td>AvgOfOutsideVendor_Cost</td>
+                            <td ng-repeat="data in avgOutsideVendorCosts track by $index">{{data}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="layout" style="height:10px"> </div>
+        <div class="layout">
+            <div class="layout__item">
+                <a type="button" href="#/ppfInfo/{{quoteID}}" style="font-size:12px" class="btn btn--small btn--tertiary pull-left">Back</a>
+                <a href="#/engineService/{{quoteID}}" style="font-size:12px" class="btn btn--small btn--tertiary pull-right">Next </a>
+            </div>
+        </div>
+    </div>
+</px-card>

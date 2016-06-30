@@ -1,0 +1,30 @@
+define(['./dashboard',
+    './data-control',
+    './loginCtrl',
+    './landingCtrl',
+    './homeCtrl',
+    './technicalModellingCtrl',
+    './contractDetailsCtrl',
+    './partInfoCtrl',
+    './failureInfoCtrl',
+    './ppfInfoCtrl',
+    './costInfoCtrl',
+    './engineServiceCtrl',
+    './outputCtrl',
+    './scenarioManagerCtrl',
+    './MapViewCtrl',
+    './InventoryMaintenanceCtrl',
+    './qcrCtrl',
+    './reportsCtrl',
+    './managePrefCtrl',
+    './adhocCtrl',
+    './disclaimerCtrl',
+    './mngPrivilegeCtrl',
+    './manageSiteComponentCtrl',
+    './managecauseCodeCtrl',
+    './manageAreaCtrl',
+    './editAreaCtrl'
+
+], function() {
+
+});

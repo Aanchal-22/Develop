@@ -1,0 +1,170 @@
+<px-card>
+    <style>
+    .select-size {
+        width: 200px !important;
+    }
+    
+    .ui-table-body table {
+        width: auto;
+        table-layout: fixed;
+    }
+    
+    .ui-table-head table {
+        width: auto;
+        table-layout: fixed;
+        margin-bottom: 0px!important;
+    }
+    
+    .ui-table-head table,
+    .ui-table-body table {
+        border-collapse: collapse;
+    }
+    
+    .ui-table-head table tr th {
+        color: #fff;
+        background-color: #5bc0de;
+        border: 1px solid black;
+        height: 30px;
+        word-spacing: nowrap;
+        min-width: 120px;
+        //padding: 5px;
+    }
+    
+    .ui-table-body table tr td {
+        height: 20px;
+        padding: 5px;
+        border: 1px solid black;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 300px;
+    }
+    
+    .ui-table-container {
+        width: 1270px;
+        overflow: hidden;
+    }
+    
+    .ui-table-head {
+        overflow: hidden;
+        margin-right: 17px;
+    }
+    
+    .ui-table-body {
+        overflow: auto;
+        width: 100%;
+        height: 300px;
+    }
+    </style>
+    <div class="layout">
+        <div class="layout__item">
+            <h4>Search Criteria</h4>
+        </div>
+    </div>
+    <div class="layout">
+        <div class="layout__item u-3/6">Area:
+            <select name="" id="" class="select-size">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="layout" style="padding:7px;"></div>
+    <div class="layout">
+        <div class="layout__item"> Use Date:
+            <input type="checkbox"> From:
+            <input type="date"> To:
+            <input type="date">
+        </div>
+    </div>
+    <hr>
+    <div class="layout">
+        <div class="layout__item u-1/2">
+            <div class="layout">
+                <div class="layout__item u-1/6">Primary:</div>
+                <div class="layout__item u-3/6">
+                    <select name="" id="">
+                        <option value="">CAR state</option>
+                    </select>
+                </div>
+                <div>
+                    <button>Execute</button>
+                </div>
+            </div>
+        </div>
+        <div class="layout__item u-1/2">
+            <div class="layout">
+                <div class="layout__item u-1/6">Secondary:</div>
+                <div class="layout__item u-3/6">
+                    <select name="" id="">
+                        <option value="">CAR state</option>
+                    </select>
+                </div>
+                <div>
+                    <button>Execute</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layout">
+        <div class="layout__item u-1/2">
+            <div class="ui-table-container">
+                <div class="ui-table-head">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Count</th>
+                                <th>Primary Value</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="ui-table-body">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>240</td>
+                                <td><a href="">C-completed</a></td>
+                            </tr>
+                            <tr>
+                                <td>75</td>
+                                <td><a href="">I-Initiated</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layout">
+        <div class="layout__item">
+            <h4>NCR List Results</h4></div>
+        <div class="layout__item">
+            <div class="ui-table-container">
+                <div class="ui-table-head">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Count</th>
+                                <th>Primary Value</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="ui-table-body">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>240</td>
+                                <td><a href="">C-completed</a></td>
+                            </tr>
+                            <tr>
+                                <td>75</td>
+                                <td><a href="">I-Initiated</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</px-card>

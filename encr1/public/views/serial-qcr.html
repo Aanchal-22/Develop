@@ -1,0 +1,72 @@
+<px-card>
+<style>
+	th{
+		text-align: left;
+	}
+	.div-content{
+		width:250px;
+		height:150px;
+		border:1px solid black;
+	}
+
+	.button-style{
+		width: 80px;
+	}
+	
+	.btn-padding{
+		padding-left:20px;
+	}
+
+</style>
+	<div class="layout">
+		<div class="layout__item">
+		<input type="checkbox">Serialized
+		</div>
+	</div>
+	<div class="layout">
+	<div class="layout__item">
+		<table style="table-layout:fixed;width:100%;">
+		<thead>
+			<tr>
+				<th colspan="2">Job:C7-4813944(50)C73B</th>
+				<th></th>
+				<th  colspan="2">Dev Qty:1</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td colspan="2"><div class="div-content"></div></td>
+				<td rowspan="2">
+				<table>
+						<tbody>
+							<tr><td class="btn-padding"><button class="button-style">Add</button></td></tr>
+							<tr><td class="btn-padding"><button class="button-style">Remove</button></td></tr>
+						</tbody>
+				</table>
+				</td>
+				<td colspan="2"> <div class="div-content"></div></td>
+			</tr>
+
+		</tbody>
+		</table>
+		<table>
+			<tbody>
+				<tr>
+					<td colspan="2"><input type="text" style="width:250px;"> </td>
+					<td width="30px;"></td>
+					<td class="btn-padding" colspan="2"><button class="button-style">Add</button></td>	
+				
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</div>
+	<div class="layout">
+		<div class="layout__item"><input type="checkbox">Unserialized</div>
+	</div>
+	<hr>
+	<div class="layout">
+		<div class="layout__item"><center><button>OK</button>&nbsp;<button>Cancel</button></center></div>
+	</div>
+	
+</px-card>

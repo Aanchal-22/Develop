@@ -1,0 +1,73 @@
+<px-card header-text="Select Customer">
+    <style>
+    .selected_li {
+        background-color: #086e87;
+        cursor: pointer;
+        color: white;
+    }
+    
+    .list-ui {
+        border-width: 1px 1px 1px 1px !important;
+        border-radius: 5px;
+    }
+    
+    .list-ui__item {
+        padding: 0.5rem !important;
+        border-width: 0px !important;
+        cursor: pointer;
+    }
+    
+    li.li_padding {
+        border-width: 1px 1px 1px 1px !important;
+        border-radius: 5px;
+    }
+    
+    li.custom_li:hover {
+        background-color: #0986a4;
+        color: white;
+    }
+    
+    .btn {
+        background-color: #fff !important;
+    }
+    /* @keyframes openspace {
+        to {
+            height: auto;
+        }
+    }
+    
+    @keyframes restored-item-animation {
+        0% {
+            opacity: 0;
+            transform: translateX(-250px);
+        }
+        70% {
+            opacity: 1;
+            transform: translateX(50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    } */
+    </style>
+    <div id="module_loadData">
+        <div ng-cloak class="layout">
+            <!-- Screen 1 -->
+            <div class="layout__item  u-1/2">
+                <h4><b>Customer List</b></h4>
+                <ul class="list-ui">
+                    <li class=" list-ui__item custom_li" ng-class="{'selected_li':$index == selected} " ng-click="showContract(custName,$index)" ng-repeat="custName in customerContractDetails"><span>{{custName.accountName}}</span><span ng-class="{'fa fa-angle-right pull-right':$index == selected} "></span></li>
+                </ul>
+            </div>
+            <!-- Screen 2 -->
+            <div class="layout__item u-1/2" ng-hide="selected==null">
+                <h4><b>Contracts List</b></h4>
+                <li class="list-ui__item li_padding custom_li" ng-repeat="contractName in contractList">
+                    <span>{{contractName.quoteName}}</span>
+                    <a href="#/contractDetails/{{contractName.quoteID}}" ng-click="sendId($index)" class="btn btn--small float--right" style="font-size:11px">Open</a>
+                </li>
+            </div>
+        </div>
+    </div>
+</px-card>

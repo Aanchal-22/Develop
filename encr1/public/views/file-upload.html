@@ -1,0 +1,52 @@
+<px-card header-text="Attachments">
+    <div id="module_loadData">
+
+    </div>
+<div>
+    <input type="file" file-model="myFile"/>
+    <div class="btn" ng-click="uploadFile()">Upload</div>
+</div>
+
+
+    <div class="layout">
+        <div class="layout__item" style="overflow-y: scroll;height:100px">
+            <table style="border:1px solid black;width:100%">
+                <thead>
+                <tr style="background-color:#C4BCBC">
+                    <th ></th>
+                    <th>FileId</th>
+                    <th>FileName</th>
+                    <th>ContentType</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in fileuploadList">
+                    <td><input type="radio" name="demo" id="radioBtn" ng-class="checked=false" ng-click="fileClicked(item)" /></td>
+                    <td >{{item.pkId}}</td>
+                    <td >{{item.fileName}}</td>
+                    <td >{{item.contentType}}</td>
+
+
+                </tr>
+
+
+                </tbody>
+                </table>
+            </div>
+        </div>
+
+    <div class="layout">
+
+        <div class="btn" ng-click="Download()">DownLoad</div>
+        <div class="btn" ng-click="Preview()">Preview</div>
+
+
+        </div>
+
+
+
+
+
+</px-card>
+<iframe src="{{attachcontent}}" width="100%" height="500px"></iframe>

@@ -1,0 +1,965 @@
+<dom-module id="engine-tab">
+    <template>
+        <section>
+            <px-tab-set id="tab-set" selected="{{selected}}">
+                <px-tab>Contract Summary</px-tab>
+                <px-tab>Option External</px-tab>
+                <px-tab>Option Pricing</px-tab>
+                <px-tab>Option Coverage</px-tab>
+                <px-tab> Additional Billing And Cost</px-tab>
+                <px-tab>Escalation</px-tab>
+                <px-tab>Cliff and Material Split</px-tab>
+            </px-tab-set>
+            <px-tab-pages selected="{{selected}}">
+                <div>
+                    <table id="dataTable" class="table-strips">
+                        <thead>
+                            <th colspan="2">Basic info</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="">Model Type</td>
+                                <td class="">
+                                    <select class="form-control" id="sel1" ng-model="ModelTypeDDDataSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.ModelTypeDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="">Descriptor</td>
+                                <td class="">
+                                    <select class="form-control" id="sel2" ng-model="DescriptionDDDataSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.DescriptionDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="">Contract Type</td>
+                                <td class="">
+                                    <select class="form-control" id="sel3" ng-model="ContractTypeDDDataSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.ContractTypeDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="">New or Used Engines</td>
+                                <td class="">
+                                    <select class="form-control" id="sel4" ng-model="NewOrUsedEngineTypeSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.NewOrUsedEngineType">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="">Engine Model</td>
+                                <td class="">
+                                    <select class="form-control" id="sel5" ng-model="engineModelSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.EngineModelDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="">Engine Type </td>
+                                <td class="col-md-6">{{contractSummaryEngineType}}</td>
+                            </tr>
+                            <tr>
+                                <td class="">Model &amp; Type</td>
+                                <td class="">{{contractSummaryEngineSeries}}</td>
+                            </tr>
+                            <tr>
+                                <td class="">Business Jet?</td>
+                                <td class="">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" ng-model="bussinessJetSelected">
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="">Aircraft Type</td>
+                                <td class="">{{contractSummaryAircraft}}</td>
+                            </tr>
+                            <tr>
+                                <td class="">Base Overhaul Pricing Type</td>
+                                <td class="">
+                                    <select class="form-control" id="sel6" ng-model="baseOverHaulePricingSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.pricingTypeDD">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="">LLP Pricing Type</td>
+                                <td class="">
+                                    <select class="form-control" id="sel7" ng-model="llpPricingSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.pricingTypeDD">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="">Overhaul Shop</td>
+                                <td class="">
+                                    <select class="form-control" id="sel8" ng-model="overhauleShopSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.overhauleShopDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="">MCE Start Date (Mo. &amp; Yr.)</td>
+                                <td class="">{{contractSummaryMceStartDate}}</td>
+                            </tr>
+                            <tr>
+                                <td class="">MCE Base Year $$s</td>
+                                <td class="">{{contractSummaryMceBaseYear}}</td>
+                            </tr>
+                            <tr>
+                                <td class="">Contract Start Date (Mo. &amp; Yr.)</td>
+                                <td class="">{{contractSummaryContractStartDate}}</td>
+                            </tr>
+                            <tr>
+                                <td class="">Number of Aircraft</td>
+                                <td class="">{{contractSummaryContractNumberOfAircraft}}</td>
+                            </tr>
+                            <tr>
+                                <td class="">Number of Engines / Aircraft</td>
+                                <td class="">{{contractSummaryContractNumberOfEngines}}</td>
+                            </tr>
+                            <tr>
+                                <td class="">Number of Spare Engines </td>
+                                <td class="">{{contractSummaryContractNumberOfSpareEngines}}</td>
+                            </tr>
+                            <tr>
+                                <td class="">PPR Environment</td>
+                                <td class="">
+                                    <select class="form-control" id="sel9" ng-model="pprEnvironmentSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.pprEnvironmentDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="">CFM Thrust</td>
+                                <td class="">
+                                    <select class="form-control" id="sel10" ng-model="CFMThrustSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.CFMThrustDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="">CFM Tech Insertion</td>
+                                <td class="">
+                                    <select class="form-control" id="sel11" ng-model="CFMTechInsertionSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.CFMTechInsertionDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="">A/C Leased?</td>
+                                <td class="">
+                                    <select class="form-control" id="sel12" ng-model="ACLeasedSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.ACLeasedDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="">Return Conditions?</td>
+                                <td class="">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" ng-model="returnConditionsSelected">
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="">MCE Number</td>
+                                <td class="">{{contractSummaryContractMCENumber}}</td>
+                            </tr>
+                            <tr>
+                                <td class="">Business Plan Included?</td>
+                                <td class="">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" ng-model="bussinessPlanInclusionSelected">
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="">Pricing Output</td>
+                                <td class="">
+                                    <select class="form-control" id="sel13" ng-model="pricingOutputSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.pricingOutpuDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table id="dataTable" class="table-strips">
+                        <thead></thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0">
+                                            <select class="form-control" id="sel14" ng-model="diagCDSelected" ng-options="obj.id as obj.value for obj in OptionExternalDropDownData.diagCDData">
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">Diag @ Cost ($K/Eng/Yr)</span>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <span><input type="checkbox"  ng-model="diagCostSelected"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="diagCostValue">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">RD Margin</span>
+                                        </div>
+                                        <div class="col-md-1 "></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="rdMarginValue">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">OWS @ Price ($K for LOC)</span>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <span><input type="checkbox"  ng-model="OwsPriceSelected"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="owsPriceValue">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0">
+                                            <select class="form-control" id="sel15" ng-model="engineLeasingSelected" ng-options="obj.id as obj.value for obj in OptionExternalDropDownData.engineLeasingDDData">
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-5"><span class="pull-right">Engine Leasing</span></div>
+                                        <div class="col-md-1 "><span><input type="checkbox"  ng-model="engineLeasingOptionSelected"></span></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="engineLeasingpriceValue">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0">
+                                            <select class="form-control" id="sel16" ng-model="lruRepairSelected" ng-options="obj.id as obj.value for obj in OptionExternalDropDownData.lruRepairDDData">
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-5"><span class="pull-right">LRU Repair Cost</span></div>
+                                        <div class="col-md-1 "><span><input type="checkbox"  ng-model="lruRepairCostSelected"></span></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="lruPricingMarginValue">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0">
+                                            <select class="form-control" id="sel17" ng-model="fduCoverageSelected" ng-options="obj.id as obj.value for obj in OptionExternalDropDownData.fduCoverageDDData">
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-5"><span class="pull-right">FOD Coverage @ Price</span></div>
+                                        <div class="col-md-1 "><span><input type="checkbox" ng-model="fduCoverageOptionSelected"></span></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="fodCoverageValue">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">Deductible ($K)</span>
+                                        </div>
+                                        <div class="col-md-1 "></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="deductablePriceValue">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">Number of FOD Events</span>
+                                        </div>
+                                        <div class="col-md-1 "></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="numOfFODEvents">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0">
+                                            <select class="form-control" id="sel18">
+                                                <option>1-6(Qatar)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-5"><span class="pull-right">Uncap SB/AD @ Price ($/EFH)</span></div>
+                                        <div class="col-md-1 "><span><input type="checkbox" value="" ng-model="uncapSBADSelected"></span></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="uncapSBADPriceValue">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">Financial PPR Year:</span>
+                                        </div>
+                                        <div class="col-md-1 "></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <span>{{PPRFinancialYear}}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table id="dataTable" class="table-strips">
+                        <thead></thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-md-6">RD</td>
+                                <td class="col-md-6">
+                                    <select class="form-control" id="sel19" ng-model="rdTypeSelected" ng-options="obj.id as obj.value for obj in OptionPricingDropDownData.monthlyOrTSLVDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">OWS</td>
+                                <td class="col-md-6">
+                                    <select class="form-control" id="sel20" ng-model="owsTypeSelected" ng-options="obj.id as obj.value for obj in OptionPricingDropDownData.monthlyOrTSLVDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">LRU</td>
+                                <td class="col-md-6">
+                                    <select class="form-control" id="sel21" ng-model="lruTypeSelected" ng-options="obj.id as obj.value for obj in OptionPricingDropDownData.monthlyOrTSLVDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">FOD Coverage</td>
+                                <td class="col-md-6">
+                                    <select class="form-control" id="sel22" ng-model="fodTypeSelected" ng-options="obj.id as obj.value for obj in OptionPricingDropDownData.monthlyOrTSLVDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">Uncapped 1-2 SB / AD</td>
+                                <td class="col-md-6">
+                                    <select class="form-control" id="sel23" ng-model="uncappedSBADTypeSelected" ng-options="obj.id as obj.value for obj in OptionPricingDropDownData.monthlyOrTSLVDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">Misc Cost 1-4</td>
+                                <td class="col-md-6">
+                                    <select class="form-control" id="sel24" ng-model="miscCost1to4Selected" ng-options="obj.id as obj.value for obj in OptionPricingDropDownData.monthlyOrTSLVDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">Misc Cost 5-8</td>
+                                <td class="col-md-6">
+                                    <select class="form-control" id="sel25" ng-model="miscCost5to8Selected" ng-options="obj.id as obj.value for obj in OptionPricingDropDownData.monthlyOrTSLVDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">Additional Billings ($ / EFH)</td>
+                                <td class="col-md-6">
+                                    <select class="form-control" id="sel26" ng-model="additionalBillingSelected" ng-options="obj.id as obj.value for obj in OptionPricingDropDownData.monthlyOrTSLVDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">Leasing Fees</td>
+                                <td class="col-md-6">
+                                    <select class="form-control" id="sel27" ng-model="leasingFeeTypeSelected" ng-options="obj.id as obj.value for obj in OptionPricingDropDownData.monthlyOrTSLVDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table id="dataTable" class="table-strips">
+                        <thead></thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-11 pad-0">
+                                        <span>New Material</span>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <span><input type="checkbox" value=""
+                                                         ng-model="optionCoverageSectionData.newMaterialValue"></span>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    Suplmtl
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-11 pad-0">
+                                        <span>Life-limited Parts(LLP)</span>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <span><input type="checkbox" value=""  ng-model="optionCoverageSectionData.lifeTimeParts"></span>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="checkbox" value="optionCoverageSectionData.supplimentallifeTimeParts">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-11 pad-0">
+                                        <span>Internal Comp. Repair Overwrites</span>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <span><input type="checkbox" value=""  ng-model="optionCoverageSectionData.internalCompRepairOverwrite"
+                                                         ng-change="checkInternalCompRepOverwrite()"></span>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="optionCoverageSectionData.internalCompRepairOverwriteData">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-11 pad-0">
+                                        <span>Internal Comp. Repair</span>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <span><input type="checkbox" value="" ng-model="optionCoverageSectionData.internalCompRepairs" ></span>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="optionCoverageSectionData.internalCompRepairData">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-11 pad-0">
+                                        <span>External Comp. Repair</span>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <span><input type="checkbox" value=""  ng-model="optionCoverageSectionData.externalCompRepair"></span>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-11 pad-0">
+                                        <span>Labor</span>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <span><input type="checkbox" value=""  ng-model="optionCoverageSectionData.labourSelection"></span>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-11 pad-0">
+                                        <span>Transport Overwrites</span>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <span><input type="checkbox" value=""  ng-model="optionCoverageSectionData.transportOverwriteSelection"
+                                                         ng-change="checkTransportOverwrite()"></span>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="optionCoverageSectionData.transportOverwriteData">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-11 pad-0">
+                                        <span>Transportation ($K/SV)</span>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <span><input type="checkbox" value=""  ng-model="optionCoverageSectionData.transportSelection"></span>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="optionCoverageSectionData.transportData">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-6 pad-0">
+                                        <select class="form-control" id="sel28" ng-model="transportDDSelected" ng-options="obj.id as obj.value for obj in optionCoverageData.transportDDData">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td class="col-md-3">
+                                    <div class="col-md-11 pad-0">
+                                        <span>Transportation ($K/SV)</span>
+                                    </div>
+                                </td>
+                                <td class="col-md-3">
+                                    <input type="text" value="0.6%">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-11 pad-0">
+                                        <span>Test Cell ($K/SV)</span>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <span><input type="checkbox"   ng-model="optionCoverageSectionData.testCell"></span>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table id="dataTable" class="table-strips">
+                        <thead></thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0">
+                                            <span>$K/SV</span>
+                                        </div>
+                                        <div class="col-md-5"><span class="pull-right">Misc Cost # 1</span></div>
+                                        <div class="col-md-1 "><span><input type="checkbox" ng-model="additionalBillingAndCostData.miscCost1Selected"></span></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="additionalBillingAndCostData.miscCost1Value">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0">
+                                            <span>$K/SV</span>
+                                        </div>
+                                        <div class="col-md-5"><span class="pull-right">Misc Cost # 2</span></div>
+                                        <div class="col-md-1 "><span><input type="checkbox" ng-model="additionalBillingAndCostData.miscCost2Selected"></span></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="additionalBillingAndCostData.miscCost2Value">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0">
+                                            <span>$K/SV</span>
+                                        </div>
+                                        <div class="col-md-5"><span class="pull-right">Misc Cost # 3</span></div>
+                                        <div class="col-md-1 "><span><input type="checkbox" ng-model="additionalBillingAndCostData.miscCost3Selected"></span></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="additionalBillingAndCostData.miscCost3Value">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">Yearly Mgmt. Fee ($K)</span>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <input type="checkbox" ng-model="additionalBillingAndCostData.yearlyMgmtSelected">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="additionalBillingAndCostData.yearlyMgmtFee">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">Service Credits (0% Esc - $K/Yr)</span>
+                                        </div>
+                                        <div class="col-md-1 "></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="additionalBillingAndCostData.serviceCredits">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5"><span class="pull-right">Additional Billings 1 ($K/Yr)</span></div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="additionalBillingAndCostData.additionalBilling1Value">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5"><span class="pull-right">Additional Billings 2 ($K/Yr)</span></div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="additionalBillingAndCostData.additionalBilling2Value">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5"><span class="pull-right">Additional Billings 3 ($K/Yr)</span></div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="additionalBillingAndCostData.additionalBilling3Value">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5"><span class="pull-right">Additional Billings 4 ($K/Yr)</span></div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="additionalBillingAndCostData.additionalBilling4Value">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5"><span class="pull-right">Additional Billings ($/EFH - MCPH Esc)</span></div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="additionalBillingAndCostData.additionalBillingsValue">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table id="dataTable" class="table-strips">
+                        <thead></thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0">
+                                            <select class="form-control" id="sel29" ng-model="billingEscalationDDSelected" ng-options="obj.id as obj.value for obj in escalationSectionData.billingEscalationDDData">
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-5"><span class="pull-right">Billings Escalation</span></div>
+                                        <div class="col-md-1 "><span><input type="checkbox" ng-model="escalationSectionData.billingEscalationSelected"></span></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="escalationSectionData.billingEscalationValue">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">Catalog Contribution</span>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <span><input type="checkbox" ng-model="escalationSectionData.catalogContributionSelected"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="escalationSectionData.catalogContributionVal">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">Cap Escalation</span>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <select class="form-control" id="sel30" ng-model="capEscalationSelected" ng-options="obj.id as obj.value for obj in escalationSectionData.capEscalationDDData">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">Cap %</span>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="escalationSectionData.capPercentValue">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">Fixed %</span>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="escalationSectionData.fixedPercent">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">Minimum % (Floor)</span>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="escalationSectionData.minimumPercent">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">Escalation Hyper Out %</span>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="escalationSectionData.escalationHyperOut">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">Customer Share% >Hyper Out %</span>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="escalationSectionData.custShareHyperOut">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right"> Escalation Month</span>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <select class="form-control" id="sel31" ng-model="escalationMonthSelected" ng-options="obj.id as obj.value for obj in escalationSectionData.escalationMonth">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">Unique LLP Escalation</span>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <span><input type="checkbox" ng-model="escalationSectionData.uniqueLLpEscalationSelected"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="escalationSectionData.uniqueLLpEscalationValue">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table id="dataTable" class="table-strips">
+                        <thead></thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">OverWrite</span>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <span><input type="checkbox" ng-model="CliffAndMaterialData.overWriteSvCliffSelected"
+                                                                       ng-change="checkSVCliffOverwrite()"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="CliffAndMaterialData.overWriteSvCliffValue">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <div class="col-md-12 pad-0">
+                                        <div class="col-md-6 pad-0"></div>
+                                        <div class="col-md-5">
+                                            <span class="pull-right">SV Cliff</span>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <span><input type="checkbox" ng-model="CliffAndMaterialData.svCliffSelected"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="CliffAndMaterialData.svCliffValue">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6 ">
+                                    <div class="col-md-11 pad-0">
+                                        <span>LEAP Conditional Restored Hours</span>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <span><input type="checkbox" ng-model="CliffAndMaterialData.leapCondRestoreHoursSelected"></span>
+                                    </div>
+                                </td>
+                                <td class="col-md-6">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <span>GE Non-LLP %</span>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="CliffAndMaterialData.geNonLLP">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <span>GE LLP %</span>
+                                </td>
+                                <td class="col-md-6">
+                                    <input type="text" ng-model="CliffAndMaterialData.geLLP">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-6">
+                                    <span>CFMs Fleet Modeled</span>
+                                </td>
+                                <td class="col-md-6">
+                                    <select class="form-control" id="sel32" ng-model="cmsFleetModeledSelected" ng-options="obj.id as obj.value for obj in CliffAndMaterialData.cmsFleetModeled">
+                                        <option value="0"></option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </px-tab-pages>
+        </section>
+    </template>
+</dom-module>
+<script type="text/javascript">
+Polymer({
+    is: 'engine-tab',
+    properties: {
+        selected: {
+            type: String,
+            reflect: true
+        }
+    },
+    ready: function() {
+        //debugger;
+        //console.log('ready. ' + this.selected);
+        var tabs = document.querySelector('#tab-set');
+        this.selected = 0;
+    }
+});
+</script>

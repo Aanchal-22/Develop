@@ -1,0 +1,479 @@
+<px-card header-text="Update Scenario">
+    <style>
+    .table-strips {
+        border: 1px solid #ccc;
+    }
+    
+    .table-strips th {
+        text-align: center;
+        background-color: #343434;
+        color: white;
+    }
+    
+    .table-strips tr:nth-child(even) {
+        background: #fff;
+    }
+    
+    .table-strips tr:nth-child(odd) {
+        background: #d9d9d9;
+    }
+    
+    table {
+        margin: 0px !important;
+        width: 100%;
+    }
+    
+    .table_cell {
+        display: table-cell;
+        width: 150px;
+        text-align: center;
+    }
+    </style>
+    <div class="layout">
+        <div class="layout__item">
+            <h3><b>Coverages</b></h3>
+        </div>
+    </div>
+    <div class="layout">
+        <div class="layout__item u-2/6">
+            <table class="table  table-strips" style="width:100%">
+                <tbody class="">
+                    <tr>
+                        <td class="">Base Scenario</td>
+                        <td class="">Scenario</td>
+                        <td class="">
+                            <select class="form-control" id="sel1" ng-model="CovScenarioDDDataSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.CovScenarioDDData">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="10">Current Status Auto Pulled From Base Model
+                        </td>
+                        <td rowspan="1">LLP
+                        </td>
+                        <td rowspan="1">
+                            <select class="form-control" id="sel2" ng-model="CovLLPDDDataSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.CovLLPDDData">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Engine Leasing
+                        </td>
+                        <td>
+                            <select class="form-control" id="sel3" ng-model="CovEngineLeasingDDDataSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.CovEngineLeasingDDData">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Service Credit
+                        </td>
+                        <td>
+                            <select class="form-control" id="sel3" ng-model="CovServiceCreditDDDataSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.CovServiceCreditDDData">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Misc Cost - $/EFH
+                        </td>
+                        <td>
+                            <select class="form-control" id="sel3" ng-model="CovMiscCostEFHDDDataSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.CovMiscCostEFHDDData">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="miscCostEFH">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Misc Cost - $/SV
+                        </td>
+                        <td>
+                            <select class="form-control" id="sel3" ng-model="CovMiscCostSVDDDataSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.CovMiscCostSVDDData">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="miscCostSV">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Misc Cost - $/Yr
+                        </td>
+                        <td>
+                            <select class="form-control" id="sel3" ng-model="CovMiscCostYRDDDataSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.CovMiscCostYRDDData">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="miscCostSV">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>FL LRU
+                        </td>
+                        <td>
+                            <select class="form-control" id="sel3" ng-model="CovFLLRUDDDataSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.CovFLLRUDDData">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="layout__item u-4/6" style="overflow-x:scroll">
+            <table class="table table-strips " style="width:100%">
+                <tbody class="">
+                    <tr>
+                        <td class="table_cell">Step Year</td>
+                        <td class="table_cell">
+                            <select class="form-control" id="year1" ng-model="value0" ng-options="obj.id as obj.value for obj in ScreensDropDownData.firstDD" ng-change="GetSelectedYear1(value0)">
+                                <option value=""></option>
+                            </select>
+                        </td class="table_cell">
+                        <td class="table_cell">
+                            <select class="form-control" id="year2" ng-model="v" ng-options="v for (k, v) in data[0][value0]" ng-change="GetSelectedYear2(v)">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                        <td class="table_cell">
+                            <select class="form-control" id="year3" ng-model="value1" ng-options="value1 for (key1, value1) in data[0][v]" ng-change="GetSelectedYear3(value1)">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                        <td class="table_cell">
+                            <select class="form-control" id="year4" ng-model="value2" ng-options="value2 for (key2, value2) in data[0][value1]" ng-change="GetSelectedYear4(value2)">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                        <td class="table_cell">
+                            <select class="form-control" id="year5" ng-model="value3" ng-options="value3 for (key3, value3) in data[0][value2]" ng-change="GetSelectedYear5(value3)">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table_cell">Contract Year</td>
+                        <td class="">Auto Fill - Contract Yr</td>
+                        <td class="">
+                        </td>
+                        <td class="">
+                        </td>
+                        <td class="">
+                        </td>
+                        <td class="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Restored Scenario</td>
+                        <td class="">
+                            <input type="text" ng-model="restoredValue1">
+                        </td>
+                        <td class="">
+                            <input type="text" ng-model="restoredValue2">
+                        </td>
+                        <td class="">
+                            <input type="text" ng-model="restoredValue3"> </td>
+                        <td class="">
+                            <input type="text" ng-model="restoredValue4">
+                        </td>
+                        <td class="">
+                            <input type="text" ng-model="restoredValue5"> </td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Popular Scenario</td>
+                        <td class="">
+                            <input type="text" ng-model="popularValue1">
+                        </td>
+                        <td class="">
+                            <input type="text" ng-model="popularValue2">
+                        </td>
+                        <td class="">
+                            <input type="text" ng-model="popularValue3">
+                        </td>
+                        <td class="">
+                            <input type="text" ng-model="popularValue4">
+                        </td>
+                        <td class="">
+                            <input type="text" ng-model="popularValue5">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Service Credit</td>
+                        <td>2015</td>
+                        <td>2016</td>
+                        <td>2017</td>
+                        <td>2018</td>
+                        <td>2019</td>
+                    </tr>
+                    <tr>
+                        <td>Scenario</td>
+                        <td class="">
+                            <input type="text" ng-model="serviceValue1">
+                        </td>
+                        <td class="">
+                            <input type="text" ng-model="serviceValue2">
+                        </td>
+                        <td class="">
+                            <input type="text" ng-model="serviceValue3">
+                        </td>
+                        <td class="">
+                            <input type="text" ng-model="serviceValue4">
+                        </td>
+                        <td class="">
+                            <input type="text" ng-model="serviceValue5">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Service Credit</td>
+                        <td>2020</td>
+                        <td>2021</td>
+                        <td>2022</td>
+                        <td>2023</td>
+                        <td>2024</td>
+                        <td>2025</td>
+                    </tr>
+                    <tr>
+                        <td>Scenario</td>
+                        <td class="">
+                            <input type="text" ng-model="serviceValue6">
+                        </td>
+                        <td class="">
+                            <input type="text" ng-model="serviceValue7">
+                        </td>
+                        <td class="">
+                            <input type="text" ng-model="serviceValue8">
+                        </td>
+                        <td class="">
+                            <input type="text" ng-model="serviceValue9">
+                        </td>
+                        <td class="">
+                            <input type="text" ng-model="serviceValue10">
+                        </td>
+                        <td class="">
+                            <input type="text" ng-model="serviceValue11">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="layout" style="background-color:#FFFFFF;padding:7px"></div>
+    <!-- Billing Structure & Base Scenario Rates -->
+    <div class="layout">
+        <div class="layout__item">
+            <h3><b>Billing Structure & Base Scenario Rates</b></h3>
+        </div>
+    </div>
+    <div class="layout">
+        <div class="layout__item u-3/6">
+            <table class="table  table-strips ">
+                <thead>
+                    <th colspan="3">Billing Structure</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">Base Scenario</td>
+                        <td class="col-md-4">Scenario</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="6">Restored Popular Escalation
+                        </td>
+                        <td rowspan="1">Base Scenario
+                        </td>
+                        <td rowspan="1">Scenario
+                        </td>
+                    </tr>
+                    <tr>
+                        <tr>
+                            <td>Billing Structure
+                            </td>
+                            <td>
+                                <select class="form-control" id="sel3" ng-model="BillingStructureDDDataSelected" ng-options="obj.id as obj.value for obj in ScreensDropDownData.BillingStructureDDData">
+                                    <option value=""></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">Current Status - Auto Pulled from Base Model
+                            </td>
+                            <td>
+                                <select class="form-control" id="sel3" ng-model="CurrentStatusDDDataSelected1" ng-options="obj.id as obj.value for obj in ScreensDropDownData.CurrentStatusDDData">
+                                    <option value=""></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" ng-model="CurrentStatusDDDatavalue1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select class="form-control" id="sel3" ng-model="CurrentStatusDDDataSelected2" ng-options="obj.id as obj.value for obj in ScreensDropDownData.CurrentStatusDDData">
+                                    <option value=""></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <input type="text" ng-model="CurrentStatusDDDatavalue2">
+                            </td>
+                        </tr>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="layout__item u-3/6">
+            <table class="table  table-strips">
+                <thead>
+                    <th colspan="2">Base Scenario Rates/SC</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Restored (w/Yr)
+                        </td>
+                        <td>{{tytslv}}</td>
+                    </tr>
+                    <tr>
+                        <td>Popular (w/Yr)
+                        </td>
+                        <td>Auto Pull
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SC (w/ Yr)
+                        </td>
+                        <td>Auto Pull
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="layout" style="background-color:#FFFFFF;padding:7px"></div>
+    <!-- Scenario Summary -->
+    <div class="layout">
+        <div class="layout__item">
+            <h4><b> Scenario Summary</b></h4>
+        </div>
+    </div>
+    <div class="layout">
+        <div class="layout__item">
+            <table class=" table table-strips ">
+                <thead>
+                    <th nowrap="">$K</th>
+                    <th nowrap="">Base Scenario</th>
+                    <th nowrap="">Best Scenario</th>
+                    <th nowrap="">2nd Best Scenario</th>
+                    <th nowrap="">Worst Scenario</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class>GE Billing</td>
+                        <td>{{scrtotalGEBilling}}</td>
+                        <td>{{bestGEBilling}}</td>
+                        <td>{{secbestGEBilling}}</td>
+                        <td>{{worstGEBilling}}</td>
+                    </tr>
+                    <tr>
+                        <td>TY Cost</td>
+                        <td></td>
+                        <td>{{bestTotalCost}}</td>
+                        <td>{{secbestTotalCost}}</td>
+                        <td>{{worstTotalCost}}</td>
+                    </tr>
+                    <tr>
+                        <td class>RSP</td>
+                        <td>{{scrRsp}}</td>
+                        <td>{{bestRsp}}</td>
+                        <td>{{secbestRsp}}</td>
+                        <td>{{worstRsp}}</td>
+                    </tr>
+                    <tr>
+                        <td class>OM - Post RSP $</td>
+                        <td>{{scrtyOm}}</td>
+                        <td>{{bestPostRsp}}</td>
+                        <td>{{secbestPostRsp}}</td>
+                        <td>{{worstPostRsp}}</td>
+                    </tr>
+                    <tr>
+                        <td class>OM - Post RSP %</td>
+                        <td>{{scrtyOmPerc}}</td>
+                        <td>{{bestOmperc}}</td>
+                        <td>{{secbestOmperc}}</td>
+                        <td>{{worstOmperc}}</td>
+                    </tr>
+                    <tr>
+                        <td class>MAX DB (w/Yr)</td>
+                        <td></td>
+                        <td>{{bestMaxDb}}</td>
+                        <td>{{secbestMaxDb}}</td>
+                        <td>{{worstMaxDb}}</td>
+                    </tr>
+                    <tr>
+                        <td class>MIN CF (w/Yr)</td>
+                        <td></td>
+                        <td>{{bestMinCash}}</td>
+                        <td>{{secbestMinCash}}</td>
+                        <td>{{worstMinCash}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="layout" style="background-color:#FFFFFF;padding:7px"></div>
+    <!-- SV Stream, DB Stream & CF Stream -->
+    <div class="layout">
+        <div class="layout__item">
+            <h3><b>SV Stream, DB Stream & CF Stream</b></h3>
+        </div>
+    </div>
+    <div class="layout">
+        <!-- Highchart 1 -->
+        <div class="layout__item u-1/2">
+            <div id="SVStream"></div>
+        </div>
+        <!-- Highchart 2 -->
+        <div class="layout__item u-1/2">
+            <div id="DBStream"></div>
+        </div>
+    </div>
+    <div class="layout" style="background-color:#FFFFFF;padding:7px"></div>
+    <!-- Highchart 3 -->
+    <div class="layout">
+        <div class="layout__item">
+            <div id="CFStream"></div>
+        </div>
+    </div>
+    <div class="col-md-12" style="background-color:#FFFFFF;padding:7px"></div>
+    <!-- Nav Button Starts -->
+    <div class="layout layout--right">
+        <div class="layout__item u-1/6">
+            <a href="#/scenarioManager" class="btn btn--small btn--tertiary" style="font-size:12px" ng-click="submitScenarioManagerData()">UPDATE</a>
+        </div>
+        <div class="layout__item u-1/6">
+            <a type="button" href="#/output" class="btn btn--small btn--tertiary " style="font-size:12px">Back</a>
+        </div>
+    </div>
+    <!-- Nav Button Ends -->
+    <div class="layout" style="background-color:#FFFFFF;padding:7px"></div>
+</px-card>

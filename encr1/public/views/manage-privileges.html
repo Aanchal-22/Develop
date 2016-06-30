@@ -1,0 +1,104 @@
+<px-card header-text="Update Role Privileges">
+    <style>
+
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+
+
+        table th {
+            white-space:nowrap;
+            //transform: rotate(90deg);
+            height: 120px;
+
+
+        }
+
+
+    </style>
+   <!-- <div class="layout">
+        <div class="layout__item u-1/2"></div>
+        <div class="layout__item u-1/2" style="text-align: right;">
+           <div class="btn">Update</div>
+            <div class="btn">Cancel</div>
+        </div>
+    </div>-->
+    <div class="layout__item pull-right u-1/6" >
+
+        <a href="" class="btn" style="width: 100px">Update</a><br>
+        <br>
+        <a href="#frameCode" class="btn" style="width: 100px">Cancel</a>
+    </div>
+    <div class="layout">
+        <div class="layout__item" style="overflow-y: scroll;height:500px; overflow-x: scroll;width: 90% ">
+
+
+        <div class="layout__item u-6/6  " style="height: 100%">
+
+
+            <table style="border:1px solid black;width: 100% table-layout: fixed;height: 100%">
+
+                <thead>
+                <tr style=" border: 1px solid black; width: 100%">
+                    <th style=" width: 100%;"> Privilege\Role &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th   ng-repeat = "key in head.Headers" > <span style="writing-mode: tb-rl;    width: 20px;">{{key.name}}</span> </th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat = "(key_body,val_body) in jsonbody">
+                    <td style=" width: 100%;">{{key_body}}</td>
+                    <td style="width: 20px" ng-repeat = "key in head.Headers" >
+                        <input type="checkbox"  >
+                    </td>
+                </tr>
+                </tbody>
+                <thead>
+                <tr style=" border: 1px solid black; width: 100%">
+                    <th style=" width: 100%;"> </th>
+                    <th   ng-repeat = "key in head.Headers" > <span style="writing-mode: tb-rl;    width: 20px;">{{key.name}}</span> </th>
+                </tr>
+                </thead>
+
+            </table>
+
+          <!--  <table style="border:1px solid black;">
+                <thead>
+                <tr style="background-color:#C4BCBC">
+                    <th >Privilege/Role</th>
+                    <th >PQE</th>
+                    <th>Inspector</th>
+                    <th>ASE Engineer (CASE MECC)</th>
+                    <th>Inspector</th>
+                    <th>ASE Engineer (CASE MECC)</th>
+                    <th>Inspector</th>
+                    <th>ASE Engineer (CASE MECC)</th>
+                    <th>Inspector</th>
+                    <th>ASE Engineer (CASE MECC)</th> <th>Inspector</th>
+                    <th>ASE Engineer (CASE MECC)</th>
+                    <th>Inspector</th>
+                    <th>ASE Engineer (CASE MECC)</th> <th>Inspector</th>
+                    <th>ASE Engineer (CASE MECC)</th>
+                    <th>Inspector</th>
+                    <th>ASE Engineer (CASE MECC)</th>
+                    <th>Inspector</th>
+                    <th>ASE Engineer (CASE MECC)</th>
+                    <th>Inspector</th>
+                    <th>ASE Engineer (CASE MECC)</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                </table>-->
+
+        </div>
+        </div>
+
+        </div>
+
+    </div>
+
+</px-card>

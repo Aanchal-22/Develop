@@ -1,0 +1,481 @@
+<px-card header-text="Edit Area">
+    <style>
+
+
+        .hidden {
+            display: none;
+        }
+
+
+    </style>
+  <!--  <script>
+        $("i").on("click", function () {
+            alert("cliked")
+            $("#queue").slideToggle();
+        });
+
+    </script>-->
+
+    <div class="layout">
+        <div class="layout__item">
+            <table>
+                <tr>
+                    <td colspan="2"> <label for="">Area</label></td>
+                    <td colspan="6"><input type="text" /></td>
+
+                </tr>
+                <tr>
+                    <td><label for="">Mandatory S/O</label></td></td>
+                    <td><input type="checkbox" /></td>
+                    <td></td>
+                    <td>PreNotification</td>
+                    <td><input type="checkbox" /></td>
+                    <td></td>
+                    <td>Notification</td>
+                    <td><input type="checkbox" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <hr/>
+    <!--<px-card header-text="Queue">-->
+
+
+
+
+
+
+    <div class="layout" style="width: 40%">
+        <div class="layout__item" >
+            <div style="width: 60%" ng-click="toggleFunc()">
+
+                <!--<button style="border: none"><img src="/images/down.gif" ></button>-->
+                <i ng-class="toggleClass" > </i>
+                <label>Queue</label>
+                <a href="" style="float: right;" ng-show="toggleState">Delete</a>
+                <a href="" style="float: right;" ng-show="toggleState">Add</a>
+
+            </div>
+            <div id="queue" style="width: 60%">
+
+
+                <table style="border:1px solid black; width: 100%" ng-show="toggleState">
+
+                    <thead >
+                    <tr style="background-color:#C4BCBC;">
+                        <th></th>
+                        <th>Queue</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td colspan="2">PQE</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td colspan="2">INSPECTOR</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td colspan="2">MRP Plan</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>Welding Engineer</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td colspan="2">Cost Manager</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td colspan="2">CC Engineer</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td colspan="2">GT Engineer</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="layout" style="width: 40%">
+        <div class="layout__item" >
+            <div style="width: 60%" ng-click="toggleFunc1()">
+
+                <!--<button style="border: none"><img src="/images/down.gif" ></button>-->
+                <i ng-class="toggleClass1" > </i>
+                <label>Location Code</label>
+                <a href="" style="float: right;" ng-show="toggleState1">Delete</a>
+                <a href="" style="float: right;" ng-show="toggleState1">Add</a>
+
+            </div>
+            <div id="locationCode" style="width: 60%">
+
+
+                <table style="border:1px solid black; width: 100%" ng-show="toggleState1">
+
+                    <thead >
+                    <tr style="background-color:#C4BCBC;">
+                        <th></th>
+                        <th>Code</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>36</td>
+                        <td>36</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>51</td>
+                        <td>51</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>92</td>
+                        <td>92</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>41</td>
+                        <td>41</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>93</td>
+                        <td>93</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>102</td>
+                        <td>102</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>42</td>
+                        <td>42</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+    <div class="layout" style="width: 40%">
+        <div class="layout__item" >
+            <div style="width: 60%" ng-click="toggleFunc2()">
+
+                <!--<button style="border: none"><img src="/images/down.gif" ></button>-->
+                <i ng-class="toggleClass2" > </i>
+                <label>Inspection Station Code</label>
+                <a href="" style="float: right;" ng-show="toggleState2">Delete</a>
+                <a href="" style="float: right;" ng-show="toggleState2">Add</a>
+
+            </div>
+            <div id="inspectionCode" style="width: 60%">
+
+
+                <table style="border:1px solid black; width: 100%" ng-show="toggleState2">
+
+                    <thead >
+                    <tr style="background-color:#C4BCBC;">
+                        <th></th>
+                        <th>Code</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>36</td>
+                        <td>36</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>51</td>
+                        <td>51</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>92</td>
+                        <td>92</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>41</td>
+                        <td>41</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>93</td>
+                        <td>93</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>102</td>
+                        <td>102</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>42</td>
+                        <td>42</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+    <div class="layout" style="width: 40%">
+        <div class="layout__item" >
+            <div style="width: 60%" ng-click="toggleFunc3()">
+
+                <!--<button style="border: none"><img src="/images/down.gif" ></button>-->
+                <i ng-class="toggleClass3" > </i>
+                <label>Frame Code</label>
+                <a href="" style="float: right;" ng-show="toggleState3">Delete</a>
+                <a href="" style="float: right;" ng-show="toggleState3">Add</a>
+
+            </div>
+            <div id="frameCode" style="width: 60%">
+
+
+                <table style="border:1px solid black; width: 100%" ng-show="toggleState3">
+
+                    <thead >
+                    <tr style="background-color:#C4BCBC;">
+                        <th></th>
+                        <th>Code</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>GT MS-301</td>
+                        <td>Gas Turbine MS 3002</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>GT MS-305</td>
+                        <td>Gas Turbine MS 3005</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>GT MS-500</td>
+                        <td>Gas Turbine MS 5002</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>GT MS-301</td>
+                        <td>Gas Turbine MS 3002</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>GT MS-301</td>
+                        <td>Gas Turbine MS 3002</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>GT MS-301</td>
+                        <td>Gas Turbine MS 3002</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>GT MS-301</td>
+                        <td>Gas Turbine MS 3002</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+    <div class="layout" style="width: 40%">
+        <div class="layout__item" >
+            <div style="width: 60%" ng-click="toggleFunc4()">
+
+                <!--<button style="border: none"><img src="/images/down.gif" ></button>-->
+                <i ng-class="toggleClass4" > </i>
+                <label>Operation Code</label>
+                <a href="" style="float: right;" ng-show="toggleState4">Delete</a>
+                <a href="" style="float: right;" ng-show="toggleState4">Add</a>
+
+            </div>
+            <div id="operationCode" style="width: 60%">
+
+
+                <table style="border:1px solid black; width: 100%" ng-show="toggleState4">
+
+                    <thead >
+                    <tr style="background-color:#C4BCBC;">
+                        <th></th>
+                        <th>Code</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>Component By Assembly</td>
+                        <td>Component By Assembly</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>Component By Machined</td>
+                        <td>Component By Machined</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>Component Buy Test</td>
+                        <td>Component Buy Test</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>Component Buy Planning</td>
+                        <td>Component By Planning</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>Component Buy Assembly</td>
+                        <td>Component Buy Assembly</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>Component Buy Test</td>
+                        <td>Component Buy Test</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>Component Buy Test</td>
+                        <td>Component Buy Test</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+    <div class="layout" style="width: 40%">
+        <div class="layout__item" >
+            <div style="width: 60%" ng-click="toggleFunc5()">
+
+                <!--<button style="border: none"><img src="/images/down.gif" ></button>-->
+                <i ng-class="toggleClass5" > </i>
+                <label>Product Code</label>
+                <a href="" style="float: right;" ng-show="toggleState5">Delete</a>
+                <a href="" style="float: right;" ng-show="toggleState5">Add</a>
+
+            </div>
+            <div id="productCode" style="width: 60%">
+
+
+                <table style="border:1px solid black; width: 100%" ng-show="toggleState5">
+
+                    <thead >
+                    <tr style="background-color:#C4BCBC;">
+                        <th></th>
+                        <th>Code</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>CC Accessories</td>
+                        <td>CC Accessories</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>CC Bearing</td>
+                        <td>CC Bearing</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>CC Accessories</td>
+                        <td>CC Accessories</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>CC Bearing</td>
+                        <td>CC Bearing</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>CC Accessories</td>
+                        <td>CC Accessories</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>CC Bearing</td>
+                        <td>CC Bearing</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>CC Accessories</td>
+                        <td>CC Accessories</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"> </td>
+                        <td>CC Bearing</td>
+                        <td>CC Bearing</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+    <div class="layout pull-right">
+        <div class="layout__item ">
+            <a href="" class="btn">Ok</a>
+            <a href="#frameCode" class="btn">Cancel</a>
+        </div>
+    </div>
+   <!-- </px-card>-->
+</px-card>

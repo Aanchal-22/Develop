@@ -1,0 +1,225 @@
+<px-card header-text="Deviation Code">
+    <style>
+        ol.tree
+        {
+            padding: 0 0 0 30px;
+            width: 300px;
+        }
+        li
+        {
+            position: relative;
+            margin-left: -10px;
+            list-style: none;
+        }
+        li.file
+        {
+            margin-left: -1px !important;
+        }
+        li.file a
+        {
+            background: url(document.png) 0 0 no-repeat;
+            color: #fff;
+            padding-left: 21px;
+            text-decoration: none;
+            display: block;
+        }
+        li.file a[href *= '.pdf']	{ background: url(document.png) 0 0 no-repeat; }
+        li.file a[href *= '.html']	{ background: url(document.png) 0 0 no-repeat; }
+        li.file a[href $= '.css']	{ background: url(document.png) 0 0 no-repeat; }
+        li.file a[href $= '.js']		{ background: url(document.png) 0 0 no-repeat; }
+        li input
+        {
+            position: absolute;
+            left: 0;
+            margin-left: 0;
+            opacity: 0;
+            z-index: 2;
+            cursor: pointer;
+            height: 1em;
+            width: 1em;
+            top: 0;
+        }
+        li input + ol
+        {
+            background: url("../../../views/toggle-small-expand.png") -2px 0 no-repeat;
+            margin: -0.938em 0 0 -44px; /* 15px */
+            height: 1em;
+        }
+        li input + ol > li { display: none; margin-left: -14px !important; padding-left: 1px; }
+        li label
+        {
+            background: url("") 15px 1px no-repeat;
+            cursor: pointer;
+            display: block;
+            padding-left: 37px;
+        }
+
+        li input:checked + ol
+        {
+            background: url("../../../views/toggle-small.png") -2px 0px no-repeat;
+            margin: -1.25em 0 0 -44px; /* 20px */
+            padding: 1.563em 0 0 80px;
+            height: auto;
+        }
+        li input:checked + ol > li { display: block; margin: 0 0 0.125em;  /* 2px */}
+        li input:checked + ol > li:last-child { margin: 0 0 0.063em; /* 1px */ }
+
+
+    </style>
+    <div class="layout" style="width: 70%" >
+        <div class="layout__item u-1/2"></div>
+        <div class="layout__item u-1/2" style="text-align: right;">
+            <span><a href="#addHighDeviationCode">Add High level Code</a></span>
+            <span class="navbar-top__line">|</span>
+            <span><a href="#addLowDeviationCode">Add Low level Code</a></span>
+            <span class="navbar-top__line">|</span>
+            <span><a href="#editDeviationCode">Edit</a></span>
+            <span class="navbar-top__line">|</span>
+            <span><a href="deleteDeviationCode">Delete</a></span>
+        </div>
+        </div>
+        <div class="layout " style="width:70%">
+
+
+            <table style="border:1px solid black;width:100%">
+
+
+                <tr>
+                    <td>
+                        <div class="layout pull-left" style="overflow-y: scroll;width: 100% ">
+
+                <ol class="tree">
+
+                    <li>
+                        <label for="folder1">&nbsp;&nbsp;A(Assembly Error / Fitup / Machined)</label> <input type="checkbox" id="folder1" />
+                        <ol>
+                            <li class="file">A002</a></li>
+                            <li class="file">A003</a></li>
+
+                        </ol>
+                    </li>
+                    <li>
+                        <label for="folder3">&nbsp;&nbsp;C(Cosmetic/Damage)</label> <input type="checkbox" id="folder3" />
+                        <ol>
+                            <li class="file">C002</a></li>
+                            <li class="file">C003</a></li>
+                            <li class="file">C004</a></li>
+                            <li class="file">C005</a></li>
+                            <li class="file">C006</a></li>
+
+                        </ol>
+                    </li>
+                    <li>
+                        <label for="folder4">&nbsp;&nbsp;D(Documentation)</label> <input type="checkbox" id="folder4" />
+                        <ol>
+                            <li class="file">D001</a></li>
+                            <li class="file">D002</a></li>
+                            <li class="file">D003</a></li>
+                            <li class="file">D004</a></li>
+
+                        </ol>
+                    </li>
+                    <li>
+                        <label for="folder5">&nbsp;&nbsp;H(Preservation/Storage/Handling)</label> <input type="checkbox" id="folder5" />
+                        <ol>
+                            <li class="file">H001</a></li>
+                            <li class="file">H002</a></li>
+                            <li class="file">H003</a></li>
+                            <li class="file">H004</a></li>
+
+                        </ol>
+                    </li>
+
+
+                    <li>
+                        <label for="folder7">&nbsp;&nbsp;M(Metalurgical Material)</label> <input type="checkbox" id="folder7" />
+                        <ol>
+                            <li class="file">M001</a></li>
+                            <li class="file">M002</a></li>
+                            <li class="file">M003</a></li>
+                            <li class="file">M004</a></li>
+
+                        </ol>
+                    </li>
+                    <li>
+                        <label for="folder8">&nbsp;&nbsp;O(Dimensional Out Of Tolerance)</label> <input type="checkbox" id="folder8" />
+                        <ol>
+                            <li class="file">O001</a></li>
+                            <li class="file">O002</a></li>
+                            <li class="file">O003</a></li>
+                            <li class="file">O004</a></li>
+
+                        </ol>
+                    </li>
+                    <li>
+                        <label for="folder9">&nbsp;&nbsp;P(Incomplete Operation Process)</label> <input type="checkbox" id="folder9" />
+                        <ol>
+                            <li class="file">P001</a></li>
+                            <li class="file">P002</a></li>
+                            <li class="file">P003</a></li>
+                            <li class="file">P004</a></li>
+
+                        </ol>
+                    </li>
+
+                    <li>
+                        <label for="folder10">&nbsp;&nbsp;S(Special Process(Welding))</label> <input type="checkbox" id="folder10" />
+
+                        <ol>
+                            <li class="file">S001</a></li>
+                            <li class="file">S002</a></li>
+                            <li class="file">S003</a></li>
+                            <li class="file">S004</a></li>
+
+                        </ol>
+                    </li>
+                    <li>
+                        <label for="folder11">&nbsp;&nbsp;T(Functional Test)</label> <input type="checkbox" id="folder11" />
+                        <ol>
+                            <li class="file">T001</a></li>
+                            <li class="file">T002</a></li>
+                            <li class="file">T003</a></li>
+                            <li class="file">T004</a></li>
+
+                        </ol>
+                    </li>
+                    <li>
+                        <label for="folder12">&nbsp;&nbsp;Z(Supplier Suggestion)</label> <input type="checkbox" id="folder12" />
+                        <ol>
+                            <li class="file">Z001</a></li>
+                            <li class="file">Z002</a></li>
+                            <li class="file">Z003</a></li>
+                            <li class="file">Z004</a></li>
+
+                        </ol>
+                    </li>
+                    <li>
+                        <label for="folder13">&nbsp;&nbsp;E(Electrical)</label> <input type="checkbox" id="folder13" />
+                        <ol>
+                            <li class="file">E001</a></li>
+                            <li class="file">E002</a></li>
+                            <li class="file">E003</a></li>
+                            <li class="file">E004</a></li>
+
+                        </ol>
+                    </li>
+
+                </ol>
+                        </div>
+
+                    </td>
+                </tr>
+
+               <!-- </div>-->
+
+</table>
+
+
+        </div>
+
+
+
+
+
+
+</px-card>

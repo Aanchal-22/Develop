@@ -1,0 +1,172 @@
+<px-card header-text="Fleet Parameter">
+    <style>
+    .table-strips {
+        border: 1px solid #ccc;
+    }
+    
+    .table-strips th {
+        text-align: center;
+        background-color: #343434;
+        color: white;
+    }
+    
+    .table-strips tr:nth-child(even) {
+        background: #fff;
+    }
+    
+    .table-strips tr:nth-child(odd) {
+        background: #d9d9d9;
+    }
+    
+    table {
+        table-layout: fixed;
+        width: 100%;
+        border: 1px solid black;
+    }
+    
+    table tr {
+        height: 30px;
+    }
+    </style>
+    <div id="module_loadData">
+        <h4><b>Contract No:</b> {{contractDetails.quoteId}}</h4>
+        <div class="layout">
+            <div class="layout__item">
+                <table class=" table table-strips  table-heading fontReduce tbl ">
+                    <thead>
+                        <tr>
+                            <th>Simulation StartDate</th>
+                            <th>Simulation EndDate</th>
+                            <th>Term</th>
+                            <th>Usage/Day & Units</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:center">
+                        <tr>
+                            <td ng-bind="contractDetails.proposalDueDate"></td>
+                            <td ng-bind="contractDetails.contractDueDate"></td>
+                            <td ng-bind="contractDetails.contractDuration"></td>
+                            <td ng-bind="contractDetails.annlUtilizationHrs"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="layout">
+            <div class="layout__item u-1/2">
+                <table class="table  table-strips  table-heading fontReduce tbl">
+                    <tr>
+                        <td>Quaote Number</td>
+                        <td ng-bind="contractDetails.quoteId"></td>
+                    </tr>
+                    <tr>
+                        <td>Engine Series</td>
+                        <td ng-bind="contractDetails.engineSeries"></td>
+                    </tr>
+                    <tr>
+                        <td>Aircraft</td>
+                        <td ng-bind="contractDetails.aircraft"></td>
+                    </tr>
+                    <tr>
+                        <td>Product</td>
+                        <td ng-bind="contractDetails.product"></td>
+                    </tr>
+                    <tr>
+                        <td>Start Date</td>
+                        <td ng-bind="contractDetails.contractDetails"></td>
+                    </tr>
+                    <tr>
+                        <td>Contract Duration</td>
+                        <td ng-bind="contractDetails.contractDueDate"></td>
+                    </tr>
+                    <tr>
+                        <td>Sales Director</td>
+                        <td ng-bind="contractDetails.salesDirector"></td>
+                    </tr>
+                    <tr>
+                        <td># of Engines</td>
+                        <td ng-bind="contractDetails.engineQty"></td>
+                    </tr>
+                    <tr>
+                        <td>Engine Thrust Rating</td>
+                        <td ng-bind="contractDetails.thrustRating"></td>
+                    </tr>
+                    <tr>
+                        <td>Engine OP</td>
+                        <td>engine OP</td>
+                    </tr>
+                    <tr>
+                        <td>Utilization</td>
+                        <td ng-bind="contractDetails.annlUtilizationHrs"></td>
+                    </tr>
+                    <tr>
+                        <td>Flight Leg</td>
+                        <td ng-bind="contractDetails.flightLeg_hrs"></td>
+                    </tr>
+                    <tr>
+                        <td>Derate</td>
+                        <td>Derate</td>
+                    </tr>
+                    <tr>
+                        <td>Temperature </td>
+                        <td ng-bind="contractDetails.temp"></td>
+                    </tr>
+                    <tr>
+                        <td>Billing Type </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="layout__item u-1/2">
+                <table class="table table-striped table-hover table-strips table-condensed table-heading fontReduce tbl">
+                    <tr>
+                        <td>LLP</td>
+                        <td ng-bind="contractDetails.lpMatrlExpCov"></td>
+                    </tr>
+                    <tr>
+                        <td>Transportation</td>
+                        <td ng-bind="contractDetails.engineSeries"></td>
+                    </tr>
+                    <tr>
+                        <td>Test Cell</td>
+                        <td>test cell</td>
+                    </tr>
+                    <tr>
+                        <td>Product</td>
+                        <td ng-bind="contractDetails.product"></td>
+                    </tr>
+                    <tr>
+                        <td>Flight line LRU</td>
+                        <td ng-bind="contractDetails.flightlineLru"></td>
+                    </tr>
+                    <tr>
+                        <td>Engine Leasing</td>
+                        <td ng-bind="contractDetails.spareEngLease"></td>
+                    </tr>
+                    <tr>
+                        <td>FOD</td>
+                        <td ng-bind="contractDetails.fod"></td>
+                    </tr>
+                    <tr>
+                        <td>SB/AD</td>
+                        <td>SB/AD</td>
+                    </tr>
+                    <tr>
+                        <td>Supplemental LLP</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Service Credits</td>
+                        <td ng-bind="contractDetails.serviceCredit"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="layout">
+            <div class="layout__item">
+                <a type="button" href="technicalModelling" class="btn btn--small btn--tertiary pull-left" style="font-size:12px">Back</a>
+                <a href="#/partInfo/{{contractDetails.quoteId}}" style="font-size:12px" class="btn btn--small btn--tertiary pull-right">Next</a>
+            </div>
+        </div>
+    </div>
+</px-card>

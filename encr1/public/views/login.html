@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <style>
+    #main-background {
+        background-color: #333;
+        color: white;
+        width: 98%;
+        max-width: 73.125rem;
+        margin-right: auto;
+        margin-left: auto;
+        padding-right: 1%;
+        padding-left: 1%;
+    }
+
+    input {
+        display: block;
+        width: 300px;
+        height: 48px;
+        padding: 1rem;
+        border: 1px solid #d8d8d8;
+        font-size: 1rem;
+    }
+
+    .island {
+        position: relative;
+        background: url("Images/logo-predix-small.png") no-repeat top;
+        margin: auto;
+    }
+
+    .island .island-content {
+        width: 18.75rem;
+        margin: 0 auto 1rem;
+        padding-top: 260px;
+    }
+
+    .island .island-content form {
+        margin-top: 125px;
+    }
+
+    .island .island-content form input {
+        margin-top: 10px;
+    }
+
+    .island .island-content form .island-button {
+        margin: 25px 0 15px;
+        padding: 4px 34px;
+        font-size: 20px;
+        border: 1px solid #46ad00;
+        border-radius: 4px;
+        background-color: #46ad00;
+        color: #fff;
+    }
+
+    .island .island-content form .island-button:hover {
+        border: 1px solid #258913;
+        background-color: #258913;
+        color: #fff;
+        box-shadow: none;
+    }
+
+    .island .island-content form input:focus {
+        border: 1px solid rgba(37, 137, 19, .8);
+        outline: 0;
+        box-shadow: inset 0 0 3px 1px rgba(37, 137, 19, .8);
+    }
+    </style>
+</head>
+
+<body id="main-background">
+    <div class="island">
+        <div class="island-content">
+            <form  ng-submit="loginCheck()">
+                <input type="text" placeholder="UserId" autofocus ng-model="loginId"/>
+                <input type="submit" value="Sign in" class="island-button" id="submit" >
+           </form>
+        </div>
+    </div>
+</body>
+
+</html>

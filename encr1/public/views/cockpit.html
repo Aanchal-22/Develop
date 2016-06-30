@@ -1,0 +1,297 @@
+<px-card>
+    <style>
+    .mainNav>a:hover {
+        color: #46ad00 !important;
+    }
+    
+    .disabledNav>a {
+        color: #7C7C84 !important;
+    }
+    
+    label {
+        font-weight: bold;
+    }
+    
+    tbody>tr td:first-child {
+        color: darkblue;
+    }
+    
+    table {
+        border-collapse: collapse;
+        width: 1300px;
+        overflow-x: scroll;
+        display: block;
+    }
+    
+    thead {
+        background-color: #EFEFEF;
+    }
+    
+    thead,
+    tbody {
+        display: block;
+    }
+    
+    tbody {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 140px;
+    }
+    
+    th {
+        vertical-align: bottom;
+        cursor: pointer;
+    }
+    
+    td,
+    th {
+        min-width: 80px;
+        height: 0px;
+        border: solid 1px black;
+        text-overflow: ellipsis;
+        max-width: 80px;
+        overflow: hidden;
+    }
+    
+    thead>tr {
+        height: 100px;
+    }
+    
+    .td-vertical-data {
+        min-width: 30px;
+    }
+    
+    select {
+        width: 200px;
+    }
+    </style>
+    <div class="layout">
+        <div class="layout__item u-4/6">
+            <ul class="navbar-top__list list-inline" style="float:left">
+                <li>
+                    <label>Select Cockpit</label>
+                    <select name="" id="">
+                        <option value="">naga</option>
+                    </select>
+                </li>
+                <li class="mainNav"><a href="">Set as Default</a></li>
+                <li class="disabledNav"><a href="">Route</a></li>
+                <li class="disabledNav"><a href="">Print</a></li>
+                <li class="mainNav"><a href="">Refresh</a></li>
+                <li><i class="fa fa-print" aria-hidden="true"></i></li>
+            </ul>
+        </div>
+        <div class="layout__item u-2/6">
+            <ul class="navbar-top__list list-inline" style="float:right">
+                <li class="mainNav"><a href="">Edit</a></li>
+                <li class="mainNav"><a href="">Add New</a></li>
+                <li class="mainNav"><a href="#/managePref">Manage Preferences</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="layout">
+        <div class="layout__item">
+            <table>
+                <thead>
+                    <tr style="background-color:#C4BCBC">
+                        <th>
+                            <nobr>NCR#
+                            </nobr>
+                        </th>
+                        <th nowrap>
+                            <nobr>Intiate Date</nobr>
+                        </th>
+                        <th nowrap>
+                            <nobr>Days Open</nobr>
+                        </th>
+                        <th>
+                            <nobr>Frame</nobr>
+                        </th>
+                        <th>
+                            <nobr>S/O#</nobr>
+                        </th>
+                        <th>
+                            <nobr>Mat Loc</nobr>
+                        </th>
+                        <th nowrap style="width:180px">
+                            <nobr>Deviation Description</nobr>
+                        </th>
+                        <th>
+                            <nobr>Disposition</nobr>
+                        </th>
+                        <th class="td-vertical-data">
+                            <nobr>
+                                <SPAN style="WRITING-MODE: tb-rl; ">PQE</SPAN> </nobr>
+                        </th>
+                        <th class="td-vertical-data">
+                            <nobr>
+                                <SPAN style="WRITING-MODE: tb-rl; ">System</SPAN>
+                            </nobr>
+                        </th>
+                        <th class="td-vertical-data">
+                            <nobr>
+                                <SPAN style="WRITING-MODE: tb-rl; ">Other</SPAN>
+                            </nobr>
+                        </th>
+                        <th nowrap>Imputation Code</th>
+                        <th class="td-vertical-data">
+                            <SPAN title=Attachments style="WRITING-MODE: tb-rl; ">Attachments</SPAN>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>F1658102</td>
+                        <td>1/12/2016</td>
+                        <td>127</td>
+                        <td nowrap>Others-other</td>
+                        <td>Soft</td>
+                        <td>NA NA</td>
+                        <td title=" Serial Added:032AC111,03255 " style="max-width:180px">Serial Added:032AC111,03255</td>
+                        <td>Use-Use</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td class="td-vertical-data ">&nbsp;&nbsp;</td>
+                        <td class="td-vertical-data ">8 </td>
+                        <td>038</td>
+                        <td class="td-vertical-data">1</td>
+                    </tr>
+                    <tr>
+                        <td> F1658102</td>
+                        <td>1/12/2016</td>
+                        <td>127</td>
+                        <td nowrap>Others-other</td>
+                        <td>Soft</td>
+                        <td>NA NA</td>
+                        <td title="Serial Added:032AC111,03255" style="max-width:180px">Serial Added:032AC111,03255</td>
+                        <td>Use-Use</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td class="td-vertical-data ">&nbsp;&nbsp;</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td>038</td>
+                        <td class="td-vertical-data">1</td>
+                    </tr>
+                    <tr>
+                        <td> F1658102</td>
+                        <td>1/12/2016</td>
+                        <td>127</td>
+                        <td nowrap>Others-other</td>
+                        <td>Soft</td>
+                        <td>NA NA</td>
+                        <td title="Serial Added:032AC111,03255 " style="max-width:180px">Serial Added:032AC111,03255</td>
+                        <td>Use-Use</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td class="td-vertical-data ">&nbsp;&nbsp;</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td>038</td>
+                        <td class="td-vertical-data">1</td>
+                    </tr>
+                    <tr>
+                        <td> F1658102</td>
+                        <td>1/12/2016</td>
+                        <td>127</td>
+                        <td nowrap>Others-other</td>
+                        <td>Soft</td>
+                        <td>NA NA</td>
+                        <td title="Serial Added:032AC111,03255 " style="max-width:180px">Serial Added:032AC111,03255</td>
+                        <td>Use-Use</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td class="td-vertical-data ">&nbsp;&nbsp;</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td>038</td>
+                        <td class="td-vertical-data">1</td>
+                    </tr>
+                    <tr>
+                        <td> F1658102</td>
+                        <td>1/12/2016</td>
+                        <td>127</td>
+                        <td nowrap>Others-other</td>
+                        <td>Soft</td>
+                        <td>NA NA</td>
+                        <td style="max-width:180px">Serial Added</td>
+                        <td>Use</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td class="td-vertical-data ">&nbsp;&nbsp;</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td>038</td>
+                        <td class="td-vertical-data">1</td>
+                    </tr>
+                    <tr>
+                        <td> F1658102</td>
+                        <td>1/12/2016</td>
+                        <td>127</td>
+                        <td nowrap>Others-other</td>
+                        <td>Soft</td>
+                        <td>NA NA</td>
+                        <td style="max-width:180px">Serial Added</td>
+                        <td>Use</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td class="td-vertical-data ">&nbsp;&nbsp;</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td>038</td>
+                        <td class="td-vertical-data">1</td>
+                    </tr>
+                    <tr>
+                        <td> F1658102</td>
+                        <td>1/12/2016</td>
+                        <td>127</td>
+                        <td nowrap>Others-other</td>
+                        <td>Soft</td>
+                        <td>NA NA</td>
+                        <td style="max-width:180px">Serial Added</td>
+                        <td>Use</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td class="td-vertical-data ">&nbsp;&nbsp;</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td>038</td>
+                        <td class="td-vertical-data">1</td>
+                    </tr>
+                    <tr>
+                        <td> F1658102</td>
+                        <td>1/12/2016</td>
+                        <td>127</td>
+                        <td nowrap>Others-other</td>
+                        <td>Soft</td>
+                        <td>NA NA</td>
+                        <td style="max-width:180px">Serial Added</td>
+                        <td>Use</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td class="td-vertical-data ">&nbsp;&nbsp;</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td>038</td>
+                        <td class="td-vertical-data">1</td>
+                    </tr>
+                    <tr>
+                        <td> F1658102</td>
+                        <td>1/12/2016</td>
+                        <td>127</td>
+                        <td nowrap>Others-other</td>
+                        <td>Soft</td>
+                        <td>NA NA</td>
+                        <td style="max-width:180px">Serial Added</td>
+                        <td>Use</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td class="td-vertical-data ">&nbsp;&nbsp;</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td>038</td>
+                        <td class="td-vertical-data">1</td>
+                    </tr>
+                    <tr>
+                        <td> F1658102</td>
+                        <td>1/12/2016</td>
+                        <td>127</td>
+                        <td nowrap>Others-other</td>
+                        <td>Soft</td>
+                        <td>NA NA</td>
+                        <td style="max-width:180px">Serial Added</td>
+                        <td>Use</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td class="td-vertical-data ">&nbsp;&nbsp;</td>
+                        <td class="td-vertical-data ">8</td>
+                        <td>038</td>
+                        <td class="td-vertical-data">1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</px-card>

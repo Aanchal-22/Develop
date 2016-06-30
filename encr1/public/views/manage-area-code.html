@@ -1,0 +1,190 @@
+<style>
+
+    div[data-angular-treeview] {
+        /* prevent user selection */
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        /* default */
+        font-family: Tahoma;
+        font-size:13px;
+        color: #555;
+        text-decoration: none;
+    }
+
+    div[data-tree-model] ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        border: none;
+        overflow: hidden;
+    }
+
+    div[data-tree-model] li {
+        position: relative;
+        padding: 0 0 0 20px;
+        line-height: 20px;
+    }
+
+    div[data-tree-model] li .expanded {
+        padding: 1px 10px;
+        background-image: url("/images/folder.png");
+        background-repeat: no-repeat;
+    }
+
+    div[data-tree-model] li .collapsed {
+        padding: 1px 10px;
+        background-image: url("../images/folder-closed.png");
+        background-repeat: no-repeat;
+    }
+
+    div[data-tree-model] li .normal {
+        padding: 1px 10px;
+        background-image: url("../images.file.png");
+        background-repeat: no-repeat;
+    }
+
+    div[data-tree-model] li i, div[data-tree-model] li span {
+        cursor: pointer;
+    }
+
+    div[data-tree-model] li .selected {
+        background-color: #aaddff;
+        font-weight: bold;
+        padding: 1px 5px;
+    }
+
+
+
+</style>
+<!--
+<div>
+    <input type="button" value="TREE MODEL 1" data-ng-click="roleList = roleList1" /> <input type="button" value="TREE MODEL 2" data-ng-click="roleList = roleList2" />
+</div>
+
+<div style="margin:10px 0 30px 0; padding:10px; background-color:#EEEEEE; border-radius:5px; font:12px Tahoma;">
+    <span><b>Selected Node</b> : {{currentNode.roleName}}</span>
+</div>
+-->
+
+<!--
+  [TREE attribute]
+  angular-treeview: the treeview directive
+  tree-model : the tree model on $scope.
+  node-id : each node's id
+  node-label : each node's label
+  node-children: each node's children
+-->
+<px-card><div class="layout">
+    <div class="layout__item u-4/6" >
+        <div class="layout__item u-4/6"
+             data-angular-treeview="true"
+             data-tree-model="roleList"
+             data-node-id="roleId"
+             data-node-label="roleName"
+             data-node-children="children" >
+        </div>
+
+    </div>
+
+
+   <!-- <div class="layout_item u-2/6" ng-show="false">
+        <px-card header-text="Edit Component" >
+            <div class="layout" aria-valuetext="">
+                <div class="layout__item">
+                    <label for="">Component</label>
+                    <input type="text" style="width: 50%" value="{{currentNode.roleName}}"  />
+                </div>
+            </div>
+            <hr/>
+            <div class="layout pull-right">
+                <div class="layout__item ">
+                    <a href="" class="btn">Ok</a>
+                    <a href="" class="btn">Cancel</a>
+                </div>
+            </div>
+        </px-card>
+    </div>
+
+
+
+    <div class="layout_item u-2/6">
+        <px-card header-text="Add Component" >
+            <div class="layout">
+                <div class="layout__item">
+                    <label for="">Component</label>
+                    <input type="text" style="width: 50%"   />
+                </div>
+            </div>
+            <hr/>
+            <div class="layout pull-right">
+                <div class="layout__item ">
+                    <a href="" class="btn">Ok</a>
+                    <a href="" class="btn">Cancel</a>
+                </div>
+            </div>
+
+
+
+            <px-card header-text="Assigned Components" >
+                <div class="layout__item u-1/2"></div>
+                <div class="layout__item u-1/2" style="text-align: right;">
+                    <span ><a href="">Unassign</a></span>
+                    <span class="navbar-top__line">|</span>
+                    <span><a href="">Delete</a></span>
+                </div>
+
+                <div class="layout" >
+                    <table style="border:1px solid black;width:100%">
+
+                        <thead >
+                        <tr style="background-color:#C4BCBC;" >
+                            <th colspan="3">Component</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <td colspan="3">011</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">012</td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="3">013</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">014</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">015</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">016</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">017</td>
+                        </tr>
+                        </tbody>
+                        <thead >
+                        <tr style="background-color:#C4BCBC;" >
+                            <th colspan="3">Count: 216</th>
+                        </tr>
+                        </thead>
+                    </table>
+
+                </div>
+            </px-card>
+        </px-card>
+    </div>-->
+
+
+
+</div>
+</px-card>
+
+

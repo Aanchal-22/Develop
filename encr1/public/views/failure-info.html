@@ -1,0 +1,77 @@
+<px-card header-text="Failure Information">
+    <style>
+    .table-strips th {
+        text-align: center;
+        background-color: #343434;
+        color: white;
+    }
+    
+    .table-strips tr:nth-child(even) {
+        background: #fff;
+    }
+    
+    .table-strips tr:nth-child(odd) {
+        background: #d9d9d9
+    }
+    
+    .table-strips tr:nth-child(even)>td>table tr {
+        background: #fff;
+    }
+    
+    .table_cell {
+        display: table-cell;
+        width: 100px;
+        text-align: center;
+    }
+    </style>
+    <div id="module_loadData">
+        <div class="layout">
+            <div class="layout__item " style="width:930px">
+                <div style="overflow-x:scroll">
+                    <table class="table  table-strips fontReduce table_cell">
+                        <thead>
+                            <tr>
+                                <th style="border-right:0;border-left:0"></th>
+                                <th style="border-right:0;border-left:0"></th>
+                                <th style="text-align:center;" colspan="3" ng-repeat="data in finalArray[0]" nowrap>{{data.weiBullName}}
+                            </tr>
+                            <tr>
+                                <th nowrap>Trigger Value</th>
+                                <th>Unit</th>
+                                <th ng-repeat="(key, val) in finalArray[0]" colspan="3" class="pad-0">
+                                    <table class="table" border="0" style="margin:0px">
+                                        <tr>
+                                            <th class="table_cell" nowrap style="border-top:0;border-bottom:0">Eta</th>
+                                            <th class="table_cell" nowrap style="border-top:0;border-bottom:0">Beta</th>
+                                            <th class="table_cell" nowrap style="border-top:0;border-bottom:0">T-Zero</th>
+                                        </tr>
+                                    </table>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(key, val) in finalArray">
+                                <td>{{val[key].triggerValue}}</td>
+                                <td>{{val[key].unit}}</td>
+                                <td ng-repeat="(k, v) in val" colspan="3" class="pad-0">
+                                    <table class="table table-strips fontReduce" style="margin:0px">
+                                        <tr>
+                                            <td class="table_cell">{{v.eta}}</td>
+                                            <td class="table_cell">{{v.beta}}</td>
+                                            <td class="table_cell">{{v.tZero}}</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="layout" style="height:10px"> </div>
+        <div class="layout">
+            <div class="layout__item"> <a type="button" href="#/partInfo/{{quoteID}}" class="btn btn--small btn--tertiary pull-left" style="font-size:12px">Back</a>
+                <a href="#/ppfInfo/{{quoteID}}" class="btn btn--small btn--tertiary pull-right" style="font-size:12px">
+            Next</a></div>
+        </div>
+</px-card>

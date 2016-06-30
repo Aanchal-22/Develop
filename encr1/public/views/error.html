@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title><spring:message code="application.title"/></title>
+    <link href="<%=request.getContextPath()%>/styles/obp.css"
+          rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css"
+          href="<%=request.getContextPath()%>/styles/main.css" />
+
+    <script>
+        function win_close() {
+            window.opener = top;
+            window.close();
+        }
+
+        function back( )
+        {       var back
+            back="Go back"
+            window.history.go(-1);
+        }
+    </script>
+</head>
+<body bg->
+<div class="wrapper">
+
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+    <html>
+
+    <body>
+
+    </body>
+    </html>
+    <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+        <TR bgColor=#f2f2f2>
+            <TD align=left>
+                <UL class=mainTab></UL>
+            </TD></TR>
+    </TABLE>
+    <form name="fLog" method="post">
+        <input type="hidden" name="disclaimer" >
+        <table style="background-color: white">
+            <tr valign="top">
+                <td valign="top">
+                    <div valign="top">
+                        <p style="color: blue; font-size: 22px; font: bold " align="center">
+                            <img src="/images/images.png" align="MIDDLE" />
+
+                            <b>&nbsp;&nbsp;&nbsp;Invalid User</b>
+                        </p>
+                    </div>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td valign="top">
+                    <div>
+                        <br>
+
+                        <p
+                            style="color: dodgerblue; font-size: 16px; text-align: justify;">
+                            This application is hosted on a U.S.-based server and may not be used in connection with any transaction involving a ?sanctioned? country.
+                            Use of a U.S.-based application for transactions involving sanctioned countries could be considered ?facilitation? of trade with the sanctioned country, which is prohibited by U.S. law.
+                            Click on the following link for the most current listing of countries sanctioned (embargoed) by the U.S. Government: Click here
+                            <a id="HyperLink1" href="http://supportcentral.ge.com/products/sup_products.asp?prod_id=25521" style="color: red"> http://supportcentral.ge.com/products/sup_products.asp?prod_id=25521 </a>
+                            Accessing technical data or engineering tools hosted on a U.S.-based application or server from outside the U.S. is considered an export of that technical data or engineering tool.
+                            It is your obligation to comply with all relevant U.S. export laws, including restricting access to technical data or on-line engineering systems, applications or tools which have been designated as ?export controlled? by the business.
+                            For questions related to the proper classification of GE technology, equipment, and software, contact the applicable businesses' Chief Engineer's Office.
+                            For questions on compliance with US export laws, contact either your businesses? International Trade Controls Administrator (Gwen Cole for Energy and Oil & Gas) or assigned counsel.
+                        </p>
+                        <br>
+                        <br>
+
+                        <br><br><br><br>
+                        <p style="align: left; font-size: 14px;" align="center">
+                            <a href="#" onclick="win_close();">Close</a>&nbsp;&nbsp;
+                            <a href="#" onclick="back();">Back</a><br />
+                        </p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <div class="nudge"></div>
+</div>
+
+
+</body>
+</html>

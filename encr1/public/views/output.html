@@ -1,0 +1,643 @@
+<px-card header-text="Base Scenario">
+    <style>
+    .table-strips {
+        border: 1px solid #ccc;
+    }
+    
+    .table-strips th {
+        text-align: center;
+        background-color: #343434;
+        color: white;
+    }
+    
+    .table-strips tr:nth-child(even) {
+        background: #fff;
+    }
+    
+    .table-strips tr:nth-child(odd) {
+        background: #d9d9d9;
+    }
+    
+    table {
+        margin: 0px !important;
+        width: 100%;
+    }
+    
+    .table_cell {
+        display: table-cell;
+        width: 150px;
+        text-align: center;
+    }
+    </style>
+    <div id="module_loadData">
+        <div class="layout">
+            <div class="layout__item">
+                <h4>Opportunity/Contract Structure</h4></div>
+        </div>
+        <div class="layout">
+            <div class="layout__item">
+                <table class="table table-strips">
+                    <tr>
+                        <td>Quote #:</td>
+                        <td>{{ outputScreenData.engineServiceDetailsResponseObject.c_quoteID}}</td>
+                        <td>Customer:</td>
+                        <td>{{outputScreenData.engineQuoteDetails.c_account_name}}</td>
+                        <td>Contract Type:</td>
+                        <td>{{outputScreenData.engineServiceDetailsResponseObject.c_ContractTypeSelected}}</td>
+                        <td>New/Used:</td>
+                        <td>{{outputScreenData.engineServiceDetailsResponseObject.c_NewOrUsedEngineTypeSelected}}</td>
+                    </tr>
+                    <tr>
+                        <td>Fin Model ID:</td>
+                        <td>BBBB</td>
+                        <td>Engine Model:</td>
+                        <td>{{outputScreenData.engineServiceDetailsResponseObject.c_EngineModelSelected}}</td>
+                        <td>Contract Start:</td>
+                        <td>{{outputScreenData.engineQuoteDetails.d_contract_due_date}}</td>
+                        <td>Installed Engines:</td>
+                        <td>{{outputScreenData.engineServiceDetailsResponseObject.c_contractSummaryContractNumberOfEngines}}</td>
+                    </tr>
+                    <tr>
+                        <td>DET Version:</td>
+                        <td>ANLYSS_V46_01_DET</td>
+                        <td>Aircraft Model:</td>
+                        <td>{{outputScreenData.engineQuoteDetails.c_engine_model}}</td>
+                        <td>Contract Term:</td>
+                        <td>{{outputScreenData.engineQuoteDetails.n_contract_duration}} </td>
+                        <td>Spare Engines:</td>
+                        <td>{{outputScreenData.engineServiceDetailsResponseObject.c_contractSummaryContractNumberOfSpareEngines}}</td>
+                    </tr>
+                    <tr>
+                        <td>Descriptor:</td>
+                        <td>{{outputScreenData.engineServiceDetailsResponseObject.c_DescriptionTypeSelected}}</td>
+                        <td>Underwriter SSO:</td>
+                        <td>502358496</td>
+                        <td>Billing Method:</td>
+                        <td>{{outputScreenData.engineServiceDetailsResponseObject.c_baseOverHaulePricingSelected}}</td>
+                        <td>Total Aircraft:</td>
+                        <td>{{outputScreenData.engineServiceDetailsResponseObject.c_contractSummaryContractNumberOfAircraft}}</td>
+                    </tr>
+                    <tr>
+                        <td>Model Type:</td>
+                        <td>New Deal</td>
+                        <td>MCE ID:</td>
+                        <td>999999999</td>
+                        <td>Flat / Stepped:</td>
+                        <td>Flat</td>
+                        <td>Business Jet:</td>
+                        <td>{{outputScreenData.engineServiceDetailsResponseObject.c_bussinessJetSelected}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="layout" style="background-color:#FFFFFF;padding:7px">&nbsp;</div>
+        <div class="layout">
+            <div class="layout__item u-2/6">
+                <table class="table  table-strips" border="0">
+                    <tr>
+                        <th colspan="2">Operating Parameters</th>
+                    </tr>
+                    <tr>
+                        <td class="table_cell">Avg Flight Leg:</td>
+                        <td class="table_cell">{{outputScreenData.engineQuoteDetails.n_flight_leg_hrs}}</td>
+                    </tr>
+                    <tr>
+                        <td class="table_cell">Annual Util:</td>
+                        <td class="table_cell">{{outputScreenData.engineQuoteDetails.n_annl_utilization_hrs}}</td>
+                    </tr>
+                    <tr>
+                        <td class="table_cell">Avg TO Derate:</td>
+                        <td class="table_cell">{{outputScreenData.engineQuoteDetails.n_takeoff_derate_perc}}</td>
+                    </tr>
+                    <tr>
+                        <td class="table_cell">Temperature:</td>
+                        <td class="table_cell">{{outputScreenData.engineQuoteDetails.n_temp}}</td>
+                    </tr>
+                    <tr>
+                        <td class="table_cell">Shop:</td>
+                        <td class="table_cell">{{outputScreenData.engineServiceDetailsResponseObject.c_overhauleShopSelected}}</td>
+                    </tr>
+                    <tr>
+                        <td class="table_cell">OCPH Rate:</td>
+                        <td class="table_cell">$99.41</td>
+                    </tr>
+                    <tr>
+                        <td class="table_cell">Min Build:</td>
+                        <td class="table_cell">{{outputScreenData.engineQuoteDetails.n_mean_min_build}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="layout__item u-4/6">
+                <table class="table  table-strips" border="0">
+                    <thead>
+                        <tr>
+                            <th text-align="center" colspan="3">Avg Inflation</th>
+                            <th text-align="center" colspan="5">Escalation (%, Indices & Constraints)</th>
+                        </tr>
+                        <tr>
+                            <td class="table_cell"></td>
+                            <td class="table_cell">@ Cost</td>
+                            <td class="table_cell">@ Price</td>
+                            <td class="table_cell"></td>
+                            <td class="table_cell">MCPH Billings</td>
+                            <td class="table_cell">{{outputScreenData.engineServiceDetailsResponseObject.c_billingEscalationValue}}</td>
+                            <td class="table_cell">Minimum (Floor)</td>
+                            <td class="table_cell">{{outputScreenData.engineServiceDetailsResponseObject.c_minimumPercent}}</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="table_cell">Material</td>
+                            <td class="table_cell">{{outputScreenData.fpprInflationDetailsListObject[1].n_annl_ml_50_yrs_stream}}</td>
+                            <!-- <td colspan="5"></td> -->
+                            <td class="table_cell"></td>
+                            <td class="table_cell"></td>
+                            <td class="table_cell"></td>
+                            <td class="table_cell"></td>
+                            <td class="table_cell">Hyper Out</td>
+                            <td class="table_cell">{{outputScreenData.engineServiceDetailsResponseObject.c_escalationHyperOut}}</td>
+                        </tr>
+                        <tr>
+                            <td class="table_cell">LLP</td>
+                            <td class="table_cell">{{outputScreenData.fpprInflationDetailsListObject[1].n_annl_llp_50_yrs_stream}}</td>
+                            <td class="table_cell">6.20%</td>
+                            <td class="table_cell"></td>
+                            <td class="table_cell">Cap / Fixed Type</td>
+                            <td class="table_cell">No Cap</td>
+                            <td class="table_cell">Customer Share</td>
+                            <td class="table_cell">100.0%</td>
+                        </tr>
+                        <tr>
+                            <td class="table_cell">C/R</td>
+                            <td class="table_cell">{{outputScreenData.fpprInflationDetailsListObject[1].n_net_cr_50_yrs_stream}}</td>
+                            <td class="table_cell">2.73%</td>
+                            <td class="table_cell"></td>
+                            <td class="table_cell">Cap / Fixed %</td>
+                            <td class="table_cell">0.0%</td>
+                            <td class="table_cell">Escalation Month</td>
+                            <td class="table_cell">January</td>
+                        </tr>
+                        <tr>
+                            <td class="table_cell">Labor</td>
+                            <td class="table_cell">{{outputScreenData.fpprInflationDetailsListObject[1].n_bet_labor}}</td>
+                            <td class="table_cell">3.42%</td>
+                            <td class="pad-0" colspan="5">
+                                <table class="table table-striped table-strips table-condensed fontReduce" border="0">
+                                    <tr>
+                                        <td class="table_cell">Index</td>
+                                        <td style="text-align:center" colspan="4">75% Spare Parts Catelog +25% ECI 336411W</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table_cell">LRU</td>
+                            <td class="table_cell">{{outputScreenData.fpprInflationDetailsListObject[1].n_annl_lru}}</td>
+                            <td class="table_cell">5.70%</td>
+                            <td class="pad-0" colspan="5">
+                                <table class="table table-striped table-strips table-condensed fontReduce" border="0">
+                                    <tr>
+                                        <td style="text-align:center" colspan="3">Unique LLP Escalation</td>
+                                        <td>{{outputScreenData.engineServiceDetailsResponseObject.c_uniqueLLpEscalationSelected}}</td>
+                                        <td>LLP Esc. Rate</td>
+                                        <td>{{outputScreenData.engineServiceDetailsResponseObject.c_uniqueLLpEscalationValue}}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="layout" style="background-color:#FFFFFF;padding:7px"></div>
+        <div class="layout">
+            <div class="layout__item">
+                <table class="table table-strips" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th nowrap>Monthly 2015</th>
+                            <th nowrap>TSLSV 2015</th>
+                            <th nowrap>Base and Optional Coverages</th>
+                            <th nowrap>Detail</th>
+                            <th nowrap>TY True Cost</th>
+                            <th nowrap>TY Billings @ Price</th>
+                            <th nowrap>GE Billings</th>
+                            <th nowrap>TY OM $</th>
+                            <th nowrap>TY OM %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>BASE Overhaul</td>
+                            <td>TOTAL</td>
+                            <td>{{baseOverhaulSum}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Material:</td>
+                            <td> {{outputScreenData.sumOfAllTyMaterial}} </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Labor:</td>
+                            <td> {{outputScreenData.sumOfAllTyLabor}} </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>ICR:</td>
+                            <td> {{outputScreenData.sumOfAllTyIcr}} </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>ECR:</td>
+                            <td> {{outputScreenData.sumOfAllTyEcr}} </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>other:</td>
+                            <td> {{outputScreenData.sumOfAllTyOther}} </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>LLP</td>
+                            <td> </td>
+                            <td> {{outputScreenData.sumOfAllTyLLP}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Transportation</td>
+                            <td> </td>
+                            <td> {{outputScreenData.sumOfAllTyTransportation}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Test Cell</td>
+                            <td> </td>
+                            <td> {{outputScreenData.sumOfAllTyTestCell}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>CD + R (T1) </td>
+                            <td></td>
+                            <td>$ {{outputScreenData.sumOfAllTyCD}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Minor Rate</td>
+                            <td> </td>
+                            <td> {{outputScreenData.sumOfAllTyMinorRate}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Flightline LRU</td>
+                            <td></td>
+                            <td> {{outputScreenData.sumOfAllTyFlightLineLRU}} </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Engine Leasing</td>
+                            <td></td>
+                            <td> {{outputScreenData.sumOfAllTyEngineLeasing}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>On Wing Support</td>
+                            <td> </td>
+                            <td> {{outputScreenData.sumOfAllTyOnWingSupport}} </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>FOD</td>
+                            <td> </td>
+                            <td> {{outputScreenData.sumOfAllTyFod}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Capped SB/AD</td>
+                            <td> </td>
+                            <td> {{outputScreenData.sumOfAllTycappedSbAd}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Mut. Agreed SB/AD</td>
+                            <td> </td>
+                            <td> {{outputScreenData.sumOfAllTymutAgreedSbAd}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Uncapped SB/AD</td>
+                            <td> </td>
+                            <td> {{outputScreenData.sumOfAllTyUncappedSbAd}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Misc. Cost 1-4</td>
+                            <td> </td>
+                            <td> {{outputScreenData.sumOfAllTyMiscCostSv}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Misc. Cost 5-8</td>
+                            <td></td>
+                            <td> {{outputScreenData.sumOfAllTymiscCostEfh}} </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Service Credit Adder</td>
+                            <td> </td>
+                            <td> {{outputScreenData.sumOfAllTyserviceCreditAdder}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Add'l Billings ($/EFH)</td>
+                            <td> </td>
+                            <td> {{outputScreenData.sumOfAllTyaddlBillings}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>TOTAL</td>
+                            <td></td>
+                            <td>{{totalTyTrueCost}}</td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td>69.02%</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>RSP</td>
+                            <td></td>
+                            <td></td>
+                            <td> </td>
+                            <td>{{rsp}}</td>
+                            <td>{{totalRsp}}</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="layout" style="background-color:#FFFFFF;padding:7px"></div>
+        <div class="layout">
+            <div class="layout__item">
+                <table class=" table-strips " style="width:100%">
+                    <thead>
+                        <tr>
+                            <th colspan="2"></th>
+                            <th colspan="2">Included Services</th>
+                            <th colspan="4">CFMI Specific Calculations</th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">Year Definition</th>
+                            <th colspan="2"></th>
+                            <th colspan="2">Material Split Input</th>
+                            <th colspan="2">GE Spares Sales - SN Fulfillment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tech PPR Year</td>
+                            <td>2011</td>
+                            <td colspan="2"></td>
+                            <td>GE Non-LLP %</td>
+                            <td>0.00%</td>
+                            <td>GE Spares Sales</td>
+                            <td> $-</td>
+                        </tr>
+                        <tr>
+                            <td>Financial PPR Yr</td>
+                            <td>2015</td>
+                            <td>Management Fee</td>
+                            <td>Yes</td>
+                            <td>GE LLP %</td>
+                            <td>0.00%</td>
+                            <td>GE Spares OM$</td>
+                            <td> $- </td>
+                        </tr>
+                        <tr>
+                            <td>Current Year</td>
+                            <td>2015</td>
+                            <td>Marketing Fee</td>
+                            <td>3%</td>
+                            <td colspan="2" class="table_bold_td"></td>
+                            <td>GE Spares OM%</td>
+                            <td>0.00%</td>
+                        </tr>
+                        <tr>
+                            <td>Contract Term</td>
+                            <td>11.00</td>
+                            <td>Return Conditions</td>
+                            <td>No</td>
+                            <td colspan="2" class="table_bold_td">GE All-in Total</td>
+                            <td colspan="2" class="table_bold_td">GE CSA-50% of Total CSA</td>
+                        </tr>
+                        <tr>
+                            <td>CV/SPD Target</td>
+                            <td>0%</td>
+                            <td>Supplemental LLP</td>
+                            <td>No</td>
+                            <td>Revenue</td>
+                            <td> $- </td>
+                            <td>GE CSA Billings</td>
+                            <td> $- </td>
+                        </tr>
+                        <tr>
+                            <td>ICR Elimination</td>
+                            <td>1%</td>
+                            <td>Supmtl LLP Discount</td>
+                            <td>0%</td>
+                            <td>OM$</td>
+                            <td> $- </td>
+                            <td>GE CSA OM$</td>
+                            <td> $- </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="table_bold_td">MCE Reference</td>
+                            <td>Business Plan Included</td>
+                            <td>No</td>
+                            <td>OM%</td>
+                            <td>0.00%</td>
+                            <td>GE CSA OM%</td>
+                            <td>0.00%</td>
+                        </tr>
+                        <tr>
+                            <td>@ Price</td>
+                            <td></td>
+                            <td>PPR Environment</td>
+                            <td>Regular</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>@ Cost</td>
+                            <td>700609</td>
+                            <td>CFM Thrust</td>
+                            <td>High</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>@ PV</td>
+                            <td></td>
+                            <td>CFM Tech Insert.</td>
+                            <td>NonTI</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="table_bold_td"></td>
+                            <td>CFM 3D Aero</td>
+                            <td>N/A</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="layout" style="background-color:#FFFFFF;padding:7px"></div>
+        <div class="layout">
+            <!-- Highchart 1 -->
+            <div class="layout__item u-1/2">
+                <div id="KEFHPerYear"></div>
+            </div>
+            <!--   Highchart 2 -->
+            <div class="layout__item u-1/2">
+                <div id="deferredBalance"></div>
+            </div>
+        </div>
+        <div class="layout" style="height:10px"> </div>
+        <div class="layout">
+            <div class="layout__item">
+                <a type="button" href="#/engineService/{{quoteID}}" class="btn btn--small btn--tertiary pull-left" style="font-size:12px">Back</a>
+                <a href="#/scenarioManager" style="font-size:12px" class="btn btn--small btn--tertiary pull-right">Next </a>
+            </div>
+        </div>
+    </div>
+</px-card>

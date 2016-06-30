@@ -1,0 +1,2417 @@
+<dom-module id="qcr-tab">
+    <style>
+    /*  td {
+       padding: 5px !important;
+   } */
+    .layout>.layout__item {
+        font-size: 0.89em;
+       // font-weight: bold;
+    }
+    
+    .input-number {
+        width: 70px;
+    }
+    
+    .input-num {
+        width: 40px;
+    }
+    
+    .normal-font {
+        font-weight: normal;
+    }
+    .normal-text{
+        color:black !important;
+    }
+    
+    .label_disabled {
+        color: #9999A3;
+    }
+    
+     .table_attchment {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table_attchment tr>th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.table_attchment td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.table_attchment tbody td {
+    font-weight: normal;
+    word-break: break-all;
+} 
+  .table_attchment tbody tr:nth-child(2n) {
+     background-color:#cccccc;
+  }
+    
+    .div-text-blue {
+        color: blue;
+    }
+
+    .td_text td{
+        text-align:right;
+    }
+
+    .auth-table td{
+        padding:5px;
+    }
+    .view-table{
+        width:100%;
+        table-layout:fixed;
+    }
+
+    .view-table td{
+        text-align:center;
+    }
+    .view-table td:nth-child(1),.view-table td:nth-child(5),.view-table td:nth-child(1){
+       font-weight: bold;
+    }
+    
+     .full-width{
+     width: 100%;
+   } 
+
+  .label_blue{
+    color: #2c2cc1;
+    font-weight: bold;
+  }
+
+   /* .label_blue{
+    color: black;
+    font-weight: bold;
+     } */
+
+    </style>
+    <template>
+        <section>
+            <px-tab-set id="tab-set" selected="{{selected}}">
+                <px-tab>Advanced</px-tab>
+                <px-tab>Markup</px-tab>
+                <px-tab>Attachments</px-tab>
+                <px-tab>Vendor Bill Back</px-tab>
+                <px-tab>View All Deviations</px-tab>
+                <px-tab>Deviations
+                    <select>
+                        <option value="">(select deviation)</option>
+                    </select>
+                </px-tab>
+                <px-tab> <button>Save</button></px-tab>
+                <px-tab>
+
+                    <button ng-click="createWindow('#/qcrRouting', 900, 700);">Routing</button>
+                    <button disabled>Shipped Routing</button>
+                </px-tab>
+            </px-tab-set>
+            <px-tab-pages selected="{{selected}}">
+                <div>
+                    <table width="100%">
+                        <thead>
+                            <tr>
+                                <th class="normal-font">
+                                    <input type="checkbox" >Material Substitution required
+                                </th>
+                                <th>Scrap Dispostions</th>
+                                <th>RTV Dispostions</th>
+                                <th>Append Signature Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table style="border-right: 1px solid black; height: 500px;">
+                                        <tbody>
+                                            <tr>
+                                                <td>Matl Sub Field</td>
+                                                <td>
+                                                    <input type="text">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cross Reference</td>
+                                                <td>
+                                                    <input type="text" disabled>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Model List #</td>
+                                                <td>
+                                                    <input type="text" disabled>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Drafting Unit</td>
+                                                <td>
+                                                    <input type="text" disabled>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="">Sign Off</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Engineering Hours</td>
+                                                <td>
+                                                    <input type="number" class="input-num" disabled>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Est. Rework Hours</td>
+                                                <td>
+                                                    <input type="number" disabled class="input-num">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Est. Lost Shifts</td>
+                                                <td>
+                                                    <input type="number" disabled class="input-num">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>COQ Labor Hour</td>
+                                                <td>
+                                                    <input type="text" value="0.00" disabled>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>COQ Material</td>
+                                                <td>
+                                                    <input type="text" value="0.00" disabled>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Rework/Repair</td>
+                                                <td>
+                                                    <input type="text" value="0.00" disabled>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total COQ</td>
+                                                <td>
+                                                    <input type="text" value="0.00" disabled>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td style="border-right: 1px solid black;">
+                                    <table width="290px">
+                                        <tbody>
+                                            <td></td>
+                                            <td></td>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td style="border-right: 1px solid black;">
+                                    <table width="290px">
+                                        <tbody>
+                                            <td></td>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table width="290px">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <table height="480px" width="290" style="border:1px solid black;"></table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="">Append Signature</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <center>
+                                        <button>Done</button>
+                                    </center>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div>
+                      <h4>Mark Up Note:</h4>
+                     <table>
+                          <tbody>
+                              <tr>
+                                <td><div style="width:500px;height:100px;border:1px solid black"></div></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                      <table>
+                        <tbody>
+                          <td>Mark up</td>
+                          <td><input type="text" style="width:450px;"></td>
+                          <td><button>Browse</button></td>
+                          <td ><button>Attach File</button></td>
+                        </tbody>
+                      </table>
+                      <table class="table_attchment">
+                        <thead style="background-color:#8b8d8f;color:white;">
+                          <th></th>
+                          <th>Filename</th>
+                          <th>Upload Date</th>
+                          <th>Uploaded By</th>
+                          <th>ENG check</th>
+                          <th>Check Date</th>
+                          <th>Checked By</th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><input type="radio"></td>
+                          <td>Certificate1.trf</td>
+                          <td>02/062016 15:06:54 AM</td>
+                          <td>Pippo,Marco</td>
+                          <td><select name="" id=""><option value="" selected="">Rejected</option></select></td>
+                          <td>02/062016 15:06:54 AM</td>
+                          <td>Lanzi,Valentina</td>
+                        </tr>
+                        <tr>
+                          <td><input type="radio"></td>
+                          <td>Certificate1.trf</td>
+                          <td>02/062016 15:06:54 AM</td>
+                          <td>Pippo,Marco</td>
+                          <td><select name="" id=""><option value="" selected="">Rejected</option></select></td>
+                          <td>02/062016 15:06:54 AM</td>
+                          <td>Lanzi,Valentina</td>
+                        </tr>
+                        <tr>
+                          <td><input type="radio"></td>
+                          <td>Certificate1.trf</td>
+                          <td>02/062016 15:06:54 AM</td>
+                          <td>Pippo,Marco</td>
+                          <td><select name="" id=""><option value="" selected="">Rejected</option></select></td>
+                          <td>02/062016 15:06:54 AM</td>
+                          <td>Lanzi,Valentina</td>
+                        </tr>
+                        <tr>
+                          <td><input type="radio"></td>
+                          <td>Certificate1.trf</td>
+                          <td>02/062016 15:06:54 AM</td>
+                          <td>Pippo,Marco</td>
+                          <td><select name="" id=""><option value="" selected="">Rejected</option></select></td>
+                          <td>02/062016 15:06:54 AM</td>
+                          <td>Lanzi,Valentina</td>
+                        </tr>
+                        <tr>
+                          <td><input type="radio"></td>
+                          <td>Certificate1.trf</td>
+                          <td>02/062016 15:06:54 AM</td>
+                          <td>Pippo,Marco</td>
+                          <td><select name="" id=""><option value="" selected="">Rejected</option></select></td>
+                          <td>02/062016 15:06:54 AM</td>
+                          <td>Lanzi,Valentina</td>
+                        </tr>
+                      </table>
+                      <table>
+                        <tbody>
+                          <tr><td><button>Done</button></td></tr>
+                        </tbody>
+                      </table>
+                       <table style="width:100%;table-layout:fixed;">
+                        <thead>
+                            <th>Attachment Preview</th>
+                        </thead>
+                        <tbody >
+                            <tr>
+                                <td><div style="width:100%;border:1px solid black;height:500px;overflow:scroll;" ><img src="/images/ge_turbine.png" alt=""></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                 </div>
+                <div>
+                    <table>
+                        <thead>
+                            <th colspan="1"></th>
+                            <th colspan="3"></th>
+                            <th colspan="5"></th>
+                            <th colspan="2"></th>
+                            <th colspan="4"></th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>File</td>
+                                <td>
+                                    <input type="text" disabled style="width:300px" />
+                                    <button class="label_disabled">Browse</button>
+                                </td>
+                                <td>
+                                    <label for="" class="label_disabled">Add to Email</label>
+                                    <input type="checkbox" disabled>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="">Description</label>
+                                </td>
+                                <td>
+                                    <input type="text" disabled style="width:350px">
+                                </td>
+                                <td>
+                                    <button disabled>Update</button>
+                                    <button disabled>Cancel</button>
+                                    <button disabled>Attach File</button>
+                                </td>
+                                <td> Superseded By </td>
+                                <td>
+                                    <input type="text" style="width:200px">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                  <table class="table_attchment" border="1">
+                      <thead style="background-color:#8b8d8f;color:white;">
+                          <th></th>
+                          <th>Filename</th>
+                          <th>Description</th>
+                          <th></th>
+                          <th>Upload Date</th>
+                          <th>Uploaded By</th>
+                          <th>AddToEmail</th>
+                          <th>Obsolete</th>
+                          <th>Obsolete Date</th>
+                          <th>Obsolete By</th>
+                          <th>Superseded By</th>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>
+                                  <input type="radio">
+                              </td>
+                              <td>2222222222.jpg</td>
+                              <td>Test file upload</td>
+                              <td>1273</td>
+                              <td>02/062016 15:06</td>
+                              <td>Godishala,Nagaraju</td>
+                              <td>
+                                  <input type="checkbox">
+                              </td>
+                              <td>
+                                  <input type="checkbox">
+                              </td>
+                              <td> 02/062016 16:12</td>
+                              <td>Godishala,Nagaraju</td>
+                              <td>2222222222.jpg</td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <input type="radio">
+                              </td>
+                              <td>2222222222.jpg</td>
+                              <td>Test file upload</td>
+                              <td>1273</td>
+                              <td>02/062016 15:06</td>
+                              <td>Godishala,Nagaraju</td>
+                              <td>
+                                  <input type="checkbox">
+                              </td>
+                              <td>
+                                  <input type="checkbox">
+                              </td>
+                              <td> 02/062016 16:12</td>
+                              <td>Godishala,Nagaraju</td>
+                              <td>2222222222.jpg</td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <input type="radio">
+                              </td>
+                              <td>2222222222.jpg</td>
+                              <td>Test file upload</td>
+                              <td>1273</td>
+                              <td>02/062016 15:06</td>
+                              <td>Godishala,Nagaraju</td>
+                              <td>
+                                  <input type="checkbox">
+                              </td>
+                              <td>
+                                  <input type="checkbox">
+                              </td>
+                              <td> 02/062016 16:12</td>
+                              <td>Godishala,Nagaraju</td>
+                              <td>2222222222.jpg</td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <input type="radio">
+                              </td>
+                              <td>2222222222.jpg</td>
+                              <td>Test file upload</td>
+                              <td>1273</td>
+                              <td>02/062016 15:06</td>
+                              <td>Godishala,Nagaraju</td>
+                              <td>
+                                  <input type="checkbox">
+                              </td>
+                              <td>
+                                  <input type="checkbox">
+                              </td>
+                              <td> 02/062016 16:12</td>
+                              <td>Godishala,Nagaraju</td>
+                              <td>2222222222.jpg</td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <input type="radio">
+                              </td>
+                              <td>2222222222.jpg</td>
+                              <td>Test file upload</td>
+                              <td>1273</td>
+                              <td>02/062016 15:06</td>
+                              <td>Godishala,Nagaraju</td>
+                              <td>
+                                  <input type="checkbox">
+                              </td>
+                              <td>
+                                  <input type="checkbox">
+                              </td>
+                              <td> 02/062016 16:12</td>
+                              <td>Godishala,Nagaraju</td>
+                              <td>2222222222.jpg</td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <input type="radio">
+                              </td>
+                              <td>2222222222.jpg</td>
+                              <td>Test file upload</td>
+                              <td>1273</td>
+                              <td>02/062016 15:06</td>
+                              <td>Godishala,Nagaraju</td>
+                              <td>
+                                  <input type="checkbox">
+                              </td>
+                              <td>
+                                  <input type="checkbox">
+                              </td>
+                              <td> 02/062016 16:12</td>
+                              <td>Godishala,Nagaraju</td>
+                              <td>2222222222.jpg</td>
+                          </tr>
+                      </tbody>
+                  </table>
+                    <table width="100%">
+                        <thead>
+                            <th style="text-align:left">
+                                <button>Delete</button>
+                            </th>
+                            <th style="text-align:right">
+                                <button>Done</button>
+                            </th>
+                        </thead>
+                    </table>
+                    <table style="width:100%;table-layout:fixed;">
+                        <thead>
+                            <th>Attachment Preview</th>
+                        </thead>
+                        <tbody >
+                            <tr>
+                                <td><div style="width:100%;border:1px solid black;height:500px;overflow:scroll;" ><img src="/images/ge_turbine.png" alt=""></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table style="table-layout:fixed">
+                        <tbody>
+                            <tr>
+                                <td>PO#</td>
+                                <td>
+                                    <select name="" id="" style="width:200px"></select>
+                                </td>
+                                <td>-</td>
+                                <td>
+                                    <input type="number" style="width:25px" vale="2">
+                                </td>
+                                <td>Part#</td>
+                                <td>
+                                    <input type="text" disabled style="width:200px">
+                                </td>
+                                <td>Qty</td>
+                                <td>
+                                    <input type="number" style="width:50px">
+                                </td>
+                                <td>Part#</td>
+                                <td>
+                                    <input type="text" disabled style="width:200px">
+                                </td>
+                                <td>PO# Total</td>
+                                <td>
+                                    <input type="number">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                     <table style="table-layout:fixed;width:100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td><a href="">SQE Signoff</a></td>
+                            <td width="80"></td>
+                            <td colspan="4"><a href="">VBB Notes</a></td>
+                            <!-- <td width="80"></td> -->
+                            <td colspan="1" style="text-align:right">
+                                <input type="checkbox">
+                           <label for="" >QCR Handling Fee</label>
+                             </td>
+                             <td colspan="2"><input type="text" style="width:90%"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="" class="label_disabled"><a href="">Buyer Signoff</a></label>
+                            </td>
+                            <td width="80"></td>
+                            <td colspan="4" rowspan="4">
+                                <div style="border:1px solid black;height:150px">New Notes:(Maximum 2500 characters allowed)</div>
+                            </td>
+
+                            <td colspan="1" style="text-align:right">
+                                <label >TOT NCR BB</label></td>
+                               <td colspan="2"><input type="text" style="width:90%"></td> 
+                            
+                        </tr>
+                        <tr>
+                            <td width="50" height="50"></td>
+                        </tr>
+                        <tr>
+                            <td width="50" height="50"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button>Done</button>
+                            </td>
+                        </tr>
+                    </table> 
+
+                    <hr>
+
+                    <table style="width:100%">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th><th><a href=" ">Delete</a></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td >
+                                    <table class="td_text">
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="">PO</a></td>
+                                                <td><input type="text"></td>
+                                                <td>Line</td>
+                                                <td><input type="number" style="width:30px"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Part ID</td>
+                                                <td colspan="3"><input type="text" style="width:100%"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Part#</td>
+                                                <td><input type="text"></td>
+                                                <td>Rev</td>
+                                                <td><input type="number" style="width:30px"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="">UOM</a></td>
+                                                <td><select style="width:100%"><option value="">Bale</option></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table class="td_text" cellpadding="0" cellspacing="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td><a href="">Supplier Code</a></td>
+                                                    <td><input type="number" style="width:30px"><input type="text"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Supplier Email</td>
+                                                    <td colspan="2"><input type="text" style="width:100%"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td ><label for="" style="white-space:normal;">Supplier Contact Info</label></td>
+                                                    <td rowspan="2" colspan="2"><div style="height:50px;border:1px solid black;"></div></td> 
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                <td>
+                                     <table class="td_text" cellpadding="0" cellspacing="0">
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="">Buyer</a></td>
+                                                <td><input type="text"></td>
+                                                <td>LOC</td>
+                                                <td><input type="number" style="width:30px"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td colspan="3"><input type="text" style="width:100%"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Info</td>
+                                                <td colspan="3"><input type="text" style="width:100%"> </td>
+                                               
+                                            </tr>
+                                            <tr><td style="padding:18px"></td></tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td> 
+                                    <table class="td_text" cellpadding="0" cellspacing="0">
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="">SQE</a></td>
+                                                <td colspan="2"><input type="text"  style="width:100%"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td colspan="2"><input type="text" style="width:100%"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Info</td>
+                                                <td colspan="2"><input type="text" style="width:100%"> </td>
+                                               
+                                            </tr>
+                                            <tr><td style="padding:18px"></td></tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+
+                          
+                        </tbody>
+                    </table>
+                    <table class="auth-table">
+                        <tbody>
+                              <tr>
+                                <td style="width:450px"></td>
+                                <td>
+                                <input type="checkbox">Auth Return
+                                </td>
+                                <td>Supl PO</td>
+                                <td><input type="text">-</td>
+                                <td><input type="number" style="width:30px"></td>
+                                <td>Ship Note</td>
+                                <td><input type="text"></td>
+                                <td>Supl PO</td>
+                                <td><input type="text"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                    <table  class="view-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th># of Dispositions</th>
+                                <th>Vendor Fault Qty</th>
+                                <th>Billback Qty</th>
+                                <th>heading2</th>
+                                <th>Hr/Qty</th>
+                                <th>Rwk$/Hr</th>
+                                <th>BB$/Qty</th>
+                                <th>Ext$</th>
+                                <th>Override Reason</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                               <td>Use</td>
+                               <td>0</td>
+                               <td>
+                                    <table class="slider-option">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input type="number " style="width:30px " disabled/>
+                                                </td>
+                                                <td>
+                                                    <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                        <TBODY>
+                                                            <TR>
+                                                                <TD align=center>
+                                                                    <IMG  src="../images/up.gif " align=bottom>
+                                                                </TD>
+                                                            </TR>
+                                                            <TR>
+                                                                <TD style="PADDING-TOP: 1px " vAlign=top align=center>
+                                                                    <IMG  src="../images/down.gif " align=top>
+                                                                </TD>
+                                                            </TR>
+                                                        </TBODY>
+                                                    </TABLE>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td> 
+                               
+                            </tr>
+                            <tr>
+                                <td>Rwk/Rpr</td>
+                                <td>1</td>
+                                <td>
+                                    <table class="slider-option">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input type="number" style="width:30px " disabled/>
+                                                </td>
+                                                <td>
+                                                    <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                        <TBODY>
+                                                            <TR>
+                                                                <TD align=center>
+                                                                    <IMG  src="../images/up.gif " align=bottom>
+                                                                </TD>
+                                                            </TR>
+                                                            <TR>
+                                                                <TD align=center>
+                                                                    <IMG  src="../images/down.gif " align=top>
+                                                                </TD>
+                                                            </TR>
+                                                        </TBODY>
+                                                    </TABLE>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                 <td>
+                                    <table class="slider-option"> 
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input type="number " style="width:30px " disabled/>
+                                                </td>
+                                                <td>
+                                                    <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                        <TBODY>
+                                                            <TR>
+                                                                <TD align=center>
+                                                                    <IMG  src="../images/up.gif " align=bottom>
+                                                                </TD>
+                                                            </TR>
+                                                            <TR>
+                                                                <TD style="PADDING-TOP: 1px " vAlign=top align=center>
+                                                                    <IMG  src="../images/down.gif " align=top>
+                                                                </TD>
+                                                            </TR>
+                                                        </TBODY>
+                                                    </TABLE>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>Rwk/Rpr</td>
+                                <td> 
+                                    <table class="slider-option">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input type="number " style="width:30px " disabled/>
+                                                </td>
+                                                <td>
+                                                    <TABLE cellSpacing="0" cellPadding="0" border="0">
+                                                        <TBODY>
+                                                            <TR>
+                                                                <TD align=center>
+                                                                    <IMG  src="../images/up.gif " align=bottom>
+                                                                </TD>
+                                                            </TR>
+                                                            <TR>
+                                                                <TD  align=center>
+                                                                    <IMG  src="../images/down.gif " align=top>
+                                                                </TD>
+                                                            </TR>
+                                                        </TBODY>
+                                                    </TABLE>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+
+                                <td><span>*</span><span><input type="number" class="input-number"></span></td>
+                                <td></td>
+                                 <td>=<input type="number" class="input-number"></td>
+                                 <td><select name="" id="" class="input-number"><option value="">Rework</option></select></td>
+                            </tr>
+                            <tr>
+                                <td>RTV</td>
+                                <td>0</td>
+                                <td>
+                                    <table class="slider-option">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input type="number " style="width:30px " disabled/>
+                                                </td>
+                                                <td>
+                                                    <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                        <TBODY>
+                                                            <TR>
+                                                                <TD align=center>
+                                                                    <IMG  src="../images/up.gif " align=bottom>
+                                                                </TD>
+                                                            </TR>
+                                                            <TR>
+                                                                <TD style="PADDING-TOP: 1px " vAlign=top align=center>
+                                                                    <IMG  src="../images/down.gif " align=top>
+                                                                </TD>
+                                                            </TR>
+                                                        </TBODY>
+                                                    </TABLE>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                 <td>
+                                    <table class="slider-option">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input type="number " style="width:30px " disabled/>
+                                                </td>
+                                                <td>
+                                                    <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                        <TBODY>
+                                                            <TR>
+                                                                <TD align=center>
+                                                                    <IMG  src="../images/up.gif " align=bottom>
+                                                                </TD>
+                                                            </TR>
+                                                            <TR>
+                                                                <TD style="PADDING-TOP: 1px " vAlign=top align=center>
+                                                                    <IMG  src="../images/down.gif " align=top>
+                                                                </TD>
+                                                            </TR>
+                                                        </TBODY>
+                                                    </TABLE>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>RTV(Replace)</td>
+                                <td></td>
+                                <td></td>
+                                <td><input type="number" class="input-number"></td>
+                                 <td>=<input type="number" class="input-number"></td>
+                                  <td><select name="" id=""><option value=""></option></select></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <table class="slider-option">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input type="number " style="width:30px " disabled/>
+                                                </td>
+                                                <td>
+                                                    <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                        <TBODY>
+                                                            <TR>
+                                                                <TD align=center>
+                                                                    <IMG  src="../images/up.gif " align=bottom>
+                                                                </TD>
+                                                            </TR>
+                                                            <TR>
+                                                                <TD  align=center>
+                                                                    <IMG  src="../images/down.gif " align=top>
+                                                                </TD>
+                                                            </TR>
+                                                        </TBODY>
+                                                    </TABLE>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                 <td>
+                                    <table class="slider-option">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input type="number " style="width:30px " disabled/>
+                                                </td>
+                                                <td>
+                                                    <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                        <TBODY>
+                                                            <TR>
+                                                                <TD align=center>
+                                                                    <IMG  src="../images/up.gif " align=bottom>
+                                                                </TD>
+                                                            </TR>
+                                                            <TR>
+                                                                <TD style="PADDING-TOP: 1px " vAlign=top align=center>
+                                                                    <IMG  src="../images/down.gif " align=top>
+                                                                </TD>
+                                                            </TR>
+                                                        </TBODY>
+                                                    </TABLE>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>Credit(No Replace)</td>
+                                <td></td>
+                                <td></td>
+                                <td><input type="number" class="input-number"></td>
+                                <td>=<input type="number" class="input-number"></td>
+                                <td><select name="" id=""><option value="">Rework</option></select></td>
+                                <td>Frieght:</td>
+                                <td><input type="number" class="input-number"></td>
+                            </tr>
+                            <tr>
+                                <td>Scrap</td>
+                                <td>0</td>
+                                <td>
+                                    <table class="slider-option">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input type="number " style="width:30px " disabled/>
+                                                </td>
+                                                <td>
+                                                    <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                        <TBODY>
+                                                            <TR>
+                                                                <TD align=center>
+                                                                    <IMG  src="../images/up.gif " align=bottom>
+                                                                </TD>
+                                                           </TR>
+                                                            <TR>
+                                                                <TD style="PADDING-TOP: 1px " vAlign=top align=center>
+                                                                    <IMG  src="../images/down.gif " align=top>
+                                                                </TD>
+                                                            </TR>
+                                                        </TBODY>
+                                                    </TABLE>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                 <td>
+                                    <table class="slider-option">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input type="number " style="width:30px " disabled/>
+                                                </td>
+                                                <td>
+                                                    <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                        <TBODY>
+                                                            <TR>
+                                                                <TD align=center>
+                                                                    <IMG  src="../images/up.gif " align=bottom>
+                                                                </TD>
+                                                            </TR>
+                                                            <TR>
+                                                                <TD  align=center>
+                                                                    <IMG  src="../images/down.gif " align=top>
+                                                                </TD>
+                                                            </TR>
+                                                        </TBODY>
+                                                    </TABLE>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>Scrap</td>
+                                <td></td>
+                                <td></td>
+                                <td><input type="number" class="input-number"></td>
+                                <td>=<input type="number" class="input-number"></td>
+                                <td><select name="" id=""><option value="">Rework</option></select></td>
+                                <td>Sub Total</td>
+                                <td><input type="number" class="input-number"></td>
+
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>1</td>
+                                <td><input type="number" style="width:30px" value="0" class="input-number"></td>
+                                <td><input type="number" style="width:30px" value="0" class="input-number"></td>
+                                <td  colspan="6"></td>
+                                <td >Total Backcharge:</td>
+                                <td><input type="number" class="input-number"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+                <div>
+                      <table style="width:100%; background-color:#d1d0d8" border="1" cellspacing="10">
+                          <tbody>
+                            <tr>
+                              <td rowspan="2">
+                                <table style="width:100%">
+                                <tbody>
+                                   <tr>
+                                    <td ><b>Deviation 1/2</b></td>
+                                    <td>Dev Qty 2</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Product
+                                    <select name="" id="" class="select-fullWidth"><option value="">CC Accessories</option></select></td>
+                                    <td>Feature <select name="" id="" class="select-fullWidth"><option value="">NA</option></select></td>
+                                    <td>Dev Code <select name="" id="" class="select-fullWidth"><option value="">Z004 - Only for Supplier's Use - Supplier Suggestion for Improvement - Change of Design</option></select></td>
+                                  </tr>
+                                  <tr><td ><b>Deviation Description </b></td></tr>
+                                  <tr><td colspan="3"><div style="height:100px;border:1px solid black;overflow-y:scroll;width:900px" class="normal-font div-text-blue">
+                                     <table border="1">
+                                        <tr>
+                                            <td title="Chiediamo deroga per poter fornire i due pezzi del disegno SWD6738700 in rev 00 e non in Rev 01,vedi e-mail allegata di Francalanci Carlo NA, nsa 12-FEB-2016 10:20 AM">
+                                            <span>Chiediamo deroga per poter fornire i due pezzi del disegno SWD6738700 in rev 00 e non in Rev 01,vedi e-mail allegata di Francalanci Carlo</span><span class="normal-text"><b>NA, nsa </b></span>
+                                            <span class="normal-text">12-FEB-2016 10:20 AM</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>Serial Number : 579443A e 579444A</span><span class="normal-text"><b>NA, nsa   </b></span>
+                                            <span class="normal-text">12-FEB-2016 10:23 AM </span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>Serial Number : 579443A e 579444A</span><span class="normal-text"><b>NA, nsa</b></span>
+                                            <span class="normal-text">12-FEB-2016 10:23 AM </span></td>
+                                        </tr>
+                                    </table>
+                                  </div>
+                                  </td></tr>
+                                </tbody>
+                                </table>
+                                <table cellSpacing="10" cellPadding="0" border=0>
+
+                                  <tbody>
+                                  <tr> <td colspan="6"> <b> Disposition Information</b></td></tr>
+                                    <tr>
+                                      <td>
+                                        <table >
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <label for=" " class="normal-font">Use</label>
+                                                  </td>
+                                                  <td>
+                                                      <input type="number" style="width:30px"/>
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/up.gif" align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/down.gif" align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                      </td>
+                                        <td>
+                                        <table >
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <label for=" " class="normal-font ">Rework</label>
+                                                  </td>
+                                                  <td>
+                                                      <input type="number" style="width:30px" />
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/up.gif" align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/down.gif" align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                      </td>
+                                      <td>
+                                        <table cellSpacing=0 cellPadding=0>
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <label for=" " class="normal-font ">Repair</label>
+                                                  </td>
+                                                  <td>
+                                                      <input type="number" style="width:30px" />
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/up.gif" align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/down.gif" align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                      </td>
+                                      <td>
+                                        <table cellSpacing=0 cellPadding=0>
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <label for=" " class="normal-font ">RTV</label>
+                                                  </td>
+                                                  <td>
+                                                      <input type="number" style="width:30px" />
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/up.gif" align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/down.gif" align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                      </td>
+                                      <td>
+                                        <table cellSpacing=0 cellPadding=0>
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <label for=" " class="normal-font ">Scrap</label>
+                                                  </td>
+                                                  <td>
+                                                      <input type="number" style="width:30px" />
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/up.gif" align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/down.gif" align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                      </td>
+                                      <td>
+                                        <table cellSpacing=0 cellPadding=0>
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <label for=" " class="normal-font ">Total</label>
+                                                  </td>
+                                                  <td>
+                                                      <input type="number" style="width:30px" />
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/up.gif" align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/down.gif" align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <table>
+                                  <tbody>
+                                    <tr>
+                                      <td colspan="6"><b>Disposition Description</b></td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <div style="height:100px;border:1px solid black;overflow-y:scroll;width:900px" class="normal-font div-text-blue">
+                                     <table border="1">
+                                        <tr>
+                                            <td title="Chiediamo deroga per poter fornire i due pezzi del disegno SWD6738700 in rev 00 e non in Rev 01,vedi e-mail allegata di Francalanci Carlo NA, nsa 12-FEB-2016 10:20 AM">
+                                            <span>Chiediamo deroga per poter fornire i due pezzi del disegno SWD6738700 in rev 00 e non in Rev 01,vedi e-mail allegata di Francalanci Carlo</span><span class="normal-text"><b>NA, nsa </b></span>
+                                            <span class="normal-text">12-FEB-2016 10:20 AM</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>Serial Number : 579443A e 579444A</span><span class="normal-text"><b>NA, nsa   </b></span>
+                                            <span class="normal-text">12-FEB-2016 10:23 AM </span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>Serial Number : 579443A e 579444A</span><span class="normal-text"><b>NA, nsa</b></span>
+                                            <span class="normal-text">12-FEB-2016 10:23 AM </span></td>
+                                        </tr>
+                                    </table>
+                                  </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <table >
+                                  <tbody>
+                                     <tr>
+                                      <td colspan="2" >Disp. Eng. NCE:</td><td width="25%"></td>
+                                      <td colspan="2">Disp. MRP Plan:</td><td width="25%"></td>
+                                      <td colspan="2">Cleared:</td><td width="25%"></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <table width="85%">
+                                  <tbody>
+                                    <tr>
+                                      <td><b>Responsiblity</b></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Comp</td>
+                                      <td>Cause Code</td>
+                                      <td>Location</td>
+                                      <td>Defect Operation</td>
+                                      <td>%</td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <select name="" id="" class="full-width">
+                                          <option value="">DRQ - Deviation Request</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <select name="" id="" class="full-width">
+                                          <option value="">L05 - Misalignment</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <select name="" id="" class="full-width">
+                                          <option value="">52 - 52</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <select name="" id="" class="full-width">
+                                          <option value="">Planning</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <select name="" id="" class="full-width">
+                                          <option value="">aNA</option>
+                                        </select>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <table class="full-width">
+                                  <tbody>
+                                    <tr>
+                                      <td><b>Supervisor:</b></td>
+                                      <td>CASAMENTI, LEONARDO 07-MAR-2016 8:47 AM </td>
+                                      <td><b>Resp Quality:</b> </td>
+                                      <td>CASAMENTI, LEONARDO  07-MAR-2016 8:47 AM  </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                              <td style="display:block">
+                                <table style="width:100%">
+                                    <tbody>
+                                        <tr>
+                                          <td>
+                                            <table class="table_attchment">
+                                                <thead>
+                                              <th>S.N.</th>
+                                              <th>Use</th>
+                                              <th>Rwk</th>
+                                              <th>Rep</th>
+                                              <th>RTV</th>
+                                              <th>Scr</th>
+                                            </thead>
+                                            <tbody>
+                                               <tr>
+                                                  <td>579443A</td>
+                                                  <td><input type="checkbox"></td>
+                                                  <td><input type="checkbox"></td>
+                                                  <td><input type="checkbox" checked></td>
+                                                  <td><input type="checkbox"></td>
+                                                  <td><input type="checkbox"></td>
+                                               </tr>
+                                               <tr>
+                                                 <td>579444A</td>
+                                                  <td><input type="checkbox"></td>
+                                                  <td><input type="checkbox"></td>
+                                                  <td><input type="checkbox" checked></td>
+                                                  <td><input type="checkbox"></td>
+                                                  <td><input type="checkbox"></td>
+                                               </tr>
+                                            </tbody>
+                                            </table>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td><input type="checkbox"> Rework Results</td>
+                                        </tr>
+                                        <tr>
+                                          <td><input type="checkbox">DCI/AN </td>
+                                        </tr>
+                                        <tr>
+                                          <td><input type="checkbox">Disp. Eng. NCE Sign Off</td>
+                                        </tr>
+                                        <tr>
+                                          <td><input type="checkbox">Disp. MRP Plan Sign Off</td>
+                                        </tr>
+                                        <tr>
+                                          <td><input type="checkbox">C/A Completed</td>
+                                        </tr>
+                                         <tr>
+                                          <td><input type="checkbox">Clear Dev</td>
+                                        </tr>
+                                         <tr>
+                                          <td><input type="checkbox">Supervisor Sign Off</td>
+                                        </tr>
+                                         <tr>
+                                          <td><input type="checkbox">Resp Quality Sign Off</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                      </table>
+                      <table style="width:100%;"  cellspacing="10">
+                          <tbody>
+                            <tr>
+                              <td rowspan="2">
+                                <table style="width:100%">
+                                <tbody>
+                                   <tr>
+                                    <td><b>Deviation 2/2</b></td>
+                                    <td>Dev Qty 1</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Product
+                                    <select name="" id="" class="select-fullWidth"><option value="">N.A.</option></select></td>
+                                    <td>Feature <select name="" id="" class="select-fullWidth"><option value="">N.A.</option></select></td>
+                                    <td>Dev Code <select name="" id="" class="select-fullWidth"><option value="">A002 - Assembly Fitup - Wrong Parts, Components or Hardware Assembled (ATEX)</option></select></td>
+                                  </tr>
+                                  <tr><td><b>Deviation Description </b></td></tr>
+                                  <tr><td colspan="3"><div style="height:100px;border:1px solid black;overflow-y:scroll;width:900px" class="normal-font div-text-blue">
+                                     <table border="1">
+                                        <tr>
+                                            <td title="Deviation - 2  ncr, admin  14-JUN-2016 9:52 AM ">
+                                            <span>Deviation - 2</span><span class="normal-text"><b>ncr, admin </b></span>
+                                            <span class="normal-text">14-JUN-2016 9:52 AM</span></td>
+                                        </tr>
+                                    </table>
+                                  </div>
+                                  </td></tr>
+                                </tbody>
+                                </table>
+                                <table cellSpacing="10" cellPadding="0" border=0>
+
+                                  <tbody>
+                                  <tr> <td colspan="6"> <b> Disposition Information</b></td></tr>
+                                    <tr>
+                                      <td>
+                                        <table >
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <label for=" " class="normal-font">Use</label>
+                                                  </td>
+                                                  <td>
+                                                      <input type="number" style="width:30px"/>
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/up.gif" align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/down.gif" align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                      </td>
+                                        <td>
+                                        <table >
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <label for=" " class="normal-font ">Rework</label>
+                                                  </td>
+                                                  <td>
+                                                      <input type="number" style="width:30px" />
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/up.gif" align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/down.gif" align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                      </td>
+                                      <td>
+                                        <table cellSpacing=0 cellPadding=0>
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <label for=" " class="normal-font ">Repair</label>
+                                                  </td>
+                                                  <td>
+                                                      <input type="number" style="width:30px" />
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/up.gif" align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/down.gif" align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                      </td>
+                                      <td>
+                                        <table cellSpacing=0 cellPadding=0>
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <label for=" " class="normal-font ">RTV</label>
+                                                  </td>
+                                                  <td>
+                                                      <input type="number" style="width:30px" />
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/up.gif" align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/down.gif" align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                      </td>
+                                      <td>
+                                        <table cellSpacing=0 cellPadding=0>
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <label for=" " class="normal-font ">Scrap</label>
+                                                  </td>
+                                                  <td>
+                                                      <input type="number" style="width:30px" />
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/up.gif" align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/down.gif" align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                      </td>
+                                      <td>
+                                        <table cellSpacing=0 cellPadding=0>
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <label for=" " class="normal-font ">Total</label>
+                                                  </td>
+                                                  <td>
+                                                      <input type="number" style="width:30px" />
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/up.gif" align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD>
+                                                                      <IMG  src="../images/down.gif" align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <table>
+                                  <tbody>
+                                    <tr>
+                                      <td colspan="6"><b>Disposition Description</b></td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <div style="height:100px;border:1px solid black;overflow-y:scroll;width:900px" class="normal-font div-text-blue">
+                                     <table border="1">
+                                        <tr>
+                                            <td title="Chiediamo deroga per poter fornire i due pezzi del disegno SWD6738700 in rev 00 e non in Rev 01,vedi e-mail allegata di Francalanci Carlo NA, nsa 12-FEB-2016 10:20 AM">
+                                            <span>Disposition - 2 </span><span class="normal-text"><b>ncr, admin</b></span>
+                                            <span class="normal-text">14-JUN-2016 9:52 AM </span></td>
+                                        </tr>
+                                       
+                                    </table>
+                                  </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <table >
+                                  <tbody>
+                                     <tr>
+                                      <td colspan="2">Disp. Eng. NCE:</td><td width="25%"></td>
+                                      <td colspan="2">Disp. MRP Plan:</td><td width="25%"></td>
+                                      <td colspan="2">Cleared:</td><td width="25%"></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <table width="85%">
+                                  <tbody>
+                                    <tr>
+                                      <td><b>Responsiblity</b></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Comp</td>
+                                      <td>Cause Code</td>
+                                      <td>Location</td>
+                                      <td>Defect Operation</td>
+                                      <td>%</td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <select name="" id="" class="full-width">
+                                          <option value="">DRQ - Deviation Request</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <select name="" id="" class="full-width">
+                                          <option value="">L05 - Misalignment</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <select name="" id="" class="full-width">
+                                          <option value="">52 - 52</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <select name="" id="" class="full-width">
+                                          <option value="">Planning</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <select name="" id="" class="full-width">
+                                          <option value="">aNA</option>
+                                        </select>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <table class="full-width">
+                                  <tbody>
+                                    <tr>
+                                      <td><b>Supervisor:</b></td>
+                                      <td></td>
+                                      <td><b>Resp Quality:</b> </td>
+                                      <td>ncr, admin  14-JUN-2016 9:53 AM </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                              <td style="display:block">
+                                <table style="width:100%">
+                                    <tbody>
+                                        <tr>
+                                          <td>
+                                            <table class="table_attchment">
+                                                <thead>
+                                              <th>S.N.</th>
+                                              <th>Use</th>
+                                              <th>Rwk</th>
+                                              <th>Rep</th>
+                                              <th>RTV</th>
+                                              <th>Scr</th>
+                                            </thead>
+                                            <tbody>
+                                               <tr>
+                                                  <td>579443A</td>
+                                                  <td><input type="checkbox"></td>
+                                                  <td><input type="checkbox"></td>
+                                                  <td><input type="checkbox" checked></td>
+                                                  <td><input type="checkbox"></td>
+                                                  <td><input type="checkbox"></td>
+                                               </tr>
+                                               <tr>
+                                                 <td>579444A</td>
+                                                  <td><input type="checkbox"></td>
+                                                  <td><input type="checkbox"></td>
+                                                  <td><input type="checkbox" checked></td>
+                                                  <td><input type="checkbox"></td>
+                                                  <td><input type="checkbox"></td>
+                                               </tr>
+                                            </tbody>
+                                            </table>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td><input type="checkbox"> Rework Results</td>
+                                        </tr>
+                                        <tr>
+                                          <td><input type="checkbox">DCI/AN </td>
+                                        </tr>
+                                        <tr>
+                                          <td><input type="checkbox">Disp. Eng. NCE Sign Off</td>
+                                        </tr>
+                                        <tr>
+                                          <td><input type="checkbox">Disp. MRP Plan Sign Off</td>
+                                        </tr>
+                                        <tr>
+                                          <td><input type="checkbox">C/A Completed</td>
+                                        </tr>
+                                         <tr>
+                                          <td><input type="checkbox">Clear Dev</td>
+                                        </tr>
+                                         <tr>
+                                          <td><input type="checkbox">Supervisor Sign Off</td>
+                                        </tr>
+                                         <tr>
+                                          <td><input type="checkbox">Resp Quality Sign Off</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                      </table>
+
+                </div>
+                <div>
+                  <!--   <table style="width:100%">
+                    <tbody>
+                      <tr>
+                        <td class="label_blue"><input type="checkbox" checked><label for="" >NCE:</label></td>
+                        <td colspan="2"></td>
+                        <td></td>
+                        <td class="label_blue"><input type="checkbox">Notify(CNP):</td>
+                        <td colspan="2"></td>
+                        <td></td>
+                        <td class="label_blue"><input type="checkbox" checked>Approved by Customer/Released per Contract</td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td colspan="4" ng-class="hiddenValues">Caputi, Antonio 28-AUG-2015 2:08 PM</td>
+                        <td colspan="2" ng-class="hiddenValues">Caputi, Antonio 28-AUG-2015 2:08 PM</td>
+                        <td></td>
+                        <td class="label_blue"><input type="checkbox">PM Override</td>
+                         <td rowspan="1" ng-class="hiddenValues">Caputi, Antonio 28-AUG-2015 2:08 PM</td>
+                      </tr>
+                       <tr>
+                        <td class="label_blue"><input type="checkbox">NCD:</td>
+                          <td colspan="2"></td>
+                           <td></td>
+                        <td class="label_blue"><input type="checkbox" checked> Not Notify(CNP):</td>
+                          <td colspan="3"></td>
+                           <td  colspan="3" class="label_blue"><input type="checkbox">Scrap Required by Customer</td>
+                  
+                      </tr>
+                      <tr>
+                        <td colspan="10" style="padding:10px"></td>
+                      </tr>
+                       <tr>
+                        <td class="label_blue"><input type="checkbox">As shipped:</td>
+                        <td colspan="3"></td>
+                        <td class="label_blue"><input type="checkbox"> Mark-up Required:</td>
+                        <td colspan="4"></td>
+                        
+                      </tr>
+                        <tr>
+                        <td></td> 
+                        <td colspan="2" ng-class="hiddenValues">Caputi, Antonio 28-AUG-2015 2:08 PM</td>
+                        <td colspan="2"></td>
+                        <td colspan="2" ng-class="hiddenValues">Caputi, Antonio 28-AUG-2015 2:08 PM</td>
+                        <td></td>
+                      </tr>
+                        <tr>
+                        <td class="label_blue"><input type="checkbox">Not As shipped:</td>
+                         <td colspan="3"></td>
+                        <td class="label_blue"><input type="checkbox">Mark-up Not Required:</td>
+                         <td colspan="3"></td>
+                         <td class="label_blue">
+                              <label for=" ">ECR/ECN</label><input type="text" value="">
+                        </td>
+                        <td class="label_blue">
+                          <label for=" ">Post Sale NC #</label><input type="text ">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table> -->
+                  <table>
+                    <tr>
+                      <td colspan="2"><input type="checkbox" checked><label for="" >NCE:</label></td>
+                      <td colspan="2"><input type="checkbox" checked><label for="" >Notify(CNP):</label></td>
+                      <td colspan="2"><input type="checkbox" checked><label for="" >Approved by Customer/Released per Contract</label></td>
+                    </tr>
+                  </table>
+                    <hr>
+                    <table style="table-layout:fixed;width:100%;text-align:left; ">
+                        <thead>
+                            <th colspan="3">Deviation Information</th>
+                            <th colspan="3">
+                              <table cellSpacing=0 cellPadding=0>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <label class="label_blue">Dev Qty</label>
+                                            </td>
+                                            <td ng-if="showHtmTag">
+                                                <input type="number" style="width:30px"/>
+                                            </td>
+                                            <td ng-if="showOnGO">3</td>
+                                            <td ng-if="showHtmTag">
+                                                <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                    <TBODY>
+                                                        <TR>
+                                                            <TD>
+                                                                <IMG  src="../images/up.gif" align=bottom>
+                                                            </TD>
+                                                        </TR>
+                                                        <TR>
+                                                            <TD>
+                                                                <IMG  src="../images/down.gif" align=top>
+                                                            </TD>
+                                                        </TR>
+                                                    </TBODY>
+                                                </TABLE>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </th>
+                            <th colspan="6"><span style="float:left">Deviation Description</span><span style="float:right ">Delete</span></th>
+                        </thead>
+                      <tbody>
+                        <tr>
+                          <td colspan="1"> <label for=" " class="mandatory">Product</label></td>
+                             <td colspan="4" ng-if="showHtmlTags">
+                                <select class="full-width">
+                                    <option value=" "></option>
+                                </select>
+                            </td>
+                            <td colspan="4" ng-class="hiddenValues" class="full-width">CC - ACCESSORIES</td>
+                            <td colspan="1" ng-class="hiddenValues"><sup><i style="color:red" class="fa fa-asterisk"></i></sup></td>
+                            <td rowspan="6" colspan="6">
+                                <div style="width:600px;height:150px;border:1px solid black;overflow-y:scroll" class="normal-font div-text-blue">
+                                    <table border="1" ng-if="showOnGO">
+                                        <tr>
+                                            <td title="Numeri matricola selezionati: NP3805866 Caputi, Antonio 26-AUG-2015 2:43 PM">
+                                            <span>Numeri matricola selezionati: NP3805866 </span><span class="normal-text"><b> Caputi, Antonio</b></span>
+                                            <span class="normal-text">26-AUG-2015 2:43 PM </span></td>
+                                        </tr>
+                                        <tr>
+                                            <td title="Il controllo PT eseguito sul 100% delle zone lavorate dell'inner sgrossato a +0.5mm, in accordo alla ITN02192 acc. ASME VIII div. 1 app.8, ha dato esito negativo a causa della presenza di indicazioni di fusione. Allego foto. Caputi, Antonio 26-AUG-2015 2:51 PM"><span>Il controllo PT eseguito sul 100% delle zone lavorate dell'inner sgrossato a +0.5mm, in accordo alla ITN02192 acc. ASME VIII div. 1 app.8, ha dato esito negativo a causa della presenza di indicazioni di fusione. Allego foto.</span><span class="normal-text"><b> Caputi, Antonio </b></span>
+                                            <span class="normal-text">26-AUG-2015 2:51 PM  </span></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                        <td> <label class="mandatory ">Feature</label></td>
+                           <td colspan="4" ng-if="showHtmlTags">
+                               <table class="full-width">
+                                   <tr>
+                                         <td>
+                                          <select class="full-width">
+                                                <option value=" "></option>
+                                            </select>
+                                        </td>
+                                   </tr>
+                               </table>
+                           </td>
+                            <td colspan="4" ng-class="hiddenValues" class="full-width">N.A.</td>
+                             <td colspan="1" ng-class="hiddenValues"><sup><i style="color:red" class="fa fa-asterisk"></i></sup></td>
+                        </tr>
+                        <tr>
+                            <td> <label  class="mandatory">Dev Code</label></td>
+                            <td colspan="4" ng-if="showHtmlTags">
+                                <select class="full-width">
+                                    <option value=" "></option>
+                                </select>
+                            </td>
+                            <td colspan="4" ng-class="hiddenValues" class="full-width text-oversize">Z004 - Only for Supplier's Use - Supplier Suggestion for Improvement - Change of Design</td>
+                              <td colspan="1" ng-class="hiddenValues"> <sup><i style="color:red" class="fa fa-asterisk"></i></sup></td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                <label for=" " class="mandatory">Sub-Assembly/Component</label>
+                                <input type="checkbox">
+                            </td>
+                        </tr>
+                        <tr>
+                        <td colspan="1"><label class="mandatory">Part#</label></td>
+                            <td colspan="4" ng-if="showHtmlTags">
+                                <input type="text" disabled style="width:75%">
+                                   <label for=" " class="mandatory">Rev</label>
+                                <input type="number" disabled  class="input-num">
+                            </td>
+
+                            <td colspan="1"></td>
+                        </tr>
+                         <tr>
+                         <td><label for=" " class="mandatory">Part ID</label></td>
+                           <td colspan="4" ng-if="showHtmlTags">
+                                <input type="text " disabled class="full-width">
+                            </td>
+                              <td colspan="1"></td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="6"><a href="/#/qcr" ng-click="createWindow('#/qcrSerial', 900, 900);">Serial#</a></td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                <button disabled>Done</button>
+                                <button disabled>New</button>
+                                <button disabled>Cancel</button>
+                            </td>
+                            <td colspan="3"></td>
+                            <td colspan="3"><button disabled>Clear Dev </button>
+                            <button disabled> Rwk Results</button>
+                            <button disabled>Results Entered</button></td>
+                       
+                        </tr>
+                    </tbody> 
+
+                    </table>
+                    <hr>
+
+                    <table class="full-width" style="table-layout:fixed">
+                      <thead>
+                        <tr>
+                          <th colspan="6"><span style="float:left">Disposition Information</span></th>
+                          <th colspan="6"><span style="float:left">Disposition Description</span></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                        <td colspan="4">
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td colspan="4">
+                            <table>
+                              <tbody>
+                                <tr>
+                                   <td >
+                                    <label for=" " class="normal-font label_disabled"><a href=" ">Use</a>
+                                    </label>
+                                  </td>
+                                  <td ng-class="hiddenValues" style="padding:12px">1</td>
+                                  <td>
+                                      <label for=" " class="normal-font label_disabled"><a href=" ">Rework</a></label>
+                                  </td>
+                                  <td  ng-class="hiddenValues" style="padding:12px">1</td>
+                                  <td>
+                                      <label for=" " class="normal-font label_disabled"><a href=" ">Repair</a></label>
+                                  </td>
+                                  <td ng-class="hiddenValues" style="padding:12px">1</td>
+                                  <td>
+                                      <label for=" " class="normal-font label_disabled"><a href=" ">Rtv</a></label>
+                                  </td>
+                                  <td ng-class="hiddenValues" style="padding:12px">1</td>
+                                  <td>
+                                      <label for=" " class="normal-font label_disabled"><a href=" ">Scrap</a></label>
+                                  </td>
+                                  <td ng-class="hiddenValues" style="padding:12px">1</td>
+                                  <td>
+                                      <label for=" " class="normal-font label_disabled"><a href=" ">Total</a></label>
+                                  </td>
+                                  <td ng-class="hiddenValues" style="padding:12px">1</td>
+                                </tr>
+                               <tr ng-if="showHtmlTags">
+                                  <td>
+                                      <table>
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <input type="number" style="width:30px" disabled>
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD align=center>
+                                                                      <IMG  src="../images/up.gif " align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD style="PADDING-TOP: 1px " vAlign=top align=center>
+                                                                      <IMG  src="../images/down.gif " align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                  </td>
+                                  <td>
+                                      <table>
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <input type="number" style="width:30px" disabled>
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD align=center>
+                                                                      <IMG  src="../images/up.gif " align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD style="PADDING-TOP: 1px" vAlign=top align=center>
+                                                                      <IMG  src="../images/down.gif " align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                  </td>
+                                  <td>
+                                      <table>
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <input type="number" style="width:30px" disabled>
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD align=center>
+                                                                      <IMG  src="../images/up.gif " align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD style="PADDING-TOP: 1px " vAlign=top align=center>
+                                                                      <IMG  src="../images/down.gif " align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                  </td>
+                                  <td>
+                                      <table>
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <input type="number" style="width:30px " disabled>
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD  vAlign=bottom align=center>
+                                                                      <IMG  src="../images/up.gif " align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD  vAlign=top align=center>
+                                                                      <IMG  src="../images/down.gif " align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                  </td>
+                                  <td>
+                                      <table>
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <input type="number" style="width:30px" disabled>
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD style="PADDING-BOTTOM: 1px" vAlign=bottom align=center>
+                                                                      <IMG  src="../images/up.gif " align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD style="PADDING-TOP: 1px" vAlign=top align=center>
+                                                                      <IMG src="../images/down.gif " align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                  </td>
+                                  <td>
+                                      <table>
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      <input type="number" style="width:30px" disabled>
+                                                  </td>
+                                                  <td>
+                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                          <TBODY>
+                                                              <TR>
+                                                                  <TD vAlign=bottom align=center>
+                                                                      <IMG  src="../images/up.gif " align=bottom>
+                                                                  </TD>
+                                                              </TR>
+                                                              <TR>
+                                                                  <TD vAlign=top align=center>
+                                                                      <IMG src="../images/down.gif " align=top>
+                                                                  </TD>
+                                                              </TR>
+                                                          </TBODY>
+                                                      </TABLE>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                  </td>
+                            </tr>
+                             <tr>
+                                <td colspan="4" class="label_blue">
+                                    <label for=" ">Rework Results</label>
+                                    <input type="checkbox">
+                                </td>
+                                <td colspan="4" class="label_blue">
+                                    <span ><label for=" ">DCI/AN</label>
+                                  <input type="checkbox"></span>
+                                </td>
+                            </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                        <td colspan="2" rowspan="2">
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <td><button class="full-width" disabled>New Dev</button></td> 
+                                </tr>
+                                <tr><td><button class="full-width" disabled>Use Previous</button></td></tr>
+                                <tr> <td><button class="full-width" disabled>Std Dev</button> </td></tr>
+                              </tbody>
+                            </table> 
+                          </td>
+                          <td rowspan="3 " colspan="6">
+                                    <div style="height:100px;border:1px solid black;overflow-y:scroll;width: 600px; " class="normal-font div-text-blue">
+                                        <table border="1" ng-if="showOnGO">
+                                            <tbody>
+                                                <tr title="Si propone di riparare mediante scarnitura, controllo PT, saldatura, controllo PT e lavorare l'inner a disegno.Caputi, Antonio 26-AUG-2015 2:51 PM">
+                                                    <td>Si propone di riparare mediante scarnitura, controllo PT, saldatura, controllo PT e lavorare l'inner a disegno.<span class="normal-text"><b>Caputi, Antonio</b> <span>26-AUG-2015 2:51 PM </span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Non è possibile eseguire alcuna riparazione sull'inner case in quanto non è approvato il WB <span class="normal-text"><b>De Chirico, Roberto</b><span> 27-AUG-2015 11:26 AM</span> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Si richiede di procedere secondo quanto suggerito.<span class="normal-text"><b> Carbonara, Paolo</b><span> 28-AUG-2015 2:06 PM </span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>WPS in accordo al WB NOF0536909 <span class="normal-text"><b>De Chirico, Roberto</b><span> 10-SEP-2015 10:33 AM </span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Allego foto della scarnitura. Si chiede a Eng di definire se la riparazione è di tipo minor o major <span class="normal-text"><b> Caputi, Antonio</b> 11-SEP-2015 1:34 PM </span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Il difetto 1 è di tipo major. Gli altri difetti sono minor. Procedere in accordo al QCP di riferimento. <span class="normal-text"><b> Carbonara, Paolo</b><span> 02-NOV-2015 3:38 PM</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>dopo aver eseguito ulteriore check con comparatore, si nota che la scarnitura diventerà circa 23-24mm dopo l¿asportazione di 1mm (sovrametallo attualmente presenta) dal piano unione. Si chiede a Eng di rivalutare il tutto e ridefinire se il difetto è minor o major. <span class="normal-text"><b>Caputi, Antonio</b><span> 10-MAR-2016 1:41 PM </span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                        </tr>
+                       
+                      </tbody>
+                    </table>
+                      <table class="full-width" style="table-layout:fixed">
+                     <tbody>
+                      <tr>
+                          <td colspan="2" class="label_blue"> <input type="checkbox" disabled><label for=" ">Disp. Eng. NCE:</label>
+                              </td>
+                              <td colspan="3" ng-class="hiddenValues">Carbonara, Paolo 28-AUG-2015 2:08 PM</td>
+                          <td colspan="4" class="label_blue"><input type="checkbox" disabled><label for=" " >Disp. MRP Plan:</label></td>
+                          <td class="label_blue">Cleared:</td>
+                          <td colspan="4"  ng-class="hiddenValues">Carbonara, Paolo 28-AUG-2015 2:08 PM</td>
+                        </tr>
+                     </tbody>
+                        </table>
+                    <hr>
+                    <table style="width:100%;text-align:left ">
+                        <thead>
+                            <th colspan="5">Responsiblity</th>
+                            <th colspan="3" class="label_blue">
+                                <input type="checkbox"/>
+                                <label>Supervisor:</label>
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="label_blue">
+                                    <label>Comp</label>
+                                </td>
+                                <td class="label_blue">
+                                    <label>Cause Code</label>
+                                </td>
+                                <td class="label_blue">
+                                    <label>Location</label>
+                                </td>
+                                <td class="label_blue">
+                                    <label>Defect Operation</label>
+                                </td>
+                                   
+                                <td class="label_blue">%</td>
+                                <td class="label_blue">
+                                    <input type="checkbox"/>
+                                    <label>Resp Quality:</label>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td ng-if="showHtmlTag">
+                                    <select name=" " id=" " style="width:150px">
+                                        <option value=" "></option>
+                                    </select>
+                                </td>
+                                <td ng-class="hiddenValues" class="text-oversize">DRQ - Deviation Request</td>
+                                <td ng-if="showHtmlTag">
+                                    <select name=" " id=" " style="width:150px">
+                                        <option value=" "></option>
+                                    </select>
+                                </td>
+                                <td ng-class="hiddenValues" >L05 - Misalignment</td>
+                                <td ng-if="showHtmlTag">
+                                    <select name=" " id=" " style="width:150px">
+                                        <option value=" "></option>
+                                    </select>
+                                </td>
+                                <td ng-class="hiddenValues">52 - 52</td>
+                                <td ng-if="showHtmlTag">
+                                    <select name=" " id=" " style="width:150px">
+                                        <option value=" "></option>
+                                    </select>
+                                </td>
+                                <td ng-class="hiddenValues">aNA</td>
+                                
+                                <td ng-if="showHtmlTag">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input type="number " style="width:30px" />
+                                                </td>
+                                                <td>
+                                                    <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                        <TBODY>
+                                                            <TR>
+                                                                <TD vAlign=bottom align=center>
+                                                                    <IMG src="../images/up.gif" align=bottom>
+                                                                </TD>
+                                                            </TR>
+                                                            <TR>
+                                                                <TD vAlign=top align=center>
+                                                                    <IMG src="../images/down.gif" align=top>
+                                                                </TD>
+                                                            </TR>
+                                                        </TBODY>
+                                                    </TABLE>
+                                                </td>
+                                                <td>
+                                                    <button disabled>Add</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td ng-class="hiddenValues">100</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </px-tab-pages>
+        </section>
+    </template>
+</dom-module>
+<script type="text/javascript ">
+Polymer({
+    is: 'qcr-tab',
+    properties: {
+        selected: {
+            type: String,
+            reflect: true
+        }
+    },
+
+    ready: function() {
+        //debugger;
+        //console.log('ready. ' + this.selected);
+        var tabs = document.querySelector('#tab-set');
+        this.selected =5;
+
+    }
+});
+</script>
