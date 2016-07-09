@@ -54,6 +54,8 @@ require.config({
         // angular ui router
         'angular-ui-router': '../bower_components/angular-ui-router/release/angular-ui-router.min',
         'angular-ui-cookies': '../bower_components/angular-cookies/angular-cookies.min',
+        'angular-translate': '../bower_components/angular-translate/angular-translate.min',
+        'angular-translate-loader-static-files': '../bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min',
 
 
 
@@ -76,10 +78,6 @@ require.config({
 
         lodash: '../bower_components/lodash/dist/lodash.min',
         jquery: '../bower_components/jquery/dist/jquery.min',
-        highcharts: '../bower_components/highcharts/highcharts.src',
-        exporting: '../bower_components/highcharts/modules/exporting.src',
-        //fileSave:'../bower_components/fileSaver/FileSaver'
-        //header: '../meetselva-fixed-table-rows-cols-b512f9a/js/fixed_table_rc'
 
 
     },
@@ -111,6 +109,12 @@ require.config({
         'app': {
             deps: ['angular']
         },
+        'angular-translate': {
+            deps: ['angular']
+        },
+        'angular-translate-loader-static-files': {
+            deps: ['angular', 'angular-translate']
+        },
         //Add depends to bootstrapper to load the angular app
         bootstrapper: {
             deps: [
@@ -118,7 +122,8 @@ require.config({
                 'controllers-module',
                 'services-module',
                 'filters-module',
-                'routes'
+                'routes',
+                'resources'
             ]
         }
 

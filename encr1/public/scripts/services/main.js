@@ -14,7 +14,8 @@ define(['./sample-service',
     './costInfoService',
     './qcrSearchService',
     './shareDataService',
-    './loginService'
+    './loginService',
+    './qcrLovService'
 ], function() {
 
 });

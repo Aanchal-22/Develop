@@ -18,10 +18,10 @@ define(['angular', 'jquery', 'services-module'], function(angular, jquery, servi
 
             startSpinner: function(paramId) {
 
-                paramId.parents(".content-pane-body").addClass("loading");
-                $('#body_data').hide();
-                paramId.append(_loadingImg());
-
+               // paramId.parents(".content-pane-body").addClass("loading");
+                //$('#body_data').hide();
+               // paramId.append(_loadingImg());
+                    $('#body_data').addClass('loading');
 
             },
             stopSpinner: function(paramId) {

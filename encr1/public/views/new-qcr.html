@@ -1,7 +1,5 @@
 <div style="display: inline-block;width: 100%" ng-include="'views/links.html'"></div>
-
 <px-card style="padding-bottom:0px;">
-
     <style>
     .layout>.layout__item {
         font-size: 0.89em;
@@ -102,7 +100,7 @@
     #tabs ul li {
         float: left;
         margin: 3px 3px 0px 3px;
-        padding: 7px 30px;
+        padding: 8px 30px;
         //background-color: #CCC;
         border: 1px solid #3d35ad;
         margin-bottom: -5px;
@@ -149,7 +147,12 @@
         font-size: 0.89em;
         // font-weight: bold;
     }
-   
+    
+    .layout>.layout__item {
+        font-size: 0.89em;
+        // font-weight: bold;
+    }
+    
     .input-number {
         width: 70px;
     }
@@ -195,9 +198,9 @@
         background-color: #cccccc;
     }
     
-   /*  .div-text-blue {
-       color: blue;
-   } */
+    .div-text-blue {
+        color: blue;
+    }
     
     .td_text td {
         text-align: right;
@@ -222,7 +225,9 @@
         font-weight: bold;
     }
     
-   
+    .full-width {
+        width: 100%;
+    }
     
     .label_blue {
         color: #2c2cc1;
@@ -264,10 +269,9 @@
             </div>
         </div>
     </div>
-    <div class="layout" id="module_loadData">
+    <div class="layout">
         <div class="layout__item">
-        
-            <table style="table-layout:fixed;margin-bottom:0px;" id="body_data">
+            <table style="table-layout:fixed;margin-bottom:0px;">
                 <tbody>
                     <tr>
                         <td>
@@ -275,8 +279,8 @@
                                 <tbody>
                                     <tr>
                                         <td class="mandatory">{{'NCRNo'| translate}}</td>
-                                        <td width="150px">
-                                            <input type="text" ng-model="ncr"  style="width:70px;">
+                                        <td>
+                                            <input type="text" ng-model="ncr">
                                             <button ng-click="goClicked(ncr)">Go</button>
                                         </td>
                                     </tr>
@@ -288,7 +292,6 @@
                                             </select>
                                             <sup><i style="color:red" class="fa fa-asterisk"></i></sup>
                                         </td>
-                                        <td ng-if="showOnGO" ng-bind="data.ncrSearch[0].areaName"></td>
                                     </tr>
                                     <tr>
                                         <td class="mandatory">{{'WIPJob' | translate}}</td>
@@ -318,15 +321,15 @@
                                 </tbody>
                             </table>
                         </td>
-                        <td >
-                            <table >
+                        <td>
+                            <table>
                                 <tbody>
                                     <tr>
                                         <td class="mandatory">{{'PartNo' | translate}}</td>
-                                        <td ng-if="showHtmTag" >
+                                        <td ng-if="showHtmTag">
                                             <input type="text" value="SSM938377500">
                                         </td>
-                                        <td ng-class="hiddenValues" width="130px"><span ng-bind="data.ncrSearch[0].partNumber"></span>
+                                        <td ng-class="hiddenValues"><span ng-bind="data.ncrSearch[0].partNumber"></span>
                                         </td>
                                         <td><span class="mandatory"> Rev.</span></td>
                                         <td ng-if="showHtmTag">
@@ -375,14 +378,14 @@
                             </table>
                         </td>
                         <td>
-                            <table >
+                            <table>
                                 <tbody>
                                     <td colspan="1"></td>
                                 </tbody>
                             </table>
                         </td>
                         <td>
-                            <table width="100%">
+                            <table>
                                 <tbody>
                                     <tr>
                                         <td style="height: 20px;"></td>
@@ -510,7 +513,7 @@
                             </table>
                         </td>
                         <td>
-                            <table width="100%">
+                            <table>
                                 <tr>
                                     <td style="height: 20px;"></td>
                                     <td style="height: 20px;width:100px;"></td>
@@ -564,8 +567,8 @@
                             <table width="100%">
                                 <tbody>
                                     <tr>
-                                        <td style="height: 23px;"></td>
-                                        <td style="height: 23px;" ng-if="showOnGO" colspan="2">
+                                        <td style="height: 20px;"></td>
+                                        <td style="height: 20px;" ng-if="showOnGO" colspan="2">
                                             <span style="color:red;font-weight:bold;" ng-bind="data.ncrSearch[0].statusCode"></span>
                                             <span style="color:red;font-weight:bold;" ng-if="data.ncrSearch[0].voidCode">
                                                    {{data.ncrSearch[0].voidCode}}
@@ -595,21 +598,23 @@
                                             {{data.ncrSearch[0].closedDate}}
                                         </td>
                                     </tr>
-                                    
                                     <tr>
-                                        <td style="text-align:right">
-                                            <input type="checkbox" disabled></td>
-                                        <td class="label_blue">{{'Sj'|translate}}:</td>
+                                        <td class="mandatory"></td>
                                     </tr>
                                     <tr>
-                                        <td style="text-align:right">
-                                            <input type="checkbox" disabled></td>
-                                        <td class="label_blue">{{'NACE'|translate}}:</td>
+                                        <td class="mandatory">
+                                            <input type="checkbox" disabled>{{'Sj'|translate}}:</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
-                                        <td style="text-align:right">
-                                            <input type="checkbox" disabled></td>
-                                        <td class="label_blue">{{'Sanatoria'|translate}}:</td>
+                                        <td class="mandatory">
+                                            <input type="checkbox" disabled>{{'NACE'|translate}}:</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="mandatory">
+                                            <input type="checkbox" disabled>{{'Sanatoria'|translate}}:</td>
+                                        <td></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -619,7 +624,6 @@
             </table>
         </div>
     </div>
-   
 </px-card>
 <px-card>
     <div class="layout">
@@ -632,13 +636,7 @@
                     <li>Attachments</li>
                     <li>Vendor Bill Back</li>
                     <li>View All Deviations</li>
-                    <li class="selected-tab tabs_bold">Deviations
-                        <select ng-change="currDeviation(selected)" ng-model="selected">
-                            <option value="">Select Deviation</option>
-                            <option value="{{$index}}" ng-selected="{{$index==selectedItem}}" ng-repeat="opt in data.ncrSearchDeviation track by $index">Deviations {{$index+1}}/{{data.ncrSearchDeviation.length}}
-                            </option>
-                        </select>
-                    </li>
+                    <li class="selected-tab tabs_bold">Deviations</li>
                     <li style="padding:6px">
                         <button>Save</button>
                     </li>
@@ -843,7 +841,7 @@
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                <div class="notes-format div-text-blue ">
+                                                <div style="height:480px;width:290;border:1px solid black; " class="normal-font div-text-blue ">
                                                      <table border="1 ">
                                                          <tbody>
                                                              <tr>
@@ -893,13 +891,13 @@
                       </table>
                       <table>
                         <tbody>
-                          <td class="label_blue">Mark up</td>
+                          <td>Mark up</td>
                           <td><input type="text " style="width:450px; " ng-disabled="showOnGO "></td>
                           <td><button ng-disabled="showOnGO ">Browse</button></td>
                           <td><button ng-disabled="showOnGO ">Attach File</button></td>
                         </tbody>
                       </table>
-                      <table class="table_attchment">
+                      <table class="table_attchment ">
                         <thead style="background-color:#8b8d8f;color:white; ">
                               <th></th>
                               <th>Filename</th>
@@ -946,40 +944,40 @@
                                 <div>
                             <table>
                                 <thead>
-                                    <th colspan="1"></th>
-                                    <th colspan="3"></th>
-                                    <th colspan="5"></th>
-                                    <th colspan="2"></th>
-                                    <th colspan="4"></th>
+                                    <th colspan="1 "></th>
+                                    <th colspan="3 "></th>
+                                    <th colspan="5 "></th>
+                                    <th colspan="2 "></th>
+                                    <th colspan="4 "></th>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="label_blue">File</td>
+                                        <td>File</td>
                                         <td>
-                                            <input type="text" disabled style="width:300px " />
-                                            <button class="label_disabled">Browse</button>
+                                            <input type="text " disabled style="width:300px " />
+                                            <button class="label_disabled ">Browse</button>
                                         </td>
                                         <td>
                                             <label for=" " class="label_disabled ">Add to Email</label>
-                                            <input type="checkbox" disabled>
+                                            <input type="checkbox " disabled>
                                         </td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label for=" " class="label_blue">Description</label>
+                                            <label for=" ">Description</label>
                                         </td>
                                         <td>
-                                            <input type="text" disabled style="width:350px">
+                                            <input type="text " disabled style="width:350px ">
                                         </td>
                                         <td>
                                             <button disabled>Update</button>
                                             <button disabled>Cancel</button>
                                             <button disabled>Attach File</button>
                                         </td>
-                                        <td class="label_blue"> Superseded By </td>
+                                        <td> Superseded By </td>
                                         <td>
-                                            <input type="text" style="width:200px ">
+                                            <input type="text " style="width:200px ">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -1670,16 +1668,16 @@
                 </div>
                 <div class="div-invisible">
                     <!-- Tab5 content view all deviations -->
-                    <div class="alternate-color">
-                        <table class="full-width" border="1" ng-repeat="details in data.ncrSearchDeviation">
+                    <div>
+                        <table style="width:100%; background-color:#d1d0d8" border="1" cellspacing="10">
                             <tbody>
                                 <tr>
                                     <td rowspan="2">
-                                        <table class="mar-0">
+                                        <table style="width:100%">
                                             <tbody>
                                                 <tr>
-                                                    <td><b>Deviation{{$index+1}}/{{viewAllDev.length}}</b></td>
-                                                    <td><span>Dev Qty</span><span ng-if="showOnGO" ng-bind="viewAllDev[$index].devQty"></span></td>
+                                                    <td><b>Deviation 1/2</b></td>
+                                                    <td><span>Dev Qty</span><span ng-if="showOnGO" ng-bind="data.ncrSearchDeviation[0].devQty"></span></td>
                                                 </tr>
                                                 <tr>
                                                     <td>
@@ -1694,7 +1692,7 @@
                                                                             <option value="">CC Accessories</option>
                                                                         </select>
                                                                     </td>
-                                                                    <td ng-if="showOnGO" ng-bind="viewAllDev[$index].product">
+                                                                    <td ng-if="showOnGO" ng-bind="data.ncrSearchDeviation[0].product">
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -1712,7 +1710,7 @@
                                                                             <option value="">NA</option>
                                                                         </select>
                                                                     </td>
-                                                                    <td ng-if="showOnGO" ng-bind="viewAllDev[$index].feature">
+                                                                    <td ng-if="showOnGO" ng-bind="data.ncrSearchDeviation[0].feature">
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -1730,7 +1728,7 @@
                                                                             <option value="">Z004 - Only for Supplier's Use - Supplier Suggestion for Improvement - Change of Design</option>
                                                                         </select>
                                                                     </td>
-                                                                    <td ng-if="showOnGO" ng-bind="viewAllDev[$index].devCode">
+                                                                    <td ng-if="showOnGO" ng-bind="data.ncrSearchDeviation[0].devCode">
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -1742,10 +1740,10 @@
                                                 </tr>
                                                 <tr>
                                                     <td colspan="6">
-                                                        <div  class="notes-format">
+                                                        <div style="width:900px;height:100px;border:1px solid black;overflow-y:scroll" class="normal-font div-text-blue">
                                                             <table border="1" ng-if="showOnGO">
                                                                 <tbody>
-                                                                    <tr ng-repeat="rows in viewAllDev[$index].ncrsearchDeviationNotes">
+                                                                    <tr ng-repeat="rows in DevNotes">
                                                                         <td>
                                                                             <span>{{rows.ncrDevtNote}}</span>
                                                                             <span class="normal-text"><b>{{rows.devtNoteSignedBy}}</b></span>
@@ -1759,52 +1757,212 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <table cellpadding="5">
-                                            <thead>
-                                                 <th colspan="6" class="th-text">
-                                                       <b>Disposition Information</b>
-                                                    </th>
-                                            </thead>
+                                        <table cellSpacing="10" cellPadding="0" border=0>
                                             <tbody>
-
                                                 <tr>
-                                                    <td><label for=" " class="label_blue">Use</label>
-                                                     </td>
-                                               
-                                                    <td><label for=" " class="label_blue">Rework</label>
-                                                     </td>
-                                              
-                                                    <td><label for=" " class="label_blue">Repair</label>
-                                                     </td>
-                                              
-                                                    <td><label for=" " class="label_blue">RTV</label>
-                                                     </td>
-                                               
-                                                    <td><label for=" " class="label_blue">Scrap</label>
-                                                     </td>
-                                               
-                                                    <td><label for=" " class="label_blue">Total</label>
-                                                     </td>
+                                                    <td colspan="6"><b>Disposition Information</b></td>
                                                 </tr>
-                                                 <tr>
-                                                    <td ng-class="hiddenValues"  ng-bind="devData.useQty"></td>
-                                                     <td ng-class="hiddenValues"  ng-bind="devData.reworkQty"></td>
-                                                     <td ng-class="hiddenValues" ng-bind="devData.repairQty"></td>
-                                                     <td ng-class="hiddenValues"  ng-bind="devData.rtvQty"></td>
-                                                     <td ng-class="hiddenValues" ng-bind="devData.scrapQty"></td>
-                                                     <td ng-class="hiddenValues" ng-bind="devData.totalQty"></td>
+                                                <tr>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label for=" " class="label_blue">Use</label>
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <input type="number" style="width:30px" />
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0 class="slider-option">
+                                                                            <TBODY>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/up.gif" align=bottom>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/down.gif" align=top>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                            </TBODY>
+                                                                        </TABLE>
+                                                                    </td>
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].useQty"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label for=" " class="label_blue">Rework</label>
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <input type="number" style="width:30px" />
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                                            <TBODY>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/up.gif" align=bottom>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/down.gif" align=top>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                            </TBODY>
+                                                                        </TABLE>
+                                                                    </td>
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].reworkQty"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table cellSpacing=0 cellPadding=0>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label for=" " class="label_blue">Repair</label>
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <input type="number" style="width:30px" />
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                                            <TBODY>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/up.gif" align=bottom>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/down.gif" align=top>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                            </TBODY>
+                                                                        </TABLE>
+                                                                    </td>
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].repairQty"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table cellSpacing=0 cellPadding=0>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label for=" " class="label_blue">RTV</label>
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <input type="number" style="width:30px" />
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                                            <TBODY>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/up.gif" align=bottom>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/down.gif" align=top>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                            </TBODY>
+                                                                        </TABLE>
+                                                                    </td>
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].rtvQty"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table cellSpacing=0 cellPadding=0>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label for=" " class="label_blue">Scrap</label>
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <input type="number" style="width:30px" />
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                                            <TBODY>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/up.gif" align=bottom>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/down.gif" align=top>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                            </TBODY>
+                                                                        </TABLE>
+                                                                    </td>
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].scrapQty"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table cellSpacing=0 cellPadding=0>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label for=" " class="label_blue">Total</label>
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <input type="number" style="width:30px" />
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                                            <TBODY>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/up.gif" align=bottom>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/down.gif" align=top>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                            </TBODY>
+                                                                        </TABLE>
+                                                                    </td>
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].totalQty"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                         <table>
-
-                                               <tbody>
+                                            <tbody>
                                                 <tr>
-                                                    <td colspan="6">
-                                                        <div class="notes-format">
+                                                    <td colspan="6"><b>Disposition Description</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div style="height:100px;border:1px solid black;overflow-y:scroll;width:900px" class="normal-font div-text-blue">
                                                             <table border="1" ng-if="showOnGO">
                                                                 <tbody>
-                                                                    <tr ng-repeat="rows in viewAllDev[$index].ncrSearchDispNotes">
+                                                                    <tr ng-repeat="rows in DespNotes">
                                                                         <td>
                                                                             <span>{{rows.ncrDispoNote}}</span>
                                                                             <span class="normal-text"><b>{{rows.dispoNoteSignedBy}}</b></span>
@@ -1818,21 +1976,20 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <table class="table-design">
+                                        <table>
                                             <tbody>
                                                 <tr>
-                                                    <td  colspan="2"><span class="label_blue">Disp. Eng. NCE:</span>
-                                                   <span ng-if="viewAllDev[$index].dispEngSignedLastName" ng-bind="viewAllDev[$index].dispEngSignedLastName+','+viewAllDev[$index].dispEngSignedFirstName+','+viewAllDev[$index].dispEngSignedDate"></span>  
+                                                    <td class="label_blue" colspan="2">Disp. Eng. NCE:</td>
+                                                    <td width="25%" colspan="2" ng-if="data.ncrSearchDeviation[0].dispEngSignedLastName" ng-bind="data.ncrSearchDeviation[0].dispEngSignedLastName+','+data.ncrSearchDeviation[0].dispEngSignedFirstName+','+data.ncrSearchDeviation[0].dispEngSignedDate">
                                                     </td>
-                                                    <td colspan="2">
-                                                    <span class="label_blue">Disp. MRP Plan:</span>
-                                                    <span ng-if="viewAllDev[$index].dispMrpPlanSignedLastName" ng-bind="viewAllDev[$index].dispMrpPlanSignedLastName+','+viewAllDev[$index].dispMrpPlanSignedFirstName+','+viewAllDev[$index].dispMrpPlanDate"></span></td>
-                                                    <td colspan="2">
-                                                    <span class="label_blue">Cleared:</span><span ng-if="viewAllDev[$index].clearedLastName" ng-bind="viewAllDev[$index].clearedLastName+' '+viewAllDev[$index].clearedFirstName+','+viewAllDev[$index].clearedSignedDate"></span></td>
+                                                    <td colspan="2" class="label_blue">Disp. MRP Plan:</td>
+                                                    <td width="25%" colspan="2" ng-if="data.ncrSearchDeviation[0].dispMrpPlanSignedLastName" ng-bind="data.ncrSearchDeviation[0].dispMrpPlanSignedLastName+','+data.ncrSearchDeviation[0].dispMrpPlanSignedFirstName+','+data.ncrSearchDeviation[0].dispMrpPlanDate"></td>
+                                                    <td colspan="2" class="label_blue">Cleared:</td>
+                                                    <td colspan="2" width="25%" ng-if="data.ncrSearchDeviation[0].clearedLastName" ng-bind="data.ncrSearchDeviation[0].clearedLastName+' '+data.ncrSearchDeviation[0].clearedFirstName+','+data.ncrSearchDeviation[0].clearedSignedDate"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <table class="table-design">
+                                        <table width="85%">
                                             <tbody>
                                                 <tr>
                                                     <td><b>Responsiblity</b></td>
@@ -1850,47 +2007,47 @@
                                                             <option value="">DRQ - Deviation Request</option>
                                                         </select>
                                                     </td>
-                                                    <td ng-class="showOnGO" class="text-oversize" ng-bind="viewAllDev[$index].component"></td>
+                                                    <td ng-class="showOnGO" class="text-oversize" ng-bind="data.ncrSearchDeviation[0].component"></td>
                                                     <td ng-if="showHtmlTag">
                                                         <select name="" id="" class="full-width">
                                                             <option value="">L05 - Misalignment</option>
                                                         </select>
                                                     </td>
-                                                    <td ng-class="showOnGO" ng-bind="viewAllDev[$index].causeCode"></td>
+                                                    <td ng-class="showOnGO" ng-bind="data.ncrSearchDeviation[0].causeCode"></td>
                                                     <td ng-if="showHtmlTag">
                                                         <select name="" id="" class="full-width">
                                                             <option value="">52 - 52</option>
                                                         </select>
                                                     </td>
-                                                    <td ng-class="showOnGO" ng-bind="viewAllDev[$index].locationCode"></td>
+                                                    <td ng-class="showOnGO" ng-bind="data.ncrSearchDeviation[0].locationCode"></td>
                                                     <td ng-if="showHtmlTag">
                                                         <select name="" id="" class="full-width">
                                                             <option value="">Planning</option>
                                                         </select>
                                                     </td>
-                                                    <td ng-class="showOnGO" ng-bind="viewAllDev[$index].defectOperation"></td>
+                                                    <td ng-class="showOnGO" ng-bind="data.ncrSearchDeviation[0].defectOperation"></td>
                                                     <td ng-if="showHtmlTag">
                                                         <select name="" id="" class="full-width">
                                                             <option value="">aNA</option>
                                                         </select>
                                                     </td>
-                                                    <td ng-class="showOnGO" ng-bind="viewAllDev[$index].percentage"></td>
+                                                    <td ng-class="showOnGO" ng-bind="data.ncrSearchDeviation[0].percentage"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                         <table class="full-width">
                                             <tbody>
                                                 <tr>
-                                                    <td><b>Supervisor:</b>
-                                                    <span ng-if="viewAllDev[$index].respSuperVisorSignedLastName" ng-bind="viewAllDev[$index].respSuperVisorSignedLastName+' '+viewAllDev[$index].respSuperVisorSigneFirstName+','+viewAllDev[$index].respSuperVisorSigneDate"></span> </td>
-
-                                                    <td><b>Resp Quality:</b><span ng-if="viewAllDev[$index].respQualitySignedLastName" ng-bind="viewAllDev[$index].respQualitySignedLastName+' '+viewAllDev[$index].respQualitySignedFirstName+','+viewAllDev[$index].respQualitySignedDate"></span></td>
+                                                    <td><b>Supervisor:</b></td>
+                                                    <td ng-class="showOnGO" ng-bind="data.ncrSearchDeviation[0].respSuperVisorSignedBy+','+data.ncrSearchDeviation[0].respSuperVisorSigneDate"></td>
+                                                    <td><b>Resp Quality:</b></td>
+                                                    <td ng-class="showOnGO" ng-if="respSuperVisorSignedBy" ng-bind="data.ncrSearchDeviation[0].respQualitySignedBy+','+data.ncrSearchDeviation[0].respQualitySignedDate"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </td>
                                     <td style="display:block">
-                                        <table class="full-width">
+                                        <table style="width:100%">
                                             <tbody>
                                                 <tr>
                                                     <td>
@@ -1905,21 +2062,39 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
-                                                                    <td class="text-nowrap">{{data.ncrSearch[0].batchNumber}}</td>
+                                                                    <td>579443A</td>
                                                                     <td>
-                                                                        <input type="checkbox" ng-checked="viewAllDev[$index].useQty==1">
+                                                                        <input type="checkbox">
                                                                     </td>
                                                                     <td>
-                                                                        <input type="checkbox" ng-checked="viewAllDev[$index].reworkQty==1">
+                                                                        <input type="checkbox">
                                                                     </td>
                                                                     <td>
-                                                                        <input type="checkbox" ng-checked="viewAllDev[$index].repairQty==1">
+                                                                        <input type="checkbox" checked>
                                                                     </td>
                                                                     <td>
-                                                                        <input type="checkbox" ng-checked="viewAllDev[$index].rtvQty==1">
+                                                                        <input type="checkbox">
                                                                     </td>
                                                                     <td>
-                                                                        <input type="checkbox" ng-checked="viewAllDev[$index].scrapQty==1">
+                                                                        <input type="checkbox">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>579444A</td>
+                                                                    <td>
+                                                                        <input type="checkbox">
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox">
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox" checked>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox">
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox">
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -1928,35 +2103,802 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <input type="checkbox" ng-checked="viewAllDev[$index].reworkRequired"> Rework Results</td>
+                                                        <input type="checkbox"> Rework Results</td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <input type="checkbox" ng-checked="viewAllDev[$index].dciAn">DCI/AN </td>
+                                                        <input type="checkbox">DCI/AN </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <input type="checkbox" ng-checked="viewAllDev[$index].dispEngSignedLastName">Disp. Eng. NCE Sign Off</td>
+                                                        <input type="checkbox">Disp. Eng. NCE Sign Off</td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <input type="checkbox" ng-checked="viewAllDev[$index].dispMrpPlanSignedLastName">Disp. MRP Plan Sign Off</td>
+                                                        <input type="checkbox">Disp. MRP Plan Sign Off</td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <input type="checkbox" ng-checked="">C/A Completed</td>
+                                                        <input type="checkbox">C/A Completed</td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <input type="checkbox" ng-checked="viewAllDev[$index].clearedSignedLastName">Clear Dev</td>
+                                                        <input type="checkbox">Clear Dev</td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <input type="checkbox" ng-checked="viewAllDev[$index].respSuperVisorSignedLastName">Supervisor Sign Off</td>
+                                                        <input type="checkbox">Supervisor Sign Off</td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <input type="checkbox" ng-checked="viewAllDev[$index].respQualitySignedLastName">Resp Quality Sign Off</td>
+                                                        <input type="checkbox">Resp Quality Sign Off</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="width:100%;" cellspacing="10">
+                            <tbody>
+                                <tr>
+                                    <td rowspan="2">
+                                        <table style="width:100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td><b>Deviation 1/2</b></td>
+                                                    <td><span>Dev Qty</span><span ng-if="showOnGO" ng-bind="data.ncrSearchDeviation[0].devQty"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="mandatory">
+                                                                        <label for="">Product</label>
+                                                                    </td>
+                                                                    <td ng-if="showHtmTag">
+                                                                        <select name="" id="" class="select-fullWidth">
+                                                                            <option value="">CC Accessories</option>
+                                                                        </select>
+                                                                    </td>
+                                                                    <td ng-if="showOnGO" ng-bind="data.ncrSearchDeviation[0].product">
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="mandatory">
+                                                                        <label for="">Feature</label>
+                                                                    </td>
+                                                                    <td ng-if="showHtmTag">
+                                                                        <select class="select-fullWidth">
+                                                                            <option value="">NA</option>
+                                                                        </select>
+                                                                    </td>
+                                                                    <td ng-if="showOnGO" ng-bind="data.ncrSearchDeviation[0].feature">
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="mandatory">
+                                                                        <label for="">Dev Code</label>
+                                                                    </td>
+                                                                    <td ng-if="showHtmTag">
+                                                                        <select class="select-fullWidth">
+                                                                            <option value="">Z004 - Only for Supplier's Use - Supplier Suggestion for Improvement - Change of Design</option>
+                                                                        </select>
+                                                                    </td>
+                                                                    <td ng-if="showOnGO" ng-bind="data.ncrSearchDeviation[0].devCode">
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="6"><b>Deviation Description</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="6">
+                                                        <div style="width:900px;height:100px;border:1px solid black;overflow-y:scroll" class="normal-font div-text-blue">
+                                                            <table border="1" ng-if="showOnGO">
+                                                                <tbody>
+                                                                    <tr ng-repeat="rows in DevNotes">
+                                                                        <td>
+                                                                            <span>{{rows.ncrDevtNote}}</span>
+                                                                            <span class="normal-text"><b>{{rows.devtNoteSignedBy}}</b></span>
+                                                                            <span class="normal-text">{{rows.devtNoteSignedDate}}</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table cellSpacing="10" cellPadding="0" border=0>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="6"><b>Disposition Information</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label for=" " class="label_blue">Use</label>
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <input type="number" style="width:30px" />
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0 class="slider-option">
+                                                                            <TBODY>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/up.gif" align=bottom>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/down.gif" align=top>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                            </TBODY>
+                                                                        </TABLE>
+                                                                    </td>
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].useQty"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label for=" " class="label_blue">Rework</label>
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <input type="number" style="width:30px" />
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                                            <TBODY>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/up.gif" align=bottom>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/down.gif" align=top>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                            </TBODY>
+                                                                        </TABLE>
+                                                                    </td>
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].reworkQty"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table cellSpacing=0 cellPadding=0>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label for=" " class="label_blue">Repair</label>
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <input type="number" style="width:30px" />
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                                            <TBODY>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/up.gif" align=bottom>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/down.gif" align=top>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                            </TBODY>
+                                                                        </TABLE>
+                                                                    </td>
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].repairQty"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table cellSpacing=0 cellPadding=0>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label for=" " class="label_blue">RTV</label>
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <input type="number" style="width:30px" />
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                                            <TBODY>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/up.gif" align=bottom>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/down.gif" align=top>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                            </TBODY>
+                                                                        </TABLE>
+                                                                    </td>
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].rtvQty"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table cellSpacing=0 cellPadding=0>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label for=" " class="label_blue">Scrap</label>
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <input type="number" style="width:30px" />
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                                            <TBODY>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/up.gif" align=bottom>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/down.gif" align=top>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                            </TBODY>
+                                                                        </TABLE>
+                                                                    </td>
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].scrapQty"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table cellSpacing=0 cellPadding=0>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label for=" " class="label_blue">Total</label>
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <input type="number" style="width:30px" />
+                                                                    </td>
+                                                                    <td ng-if="showHtmlTags">
+                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                                            <TBODY>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/up.gif" align=bottom>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                                <TR>
+                                                                                    <TD>
+                                                                                        <IMG src="../images/down.gif" align=top>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                            </TBODY>
+                                                                        </TABLE>
+                                                                    </td>
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].totalQty"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="6"><b>Disposition Description</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div style="height:100px;border:1px solid black;overflow-y:scroll;width:900px" class="normal-font div-text-blue">
+                                                            <table border="1" ng-if="showOnGO">
+                                                                <tbody>
+                                                                    <tr ng-repeat="rows in DespNotes">
+                                                                        <td>
+                                                                            <span>{{rows.ncrDispoNote}}</span>
+                                                                            <span class="normal-text"><b>{{rows.dispoNoteSignedBy}}</b></span>
+                                                                            <span class="normal-text">{{rows.dispoNoteSignedDate}}</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="label_blue" colspan="2">Disp. Eng. NCE:</td>
+                                                    <td width="25%" colspan="2" ng-if="data.ncrSearchDeviation[0].dispEngSignedLastName" ng-bind="data.ncrSearchDeviation[0].dispEngSignedLastName+','+data.ncrSearchDeviation[0].dispEngSignedFirstName+','+data.ncrSearchDeviation[0].dispEngSignedDate">
+                                                    </td>
+                                                    <td colspan="2" class="label_blue">Disp. MRP Plan:</td>
+                                                    <td width="25%" colspan="2" ng-if="data.ncrSearchDeviation[0].dispMrpPlanSignedLastName" ng-bind="data.ncrSearchDeviation[0].dispMrpPlanSignedLastName+','+data.ncrSearchDeviation[0].dispMrpPlanSignedFirstName+','+data.ncrSearchDeviation[0].dispMrpPlanDate"></td>
+                                                    <td colspan="2" class="label_blue">Cleared:</td>
+                                                    <td colspan="2" width="25%" ng-if="data.ncrSearchDeviation[0].clearedLastName" ng-bind="data.ncrSearchDeviation[0].clearedLastName+' '+data.ncrSearchDeviation[0].clearedFirstName+','+data.ncrSearchDeviation[0].clearedSignedDate"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table width="85%">
+                                            <tbody>
+                                                <tr>
+                                                    <td><b>Responsiblity</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="label_blue">Comp</td>
+                                                    <td class="label_blue">Cause Code</td>
+                                                    <td class="label_blue">Location</td>
+                                                    <td class="label_blue">Defect Operation</td>
+                                                    <td class="label_blue">%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td ng-if="showHtmlTag">
+                                                        <select name="" id="" class="full-width">
+                                                            <option value="">DRQ - Deviation Request</option>
+                                                        </select>
+                                                    </td>
+                                                    <td ng-class="showOnGO" class="text-oversize" ng-bind="data.ncrSearchDeviation[0].component"></td>
+                                                    <td ng-if="showHtmlTag">
+                                                        <select name="" id="" class="full-width">
+                                                            <option value="">L05 - Misalignment</option>
+                                                        </select>
+                                                    </td>
+                                                    <td ng-class="showOnGO" ng-bind="data.ncrSearchDeviation[0].causeCode"></td>
+                                                    <td ng-if="showHtmlTag">
+                                                        <select name="" id="" class="full-width">
+                                                            <option value="">52 - 52</option>
+                                                        </select>
+                                                    </td>
+                                                    <td ng-class="showOnGO" ng-bind="data.ncrSearchDeviation[0].locationCode"></td>
+                                                    <td ng-if="showHtmlTag">
+                                                        <select name="" id="" class="full-width">
+                                                            <option value="">Planning</option>
+                                                        </select>
+                                                    </td>
+                                                    <td ng-class="showOnGO" ng-bind="data.ncrSearchDeviation[0].defectOperation"></td>
+                                                    <td ng-if="showHtmlTag">
+                                                        <select name="" id="" class="full-width">
+                                                            <option value="">aNA</option>
+                                                        </select>
+                                                    </td>
+                                                    <td ng-class="showOnGO" ng-bind="data.ncrSearchDeviation[0].percentage"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table class="full-width">
+                                            <tbody>
+                                                <tr>
+                                                    <td><b>Supervisor:</b></td>
+                                                    <td ng-class="showOnGO" ng-bind="data.ncrSearchDeviation[0].respSuperVisorSignedBy+','+data.ncrSearchDeviation[0].respSuperVisorSigneDate"></td>
+                                                    <td><b>Resp Quality:</b></td>
+                                                    <td ng-class="showOnGO" ng-if="respSuperVisorSignedBy" ng-bind="data.ncrSearchDeviation[0].respQualitySignedBy+','+data.ncrSearchDeviation[0].respQualitySignedDate"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <!--                               <td rowspan="2">
+  <table style="width:100%">
+  <tbody>
+     <tr>
+      <td><b>Deviation 2/2</b></td>
+      <td class="label_blue">Dev Qty 1</td>
+    </tr>
+    <tr>
+      <td class="label_blue">Product
+      <select name="" id="" class="select-fullWidth"><option value="">N.A.</option></select></td>
+      <td class="label_blue">Feature <select name="" id="" class="select-fullWidth"><option value="">N.A.</option></select></td>
+      <td class="label_blue">Dev Code <select name="" id="" class="select-fullWidth"><option value="">A002 - Assembly Fitup - Wrong Parts, Components or Hardware Assembled (ATEX)</option></select></td>
+    </tr>
+    <tr><td><b>Deviation Description </b></td></tr>
+    <tr><td colspan="3"><div style="height:100px;border:1px solid black;overflow-y:scroll;width:900px" class="normal-font div-text-blue">
+       <table border="1">
+          <tr>
+              <td title="Deviation - 2  ncr, admin  14-JUN-2016 9:52 AM ">
+              <span>Deviation - 2</span><span class="normal-text"><b>ncr, admin </b></span>
+              <span class="normal-text">14-JUN-2016 9:52 AM</span></td>
+          </tr>
+      </table>
+    </div>
+    </td></tr>
+  </tbody>
+  </table>
+  <table cellSpacing="10" cellPadding="0" border=0>
+
+    <tbody>
+    <tr> <td colspan="6"> <b> Disposition Information</b></td></tr>
+      <tr>
+        <td>
+          <table >
+            <tbody>
+                <tr>
+                    <td>
+                        <label for=" " class="normal-font">Use</label>
+                    </td>
+                    <td>
+                        <input type="number" style="width:30px"/>
+                    </td>
+                    <td>
+                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                            <TBODY>
+                                <TR>
+                                    <TD>
+                                        <IMG  src="../images/up.gif" align=bottom>
+                                    </TD>
+                                </TR>
+                                <TR>
+                                    <TD>
+                                        <IMG  src="../images/down.gif" align=top>
+                                    </TD>
+                                </TR>
+                            </TBODY>
+                        </TABLE>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </td>
+          <td>
+          <table >
+            <tbody>
+                <tr>
+                    <td>
+                        <label for=" " class="normal-font ">Rework</label>
+                    </td>
+                    <td>
+                        <input type="number" style="width:30px" />
+                    </td>
+                    <td>
+                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                            <TBODY>
+                                <TR>
+                                    <TD>
+                                        <IMG  src="../images/up.gif" align=bottom>
+                                    </TD>
+                                </TR>
+                                <TR>
+                                    <TD>
+                                        <IMG  src="../images/down.gif" align=top>
+                                    </TD>
+                                </TR>
+                            </TBODY>
+                        </TABLE>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </td>
+        <td>
+          <table cellSpacing=0 cellPadding=0>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for=" " class="normal-font ">Repair</label>
+                    </td>
+                    <td>
+                        <input type="number" style="width:30px" />
+                    </td>
+                    <td>
+                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                            <TBODY>
+                                <TR>
+                                    <TD>
+                                        <IMG  src="../images/up.gif" align=bottom>
+                                    </TD>
+                                </TR>
+                                <TR>
+                                    <TD>
+                                        <IMG  src="../images/down.gif" align=top>
+                                    </TD>
+                                </TR>
+                            </TBODY>
+                        </TABLE>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </td>
+        <td>
+          <table cellSpacing=0 cellPadding=0>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for=" " class="normal-font ">RTV</label>
+                    </td>
+                    <td>
+                        <input type="number" style="width:30px" />
+                    </td>
+                    <td>
+                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                            <TBODY>
+                                <TR>
+                                    <TD>
+                                        <IMG  src="../images/up.gif" align=bottom>
+                                    </TD>
+                                </TR>
+                                <TR>
+                                    <TD>
+                                        <IMG  src="../images/down.gif" align=top>
+                                    </TD>
+                                </TR>
+                            </TBODY>
+                        </TABLE>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </td>
+        <td>
+          <table cellSpacing=0 cellPadding=0>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for=" " class="normal-font ">Scrap</label>
+                    </td>
+                    <td>
+                        <input type="number" style="width:30px" />
+                    </td>
+                    <td>
+                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                            <TBODY>
+                                <TR>
+                                    <TD>
+                                        <IMG  src="../images/up.gif" align=bottom>
+                                    </TD>
+                                </TR>
+                                <TR>
+                                    <TD>
+                                        <IMG  src="../images/down.gif" align=top>
+                                    </TD>
+                                </TR>
+                            </TBODY>
+                        </TABLE>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </td>
+        <td>
+          <table cellSpacing=0 cellPadding=0>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for=" " class="normal-font ">Total</label>
+                    </td>
+                    <td>
+                        <input type="number" style="width:30px" />
+                    </td>
+                    <td>
+                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                            <TBODY>
+                                <TR>
+                                    <TD>
+                                        <IMG  src="../images/up.gif" align=bottom>
+                                    </TD>
+                                </TR>
+                                <TR>
+                                    <TD>
+                                        <IMG  src="../images/down.gif" align=top>
+                                    </TD>
+                                </TR>
+                            </TBODY>
+                        </TABLE>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <tbody>
+      <tr>
+        <td colspan="6"><b>Disposition Description</b></td>
+      </tr>
+      <tr>
+        <td>
+          <div style="height:100px;border:1px solid black;overflow-y:scroll;width:900px" class="normal-font div-text-blue">
+       <table border="1">
+          <tr>
+              <td title="Chiediamo deroga per poter fornire i due pezzi del disegno SWD6738700 in rev 00 e non in Rev 01,vedi e-mail allegata di Francalanci Carlo NA, nsa 12-FEB-2016 10:20 AM">
+              <span>Disposition - 2 </span><span class="normal-text"><b>ncr, admin</b></span>
+              <span class="normal-text">14-JUN-2016 9:52 AM </span></td>
+          </tr>
+
+      </table>
+    </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table >
+    <tbody>
+       <tr>
+        <td colspan="2">Disp. Eng. NCE:</td><td width="25%" ng-bind=ng-bind="data.ncrSearchDeviation[0].dispEngSignedLastName+','+data.ncrSearchDeviation[0].dispEngSignedFirstName+','+data.ncrSearchDeviation[0].dispEngSignedDate">
+        </td>
+        <td colspan="2">Disp. MRP Plan:</td><td width="25%"  ng-bind="data.ncrSearchDeviation[0].dispMrpPlanSignedLastName+','+data.ncrSearchDeviation[0].dispMrpPlanSignedFirstName+','+data.ncrSearchDeviation[0].dispMrpPlanDate"></td>
+        <td colspan="2">Cleared:</td><td width="25%" ng-bind="data.ncrSearchDeviation[0].clearedLastName+' '+data.ncrSearchDeviation[0].clearedFirstName+','+data.ncrSearchDeviation[0].clearedSignedDate"></td>
+      </tr>
+    </tbody>
+  </table>
+  <table width="85%">
+    <tbody>
+      <tr>
+        <td><b>Responsiblity</b></td>
+      </tr>
+      <tr>
+        <td>Comp</td>
+        <td>Cause Code</td>
+        <td>Location</td>
+        <td>Defect Operation</td>
+        <td>%</td>
+      </tr>
+      <tr>
+        <td>
+          <select name="" id="" class="full-width">
+            <option value="">DRQ - Deviation Request</option>
+          </select>
+        </td>
+        <td>
+          <select name="" id="" class="full-width">
+            <option value="">L05 - Misalignment</option>
+          </select>
+        </td>
+        <td>
+          <select name="" id="" class="full-width">
+            <option value="">52 - 52</option>
+          </select>
+        </td>
+        <td>
+          <select name="" id="" class="full-width">
+            <option value="">Planning</option>
+          </select>
+        </td>
+        <td>
+          <select name="" id="" class="full-width">
+            <option value="">aNA</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="full-width">
+    <tbody>
+      <tr>
+        <td><b>Supervisor:</b></td>
+        <td></td>
+        <td><b>Resp Quality:</b> </td>
+        <td>ncr, admin  14-JUN-2016 9:53 AM </td>
+      </tr>
+    </tbody>
+  </table>
+</td> -->
+                                    <td style="display:block">
+                                        <table style="width:100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <table class="table_attchment">
+                                                            <thead>
+                                                                <th>S.N.</th>
+                                                                <th>Use</th>
+                                                                <th>Rwk</th>
+                                                                <th>Rep</th>
+                                                                <th>RTV</th>
+                                                                <th>Scr</th>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>579443A</td>
+                                                                    <td>
+                                                                        <input type="checkbox">
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox">
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox" checked>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox">
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>579444A</td>
+                                                                    <td>
+                                                                        <input type="checkbox">
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox">
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox" checked>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox">
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox">
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox"> Rework Results</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox">DCI/AN </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox">Disp. Eng. NCE Sign Off</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox">Disp. MRP Plan Sign Off</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox">C/A Completed</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox">Clear Dev</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox">Supervisor Sign Off</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox">Resp Quality Sign Off</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -1969,86 +2911,86 @@
                 <div class="div-visible" id="selected">
                     <!-- Tab6 content deviation -->
                     <div id="tab6">
-                        <table class="mar-0">
+                        <table>
                             <tr>
                                 <td colspan="2" class="label_blue">
-                                    <input type="checkbox" ng-checked="devData.nceSignedFirstName" disabled>
+                                    <input type="checkbox" ng-checked="data.ncrSearchDeviation[0].nceSignedFirstName" disabled>
                                     <label for="">NCE:</label>
                                 </td>
                                 <td colspan="2" style="width:225px;"></td>
                                 <td colspan="2" class="label_blue">
-                                    <input type="checkbox" disabled ng-checked="devData.notifySignedLastName">
+                                    <input type="checkbox" disabled ng-checked="data.ncrSearchDeviation[0].notifySignedLastName">
                                     <label for="">Notify(CNP):</label>
                                 </td>
                                 <td colspan="2" style="width:225px;"></td>
                                 <td colspan="2" class="label_blue">
-                                    <input type="checkbox" disabled ng-checked="devData.acsSignedLastName">
+                                    <input type="checkbox" disabled ng-checked="data.ncrSearchDeviation[0].acsSignedLastName">
                                     <label for="">Approved by Customer/Released per Contract</label>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2"></td>
                                 <td colspan="2" ng-class="hiddenValues" nowrap>
-                                    <span ng-if="devData.nceSignedLastName!='.' && devData.nceSignedLastName!=null">{{devData.nceSignedLastName}}</span>
-                                    <span ng-if="devData.nceSignedFirstName" ng-bind="devData.nceSignedFirstName+','+devData.nceSignedDate"></span>
-                                    <span ng-if="devData.ncdSignedLastName!='.' && devData.ncdSignedLastName==null">{{devData.ncdSignedLastName}}</span>
-                                    <span ng-if="devData.ncdSignedLastName" ng-bind="devData.ncdSignedFirstName+','+devData.ncdSignedDate"></span>
+                                    <span ng-if="data.ncrSearchDeviation[0].nceSignedLastName!='.' && data.ncrSearchDeviation[0].nceSignedLastName!=null">{{data.ncrSearchDeviation[0].nceSignedLastName}}</span>
+                                    <span ng-if="data.ncrSearchDeviation[0].nceSignedFirstName" ng-bind="data.ncrSearchDeviation[0].nceSignedFirstName+','+data.ncrSearchDeviation[0].nceSignedDate"></span>
+                                    <span ng-if="data.ncrSearchDeviation[0].ncdSignedLastName!='.' && data.ncrSearchDeviation[0].nceSignedLastName==null">{{data.ncrSearchDeviation[0].ncdSignedLastName}}</span>
+                                    <span ng-if="data.ncrSearchDeviation[0].ncdSignedLastName" ng-bind="data.ncrSearchDeviation[0].ncdSignedFirstName+','+data.ncrSearchDeviation[0].ncdSignedDate"></span>
                                 </td>
                                 <td colspan="2"></td>
                                 <td colspan="2" ng-class="hiddenValues" nowrap>
-                                    <span ng-if="devData.notifySignedLastName" ng-bind="devData.notifySignedLastName+','+devData.notifySignedFirstName+','+devData.notifySignedDate"></span>
-                                    <span ng-if="devData.notNotifySignedLastName" ng-bind="devData.notNotifySignedLastName+','+devData.notNotifySignedFirstName+','+devData.noNotifySignedDate"></span>
+                                    <span ng-if="data.ncrSearchDeviation[0].notifySignedLastName" ng-bind="data.ncrSearchDeviation[0].notifySignedLastName+','+data.ncrSearchDeviation[0].notifySignedFirstName+','+data.ncrSearchDeviation[0].notifySignedDate"></span>
+                                    <span ng-if="data.ncrSearchDeviation[0].notNotifySignedLastName" ng-bind="data.ncrSearchDeviation[0].notNotifySignedLastName+','+data.ncrSearchDeviation[0].notNotifySignedFirstName+','+data.ncrSearchDeviation[0].noNotifySignedDate"></span>
                                 </td>
                                 <td class="label_blue">
-                                    <input type="checkbox" disabled ng-checked="!devData.acsSignedLastName && !devData.scrapReqSignedLastName  && devData.pmOverrideSignedLastName">PM Override</td>
-                                <td rowspan="1" ng-class="hiddenValues" colspan="2" class="text-nowrap" ng-if="devData.pmOverrideSignedLastName" ng-bind="devData.pmOverrideSignedLastName+','+devData.pmOverrideSignedFirstName+','+devData.pmOverrideSignedDate"></td>
+                                    <input type="checkbox" disabled ng-checked="!data.ncrSearchDeviation[0].acsSignedLastName && !data.ncrSearchDeviation[0].scrapReqSignedLastName  && data.ncrSearchDeviation[0].pmOverrideSignedLastName">PM Override</td>
+                                <td rowspan="1" ng-class="hiddenValues" colspan="2" ng-if="data.ncrSearchDeviation[0].pmOverrideSignedLastName" ng-bind="data.ncrSearchDeviation[0].pmOverrideSignedLastName+','+data.ncrSearchDeviation[0].pmOverrideSignedFirstName+','+data.ncrSearchDeviation[0].pmOverrideSignedDate"></td>
                             </tr>
                             <tr>
                                 <td class="label_blue" colspan="2">
-                                    <input type="checkbox" disabled ng-checked="devData.ncdSignedFirstName">NCD:</td>
+                                    <input type="checkbox" disabled ng-checked="data.ncrSearchDeviation[0].ncdSignedFirstName">NCD:</td>
                                 <td colspan="2"></td>
                                 <td class="label_blue" colspan="2" nowrap>
-                                    <input type="checkbox" disabled ng-checked="devData.notNotifySignedLastName"> Not Notify(CNP):</td>
+                                    <input type="checkbox" disabled ng-checked="data.ncrSearchDeviation[0].notNotifySignedLastName"> Not Notify(CNP):</td>
                                 <td colspan="2"></td>
                                 <td colspan="2" class="label_blue">
-                                    <input type="checkbox" disabled ng-checked="devData.scrapReqSignedLastName">Scrap Required by Customer</td>
+                                    <input type="checkbox" disabled ng-checked="data.ncrSearchDeviation[0].scrapReqSignedLastName">Scrap Required by Customer</td>
                             </tr>
                             <tr>
                                 <td colspan="10" style="padding:10px"></td>
                             </tr>
                             <tr>
                                 <td colspan="2" class="label_blue">
-                                    <input type="checkbox" disabled ng-checked="devData.asShippedSignedLastName">As shipped:</td>
+                                    <input type="checkbox" disabled ng-checked="data.ncrSearchDeviation[0].asShippedSignedLastName">As shipped:</td>
                                 <td colspan="2"></td>
                                 <td colspan="2" class="label_blue">
-                                    <input type="checkbox" disabled ng-checked="devData.markupRedSignedLastName"> Mark-up Required:</td>
+                                    <input type="checkbox" disabled ng-checked="data.ncrSearchDeviation[0].markupRedSignedLastName"> Mark-up Required:</td>
                                 <td colspan="2"></td>
                                 <td colspan="2"></td>
                             </tr>
                             <tr>
-                                <td colspan="2" style="padding:12px;"></td>
+                                <td colspan="2" style="padding:20px;"></td>
                                 <td colspan="2" ng-class="hiddenValues" nowrap>
-                                    <span ng-if="devData.asShippedSignedLastName" ng-bind="devData.asShippedSignedLastName+','+devData.asShippedSignedFirstName+','+devData.asShippedSignedDate"></span>
-                                    <span ng-if="devData.asNotShippedSignedLastName" ng-bind="devData.asNotShippedSignedLastName+','+devData.asNotShippedSignedFirstName+','+devData.asNotShippedSignedDate"></span>
+                                    <span ng-if="data.ncrSearchDeviation[0].asShippedSignedLastName" ng-bind="data.ncrSearchDeviation[0].asShippedSignedLastName+','+data.ncrSearchDeviation[0].asShippedSignedFirstName+','+data.ncrSearchDeviation[0].asShippedSignedDate"></span>
+                                    <span ng-if="data.ncrSearchDeviation[0].asNotShippedSignedLastName" ng-bind="data.ncrSearchDeviation[0].asNotShippedSignedLastName+','+data.ncrSearchDeviation[0].asNotShippedSignedFirstName+','+data.ncrSearchDeviation[0].asNotShippedSignedDate"></span>
                                 </td>
                                 <td colspan="2"></td>
                                 <td colspan="2" ng-class="hiddenValues" nowrap>
-                                    <span ng-if="devData.markupRedSignedLastName" ng-bind="devData.markupRedSignedLastName+' '+devData.markupRedSignedFirstName+','+devData.markupRedSignedDate"></span>
+                                    <span ng-if="data.ncrSearchDeviation[0].markupRedSignedLastName" ng-bind="data.ncrSearchDeviation[0].markupRedSignedLastName+' '+data.ncrSearchDeviation[0].markupRedSignedFirstName+','+data.ncrSearchDeviation[0].markupRedSignedDate"></span>
                                 </td>
                                 <td colspan="2"></td>
                             </tr>
                             <tr>
                                 <td colspan="2" class="label_blue">
-                                    <input type="checkbox" disabled ng-checked="devData.asNotShippedSignedLastName">Not As shipped:</td>
+                                    <input type="checkbox" disabled ng-checked="data.ncrSearchDeviation[0].asNotShippedSignedLastName">Not As shipped:</td>
                                 <td colspan="2"></td>
                                 <td colspan="2" class="label_blue">
-                                    <input type="checkbox" ng-checked="devData.markupNotRedSignedLastName" disabled>Mark-up Not Required:</td>
+                                    <input type="checkbox" ng-checked="data.ncrSearchDeviation[0].markupNotRedSignedLastName" disabled>Mark-up Not Required:</td>
                                 <td colspan="2"></td>
                                 <td class="label_blue">
                                     <label>ECR/ECN</label>
-                                    <input style="width:80px" type="text" value="{{devData.ecrECNVal}}">
+                                    <input style="width:80px" type="text" value="{{data.ncrSearchDeviation[0].ecrECNVal}}">
                                 </td>
-                                <td nowrap><span ng-if="devData.ecrECNSignedLastName" ng-bind="devData.ecrECNSignedLastName+','+devData.ecrECNSignedFirstName+','+devData.ecrECNPSignedDate"></span></td>
+                                <td nowrap><span ng-if="data.ncrSearchDeviation[0].ecrECNSignedLastName" ng-bind="data.ncrSearchDeviation[0].ecrECNSignedLastName+','+data.ncrSearchDeviation[0].ecrECNSignedFirstName+','+data.ncrSearchDeviation[0].ecrECNPSignedDate"></span></td>
                                 <td class="label_blue">
                                     <label>Post Sale NC #</label>
                                     <input type="text " value="{{}}" style="width:80px">
@@ -2056,11 +2998,11 @@
                             </tr>
                         </table>
                         <hr>
-                        <table class="mar-0 table-design">
+                        <table style="table-layout:fixed;width:100%;text-align:left; ">
                             <thead>
-                                <th colspan="3" class="th-text">Deviation Information</th>
+                                <th colspan="3">Deviation Information</th>
                                 <th colspan="3">
-                                    <table class="mar-0">
+                                    <table cellSpacing=0 cellPadding=0>
                                         <tbody>
                                             <tr>
                                                 <td>
@@ -2069,7 +3011,7 @@
                                                 <td ng-if="showHtmTag">
                                                     <input type="number" style="width:30px" />
                                                 </td>
-                                                <td ng-if="showOnGO" ng-bind="devData.devQty"></td>
+                                                <td ng-if="showOnGO" ng-bind="data.ncrSearchDeviation[0].devQty"></td>
                                                 <td ng-if="showHtmTag">
                                                     <TABLE cellSpacing=0 cellPadding=0 border=0>
                                                         <TBODY>
@@ -2097,18 +3039,18 @@
                                     <td colspan="1">
                                         <label for=" " class="mandatory">Product</label>
                                     </td>
-                                    <td colspan="5" ng-if="showHtmlTags">
+                                    <td colspan="4" ng-if="showHtmlTags">
                                         <select class="full-width">
                                             <option value=" "></option>
                                         </select>
                                     </td>
-                                    <td colspan="5" ng-class="hiddenValues" class="full-width" ng-bind="devData.product"></td>
+                                    <td colspan="4" ng-class="hiddenValues" class="full-width" ng-bind="data.ncrSearchDeviation[0].product"></td>
                                     <!--  <td colspan="1" ng-class="hiddenValues"><sup><i style="color:red" class="fa fa-asterisk"></i></sup></td> -->
                                     <td rowspan="6" colspan="6">
-                                        <div class="notes-format">
+                                        <div style="width:600px;height:150px;border:1px solid black;overflow-y:scroll" class="normal-font div-text-blue">
                                             <table border="1" ng-if="showOnGO">
                                                 <tbody>
-                                                    <tr ng-repeat="rows in devData.ncrsearchDeviationNotes">
+                                                    <tr ng-repeat="rows in DevNotes">
                                                         <td>
                                                             <span>{{rows.ncrDevtNote}}</span>
                                                             <span class="normal-text"><b>{{rows.devtNoteSignedBy}}</b></span>
@@ -2124,7 +3066,7 @@
                                     <td>
                                         <label class="mandatory ">Feature</label>
                                     </td>
-                                    <td colspan="5" ng-if="showHtmlTag">
+                                    <td colspan="4" ng-if="showHtmlTags">
                                         <table class="full-width">
                                             <tr>
                                                 <td>
@@ -2135,19 +3077,19 @@
                                             </tr>
                                         </table>
                                     </td>
-                                    <td colspan="5" ng-class="hiddenValues" class="full-width" ng-bind="devData.feature"></td>
+                                    <td colspan="4" ng-class="hiddenValues" class="full-width" ng-bind="data.ncrSearchDeviation[0].feature"></td>
                                     <!--   <td colspan="1" ng-class="hiddenValues"><sup><i style="color:red" class="fa fa-asterisk"></i></sup></td> -->
                                 </tr>
                                 <tr>
                                     <td>
                                         <label class="mandatory">Dev Code</label>
                                     </td>
-                                    <td colspan="5" ng-if="showHtmlTag">
+                                    <td colspan="4" ng-if="showHtmlTags">
                                         <select class="full-width">
                                             <option value=" "></option>
                                         </select>
                                     </td>
-                                    <td colspan="5" ng-class="hiddenValues" class="full-width text-oversize" ng-bind="devData.devCode"></td>
+                                    <td colspan="4" ng-class="hiddenValues" class="full-width text-oversize" ng-bind="data.ncrSearchDeviation[0].devCode"></td>
                                     <!--   <td colspan="1" ng-class="hiddenValues"> <sup><i style="color:red" class="fa fa-asterisk"></i></sup></td> -->
                                 </tr>
                                 <tr>
@@ -2160,7 +3102,7 @@
                                     <td colspan="1">
                                         <label class="mandatory">Part#</label>
                                     </td>
-                                    <td colspan="5" ng-if="showHtmlTag">
+                                    <td colspan="4" ng-if="showHtmlTags">
                                         <input type="text" disabled style="width:75%">
                                         <label for=" " class="mandatory">Rev</label>
                                         <input type="number" disabled class="input-num">
@@ -2171,7 +3113,7 @@
                                     <td>
                                         <label for=" " class="mandatory">Part ID</label>
                                     </td>
-                                    <td colspan="5" ng-if="showHtmlTag">
+                                    <td colspan="4" ng-if="showHtmlTags">
                                         <input type="text " disabled class="full-width">
                                     </td>
                                     <td colspan="1"></td>
@@ -2179,7 +3121,7 @@
                                 <tr>
                                     <td colspan="6"><a href="/#/qcr" ng-click="createWindow('#/qcrSerial', 900, 900);">Serial#</a></td>
                                 </tr>
-                                <tr ng-if="showHtmlTag">
+                                <tr>
                                     <td colspan="6">
                                         <button disabled>Done</button>
                                         <button disabled>New</button>
@@ -2195,55 +3137,48 @@
                             </tbody>
                         </table>
                         <hr>
-                        <table class="mar-0 table-design">
+                        <table class="full-width" style="table-layout:fixed">
                             <thead>
                                 <tr>
-                                    <th colspan="6" class="th-text"><span>Disposition Information</span></th>
-                                    <th colspan="6" class="th-text"><span>Disposition Description</span></th>
+                                    <th colspan="6"><span style="float:left">Disposition Information</span></th>
+                                    <th colspan="6"><span style="float:left">Disposition Description</span></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td colspan="4">
-                                        <table >
+                                        <table>
                                             <tbody>
                                                 <tr>
-                                                    <td>
+                                                    <td colspan="4">
                                                         <table>
                                                             <tbody>
                                                                 <tr>
                                                                     <td>
-                                                                        <label for=" " ><a href=" ">Use</a>
+                                                                        <label for=" " class="normal-font label_disabled"><a href=" ">Use</a>
                                                                         </label>
                                                                     </td>
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].useQty"></td>
                                                                     <td>
-                                                                        <label><a href=" " style="padding:12px">Rework</a></label>
+                                                                        <label for=" " class="normal-font label_disabled"><a href=" ">Rework</a></label>
                                                                     </td>
-                                                                 
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].reworkQty"></td>
                                                                     <td>
-                                                                        <label style="padding:12px" ><a href=" ">Repair</a></label>
+                                                                        <label for=" " class="normal-font label_disabled"><a href=" ">Repair</a></label>
                                                                     </td>
-                                                                 
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].repairQty"></td>
                                                                     <td>
-                                                                        <label style="padding:12px"><a href=" ">Rtv</a></label>
+                                                                        <label for=" " class="normal-font label_disabled"><a href=" ">Rtv</a></label>
                                                                     </td>
-                                                                 
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].rtvQty"></td>
                                                                     <td>
-                                                                        <label style="padding:12px"><a href=" ">Scrap</a></label>
+                                                                        <label for=" " class="normal-font label_disabled"><a href=" ">Scrap</a></label>
                                                                     </td>
-                                                                  
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].scrapQty"></td>
                                                                     <td>
-                                                                        <label style="padding:12px"><a href=" ">Total</a></label>
+                                                                        <label for=" " class="normal-font label_disabled"><a href=" ">Total</a></label>
                                                                     </td>
-                                                                  
-                                                                </tr>
-                                                                <tr>
-                                                                   <td ng-class="hiddenValues"  ng-bind="devData.useQty"></td>
-                                                                  <td ng-class="hiddenValues" style="padding:12px" ng-bind="devData.reworkQty"></td>
-                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="devData.repairQty"></td>
-                                                                     <td ng-class="hiddenValues" style="padding:12px" ng-bind="devData.rtvQty"></td>
-                                                                   <td ng-class="hiddenValues" style="padding:12px" ng-bind="devData.scrapQty"></td>
-                                                                      <td ng-class="hiddenValues" style="padding:12px" ng-bind="devData.totalQty"></td>
+                                                                    <td ng-class="hiddenValues" style="padding:12px" ng-bind="data.ncrSearchDeviation[0].totalQty"></td>
                                                                 </tr>
                                                                 <tr ng-if="showHtmlTags">
                                                                     <td>
@@ -2254,169 +3189,169 @@
                                                                                         <input type="number" style="width:30px" disabled>
                                                                                     </td>
                                                                                     <td>
-                                            <TABLE cellSpacing=0 cellPadding=0 border=0>
-                                                  <TBODY>
-                                                           <TR>
-                                                               <TD align=center>
-                                                                    <IMG src="../images/up.gif " align=bottom>
-                                                                 </TD>
-                                                             </TR>
-                                                              <TR>
-                                                                 <TD style="PADDING-TOP: 1px " vAlign=top align=center>
-                                                                 <IMG src="../images/down.gif " align=top>
-                                                                   </TD>
-                                                              </TR>
-                                                    </TBODY>
-                                               </TABLE>
-                                                         </td>
-                                                     </tr>
-                                                 </tbody>
-                                                 </table>
-                                                 </td>
-                                                 <td>
-                                                         <table>
-                                                                 <tbody>
-                                                                <tr>
-                                                                 <td>
-                                                                 <input type="number" style="width:30px" disabled>
-                                                                </td>
-                                                 <td>
-                                              <TABLE cellSpacing=0 cellPadding=0 border=0>
-                                                      <TBODY>
-                                          <TR>
-                                                       <TD align=center>
-                                                 <IMG src="../images/up.gif " align=bottom>
-                                            </TD>
-                                                         </TR>
-                                           <TR>
-                                             <TD style="PADDING-TOP: 1px" vAlign=top align=center>
-                                              <IMG src="../images/down.gif " align=top>
-                                                              </TD>
-                                                    </TR>
-                                                            </TBODY>
-                                              </TABLE>
-                                                        </td>
-                                                     </tr>
-                                              </tbody>
-                                              </table>
-                                            </td>
-                                        <td>
-                                <table>
-                                           <tbody>
-                                      <tr>
-                                                    <td>
-                                                        <input type="number" style="width:30px" disabled>
-                                                       </td>
-                                                        <td>
-                                                      <TABLE cellSpacing=0 cellPadding=0 border=0>
-                                                         <TBODY>
-                                           <TR>
-                                                  <TD align=center>
-                                                     <IMG src="../images/up.gif " align=bottom>
-                                                           </TD>
-                                                          </TR>
-                                        <TR>
-                                        <TD style="PADDING-TOP: 1px " vAlign=top align=center>
-                                            <IMG src="../images/down.gif " align=top>
-                                            </TD>
-                                                                                    </TR>
-                                                                                </TBODY>
-                                                                            </TABLE>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </td>
-                                     <td>
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <input type="number" style="width:30px " disabled>
-                                                </td>
-                                                <td>
-                                            <TABLE cellSpacing=0 cellPadding=0 border=0>
-                                                <TBODY>
-                                                    <TR>
-                                                        <TD vAlign=bottom align=center>
-                                                            <IMG src="../images/up.gif " align=bottom>
-                                                    </TD>
-                                                </TR>
-                                                <TR>
-            <TD vAlign=top align=center>
-                                                     <IMG src="../images/down.gif " align=top>
-                                                            </TD>
-                                                        </TR>
-                                                    </TBODY>
-                                                </TABLE>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
-                            <td>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <input type="number" style="width:30px" disabled>
-                                    </td>
-                                    <td>
-                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
-                                            <TBODY>
-                                                <TR>
-                                                    <TD style="PADDING-BOTTOM: 1px" vAlign=bottom align=center>
-                                                        <IMG src="../images/up.gif " align=bottom>
-                                            </TD>
-                                        </TR>
-                                        <TR>
-                                            <TD style="PADDING-TOP: 1px" vAlign=top align=center>
-                                         <IMG src="../images/down.gif " align=top>
-                                                </TD>
-                                            </TR>
-                                        </TBODY>
-                                    </TABLE>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-                <td>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <input type="number" style="width:30px" disabled>
-                                    </td>
-                                    <td>
-                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
-                                            <TBODY>
-                                                <TR>
-                                                    <TD vAlign=bottom align=center>
-                                 <IMG src="../images/up.gif " align=bottom>
-                                                        </TD>
-                                                    </TR>
-                                                    <TR>
-                                                        <TD vAlign=top align=center>
-                                                <IMG src="../images/down.gif " align=top>
-                                                                                    </TD>
-                                                                                </TR>
-                                                                            </TBODY>
-                                                                        </TABLE>
+                                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                                                            <TBODY>
+                                                                                                <TR>
+                                                                                                    <TD align=center>
+                                                                                                        <IMG src="../images/up.gif " align=bottom>
+                                                                                                    </TD>
+                                                                                                </TR>
+                                                                                                <TR>
+                                                                                                    <TD style="PADDING-TOP: 1px " vAlign=top align=center>
+                                                                                                        <IMG src="../images/down.gif " align=top>
+                                                                                                    </TD>
+                                                                                                </TR>
+                                                                                            </TBODY>
+                                                                                        </TABLE>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                    <td>
+                                                                        <table>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <input type="number" style="width:30px" disabled>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                                                            <TBODY>
+                                                                                                <TR>
+                                                                                                    <TD align=center>
+                                                                                                        <IMG src="../images/up.gif " align=bottom>
+                                                                                                    </TD>
+                                                                                                </TR>
+                                                                                                <TR>
+                                                                                                    <TD style="PADDING-TOP: 1px" vAlign=top align=center>
+                                                                                                        <IMG src="../images/down.gif " align=top>
+                                                                                                    </TD>
+                                                                                                </TR>
+                                                                                            </TBODY>
+                                                                                        </TABLE>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                    <td>
+                                                                        <table>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <input type="number" style="width:30px" disabled>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                                                            <TBODY>
+                                                                                                <TR>
+                                                                                                    <TD align=center>
+                                                                                                        <IMG src="../images/up.gif " align=bottom>
+                                                                                                    </TD>
+                                                                                                </TR>
+                                                                                                <TR>
+                                                                                                    <TD style="PADDING-TOP: 1px " vAlign=top align=center>
+                                                                                                        <IMG src="../images/down.gif " align=top>
+                                                                                                    </TD>
+                                                                                                </TR>
+                                                                                            </TBODY>
+                                                                                        </TABLE>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                    <td>
+                                                                        <table>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <input type="number" style="width:30px " disabled>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                                                            <TBODY>
+                                                                                                <TR>
+                                                                                                    <TD vAlign=bottom align=center>
+                                                                                                        <IMG src="../images/up.gif " align=bottom>
+                                                                                                    </TD>
+                                                                                                </TR>
+                                                                                                <TR>
+                                                                                                    <TD vAlign=top align=center>
+                                                                                                        <IMG src="../images/down.gif " align=top>
+                                                                                                    </TD>
+                                                                                                </TR>
+                                                                                            </TBODY>
+                                                                                        </TABLE>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                    <td>
+                                                                        <table>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <input type="number" style="width:30px" disabled>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                                                            <TBODY>
+                                                                                                <TR>
+                                                                                                    <TD style="PADDING-BOTTOM: 1px" vAlign=bottom align=center>
+                                                                                                        <IMG src="../images/up.gif " align=bottom>
+                                                                                                    </TD>
+                                                                                                </TR>
+                                                                                                <TR>
+                                                                                                    <TD style="PADDING-TOP: 1px" vAlign=top align=center>
+                                                                                                        <IMG src="../images/down.gif " align=top>
+                                                                                                    </TD>
+                                                                                                </TR>
+                                                                                            </TBODY>
+                                                                                        </TABLE>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                    <td>
+                                                                        <table>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <input type="number" style="width:30px" disabled>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                                                                                            <TBODY>
+                                                                                                <TR>
+                                                                                                    <TD vAlign=bottom align=center>
+                                                                                                        <IMG src="../images/up.gif " align=bottom>
+                                                                                                    </TD>
+                                                                                                </TR>
+                                                                                                <TR>
+                                                                                                    <TD vAlign=top align=center>
+                                                                                                        <IMG src="../images/down.gif " align=top>
+                                                                                                    </TD>
+                                                                                                </TR>
+                                                                                            </TBODY>
+                                                                                        </TABLE>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
                                                                     </td>
                                                                 </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="4" class="label_blue">
-                                                        <label for=" ">Rework Results</label>
-                                                        <input type="checkbox">
-                                                    </td>
-                                                    <td colspan="4" class="label_blue">
-                                                        <span><label for=" ">DCI/AN</label>
-                                                            <input type="checkbox"></span>
+                                                                <tr>
+                                                                    <td colspan="4" class="label_blue">
+                                                                        <label for=" ">Rework Results</label>
+                                                                        <input type="checkbox">
+                                                                    </td>
+                                                                    <td colspan="4" class="label_blue">
+                                                                        <span><label for=" ">DCI/AN</label>
+                                  <input type="checkbox"></span>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -2448,10 +3383,10 @@
                                         </table>
                                     </td>
                                     <td rowspan="3 " colspan="6">
-                                        <div class="notes-format">
+                                        <div style="height:100px;border:1px solid black;overflow-y:scroll;width: 600px; " class="normal-font div-text-blue">
                                             <table border="1" ng-if="showOnGO">
                                                 <tbody>
-                                                    <tr ng-repeat="rows in devData.ncrSearchDispNotes">
+                                                    <tr ng-repeat="rows in DespNotes">
                                                         <td>
                                                             <span>{{rows.ncrDispoNote}}</span>
                                                             <span class="normal-text"><b>{{rows.dispoNoteSignedBy}}</b></span>
@@ -2465,33 +3400,33 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <table class="table-design">
+                        <table class="full-width" style="table-layout:fixed">
                             <tbody>
                                 <tr>
                                     <td colspan="2" class="label_blue">
                                         <input type="checkbox" disabled>
                                         <label for=" ">Disp. Eng. NCE:</label>
                                     </td>
-                                    <td colspan="3" ng-if="devData.dispEngSignedLastName" ng-bind="devData.dispEngSignedLastName+','+devData.dispEngSignedFirstName+','+devData.dispEngSignedDate"></td>
+                                    <td colspan="3" ng-if="data.ncrSearchDeviation[0].dispEngSignedLastName" ng-bind="data.ncrSearchDeviation[0].dispEngSignedLastName+','+data.ncrSearchDeviation[0].dispEngSignedFirstName+','+data.ncrSearchDeviation[0].dispEngSignedDate"></td>
                                     <td colspan="2" class="label_blue">
                                         <input type="checkbox" disabled>
                                         <label for=" ">Disp. MRP Plan:</label>
                                     </td>
-                                    <td colspan="4" ng-if="devData.dispMrpPlanSignedLastName" ng-bind="devData.dispMrpPlanSignedLastName+' '+devData.dispMrpPlanSignedFirstName+','+devData.dispMrpPlanDate"></td>
+                                    <td colspan="4" ng-if="data.ncrSearchDeviation[0].dispMrpPlanSignedLastName" ng-bind="data.ncrSearchDeviation[0].dispMrpPlanSignedLastName+' '+data.ncrSearchDeviation[0].dispMrpPlanSignedFirstName+','+data.ncrSearchDeviation[0].dispMrpPlanDate"></td>
                                     <td class="label_blue">Cleared:</td>
-                                    <td colspan="4" ng-if="devData.clearedSignedLastName" ng-bind="devData.clearedSignedLastName+','+devData.clearedSignedFirstName+','+devData.clearedSignedDate"></td>
+                                    <td colspan="4" ng-if="data.ncrSearchDeviation[0].clearedSignedLastName" ng-bind="data.ncrSearchDeviation[0].clearedSignedLastName+','+data.ncrSearchDeviation[0].clearedSignedFirstName+','+data.ncrSearchDeviation[0].clearedSignedDate"></td>
                                 </tr>
                             </tbody>
                         </table>
                         <hr>
-                        <table class="table-design">
+                        <table style="width:100%;text-align:left ">
                             <thead>
-                                <th colspan="5" class="th-text">Responsiblity</th>
-                                <th colspan="3" class="label_blue th-text">
+                                <th colspan="5">Responsiblity</th>
+                                <th colspan="3" class="label_blue">
                                     <input type="checkbox" />
                                     <label>Supervisor:</label>
                                 </th>
-                                <th ng-if="devData.respSuperVisorSignedLastName" ng-bind="devData.respSuperVisorSignedLastName+' '+devData.respSuperVisorSigneFirstName+','+devData.respSuperVisorSigneDate"></th>
+                                <th ng-if="respSuperVisorSignedBy" ng-bind="data.ncrSearchDeviation[0].respSuperVisorSignedBy+','+data.ncrSearchDeviation[0].respSuperVisorSigneDate"></th>
                             </thead>
                             <tbody>
                                 <tr>
@@ -2512,7 +3447,7 @@
                                         <input type="checkbox" />
                                         <label>Resp Quality:</label>
                                     </td>
-                                    <td ng-if="devData.respQualitySignedLastName" ng-bind="devData.respQualitySignedLastName+' '+devData.respQualitySignedFirstName+','+devData.respQualitySignedDate"></td>
+                                    <td ng-if="respSuperVisorSignedBy" ng-bind="data.ncrSearchDeviation[0].respQualitySignedBy+','+data.ncrSearchDeviation[0].respQualitySignedDate"></td>
                                 </tr>
                                 <tr>
                                     <td ng-if="showHtmlTag">
@@ -2520,25 +3455,25 @@
                                             <option value=" "></option>
                                         </select>
                                     </td>
-                                    <td ng-class="hiddenValues" class="text-oversize" ng-bind="devData.component"></td>
+                                    <td ng-class="hiddenValues" class="text-oversize" ng-bind="data.ncrSearchDeviation[0].component"></td>
                                     <td ng-if="showHtmlTag">
                                         <select name=" " id=" " style="width:150px">
                                             <option value=" "></option>
                                         </select>
                                     </td>
-                                    <td ng-class="hiddenValues" ng-bind="devData.causeCode"></td>
+                                    <td ng-class="hiddenValues" ng-bind="data.ncrSearchDeviation[0].causeCode"></td>
                                     <td ng-if="showHtmlTag">
                                         <select name=" " id=" " style="width:150px">
                                             <option value=" "></option>
                                         </select>
                                     </td>
-                                    <td ng-class="hiddenValues" ng-bind="devData.locationCode"></td>
+                                    <td ng-class="hiddenValues" ng-bind="data.ncrSearchDeviation[0].locationCode"></td>
                                     <td ng-if="showHtmlTag">
                                         <select name=" " id=" " style="width:150px">
                                             <option value=" "></option>
                                         </select>
                                     </td>
-                                    <td ng-class="hiddenValues" ng-bind="devData.defectOperation"></td>
+                                    <td ng-class="hiddenValues" ng-bind="data.ncrSearchDeviation[0].defectOperation"></td>
                                     <td ng-if="showHtmlTag">
                                         <table>
                                             <tbody>
@@ -2569,7 +3504,7 @@
                                             </tbody>
                                         </table>
                                     </td>
-                                    <td ng-class="hiddenValues" ng-bind="devData.percentage"></td>
+                                    <td ng-class="hiddenValues" ng-bind="data.ncrSearchDeviation[0].percentage"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -2581,5 +3516,5 @@
             </div>
         </div>
     </div>
-    
+    </div>
 </px-card>

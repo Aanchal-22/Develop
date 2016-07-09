@@ -23,7 +23,8 @@ define(['./dashboard',
     './manageSiteComponentCtrl',
     './managecauseCodeCtrl',
     './manageAreaCtrl',
-    './editAreaCtrl'
+    './editAreaCtrl',
+    './qcrNewCtrl'
 
 ], function() {
 

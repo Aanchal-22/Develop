@@ -38,7 +38,9 @@
     "requirejs-plugins": "1.0.2",
     "google-analytics": "~0.1.0",
     "px-tabs": "^0.4.0",
-    "angular-cookies": "1.5.7"
+    "angular-cookies": "1.5.7",
+    "angular-translate": "^2.11.0",
+    "angular-translate-loader-static-files": "^2.11.0"
   },
   "resolutions": {
     "es6-promise": "~v3.0.2",

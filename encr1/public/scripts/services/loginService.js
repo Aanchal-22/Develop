@@ -9,11 +9,10 @@ define(['angular', 'services-module'], function(angular, services) {
 
         var getLoginUserData = function(loginUser) {
             console.log("Inside LoginService")
-            return $http.get("http://3.235.198.61:9095/EncrUserUtilityService/service/manageUsers/" + loginUser);
+            return $http.get("http://3.206.230.45:9001/EncrUserUtilityService/service/manageUsers/" + loginUser);
             //return $http.get(testData);
 
         }
-
 
         return {
             getLoginUserData: getLoginUserData

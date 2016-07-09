@@ -38,36 +38,41 @@ define(['angular', 'angular-ui-router'], function(angular) {
 
             })
 
-             .state('qcr', {
-                url: '/qcr',
-                templateUrl: 'views/qcr.html',
-                controller: 'qcrCtrl',
-            })
+        .state('qcr', {
+            url: '/qcr',
+            templateUrl: 'views/qcr.html',
+            controller: 'qcrCtrl',
+        })
 
-            .state('copyQcr', {
+        .state('copyQcr', {
                 url: '/copyQcr',
                 templateUrl: 'views/copy-qcr.html',
 
             })
             .state('selectpo', {
-                 url: '/selectpo',
-                 templateUrl: 'views/select-po.html',
-                 controller:'qcrCtrl'
-             })
-             .state('qcrRouting', {
+                url: '/selectpo',
+                templateUrl: 'views/select-po.html',
+                controller: 'qcrCtrl'
+            })
+            .state('qcrRouting', {
                 url: '/qcrRouting',
                 templateUrl: 'views/qcr-routing.html',
-                controller:'qcrCtrl'
+                controller: 'qcrCtrl'
 
             })
-              .state('qcrSerial', {
+            .state('qcrSerial', {
                 url: '/qcrSerial',
                 templateUrl: 'views/serial-qcr.html',
-                controller:'qcrCtrl'
+                controller: 'qcrCtrl'
 
             })
+            .state('newQcr', {
+                url: '/newQcr',
+                templateUrl: 'views/new-qcr.html',
+                controller: 'qcrNewCtrl'
+            })
 
-            .state('history', {
+        .state('history', {
                 url: '/history',
                 templateUrl: 'views/history.html',
 
@@ -83,7 +88,7 @@ define(['angular', 'angular-ui-router'], function(angular) {
                 controller: 'adhocCtrl'
 
             })
-        .state('administration', {
+            .state('administration', {
                 url: '/administration',
                 templateUrl: 'views/administration.html'
             })
@@ -156,10 +161,10 @@ define(['angular', 'angular-ui-router'], function(angular) {
             .state('editArea', {
                 url: '/editArea',
                 templateUrl: 'views/edit-area.html',
-                controller:'editAreaCtrl'
+                controller: 'editAreaCtrl'
             })
 
-            .state('manageSites', {
+        .state('manageSites', {
                 url: '/manageSites',
                 templateUrl: 'views/manage-sites.html'
             })
@@ -315,17 +320,16 @@ define(['angular', 'angular-ui-router'], function(angular) {
                 templateUrl: 'views/add-ca-code.html'
             })
 
-            .state('error', {
+        .state('error', {
                 url: '/error',
                 templateUrl: 'views/error.html'
-                //controller: 'loginCtrl'
+                    //controller: 'loginCtrl'
             })
             .state('disclaimer', {
                 url: '/disclaimer',
                 templateUrl: 'views/disclaimer.html',
                 controller: 'disclaimerCtrl'
-            })
-        ;
+            });
 
 
 
